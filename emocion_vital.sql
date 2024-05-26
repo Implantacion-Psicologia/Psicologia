@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-04-2024 a las 22:00:00
+-- Tiempo de generación: 26-05-2024 a las 00:15:49
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -21,21 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `emocion_vital`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `admin`
---
-
-CREATE TABLE `admin` (
-  `id_ad` int(11) NOT NULL,
-  `id_psi` int(11) NOT NULL,
-  `n_ad` varchar(50) NOT NULL,
-  `cont_ad` varchar(50) NOT NULL,
-  `correo_ad` varchar(50) NOT NULL,
-  `estado_ad` enum('Activo','Inactivo') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -563,13 +548,41 @@ INSERT INTO `ciudades` (`id_ciudad`, `id_estado`, `ciudad`, `capital`) VALUES
 CREATE TABLE `consulta` (
   `id_con` int(11) NOT NULL,
   `id_pact` int(11) NOT NULL,
-  `id_histmed` int(11) NOT NULL,
+  `id_pactinf` int(11) DEFAULT NULL,
+  `id_pactpar` int(11) DEFAULT NULL,
   `id_psi` int(11) NOT NULL,
   `id_tipocon` int(11) NOT NULL,
-  `estado_con` enum('Espera','Realizada','Suspendida','Agendada') NOT NULL,
-  `fecha_con` datetime NOT NULL,
-  `duracion_con` date NOT NULL
+  `fecha_duracion` datetime NOT NULL,
+  `estado_con` enum('Espera','Realizada','Suspendida','Agendada') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `consulta`
+--
+
+INSERT INTO `consulta` (`id_con`, `id_pact`, `id_pactinf`, `id_pactpar`, `id_psi`, `id_tipocon`, `fecha_duracion`, `estado_con`) VALUES
+(1, 1, 0, 0, 1, 1, '2024-05-22 00:45:00', 'Espera');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `direccion`
+--
+
+CREATE TABLE `direccion` (
+  `id_direccion` int(11) NOT NULL,
+  `id_estado` int(11) NOT NULL,
+  `id_municipio` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `direccion`
+--
+
+INSERT INTO `direccion` (`id_direccion`, `id_estado`, `id_municipio`) VALUES
+(1, 12, 146),
+(2, 12, 149),
+(3, 12, 149);
 
 -- --------------------------------------------------------
 
@@ -627,6 +640,13 @@ CREATE TABLE `factura` (
   `id_factotal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`id_fac`, `id_web`, `id_con`, `id_factotal`) VALUES
+(1, 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -639,19 +659,675 @@ CREATE TABLE `factura_total` (
   `precio_tot` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `factura_total`
+--
+
+INSERT INTO `factura_total` (`id_factotal`, `id_con`, `precio_tot`) VALUES
+(1, 1, 25);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `historial_medico`
+-- Estructura de tabla para la tabla `fecha`
 --
 
-CREATE TABLE `historial_medico` (
-  `id_histmed` int(11) NOT NULL,
-  `id_pact` int(11) NOT NULL,
-  `enfermedades` varchar(100) NOT NULL,
-  `medicamentos` varchar(100) NOT NULL,
-  `notas` varchar(100) NOT NULL
+CREATE TABLE `fecha` (
+  `Id_Fecha` int(11) NOT NULL,
+  `Dia` datetime NOT NULL,
+  `Status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `fecha`
+--
+
+INSERT INTO `fecha` (`Id_Fecha`, `Dia`, `Status`) VALUES
+(1, '0000-00-00 00:00:00', 1),
+(2, '0000-00-00 00:00:00', 1),
+(3, '0000-00-00 00:00:00', 1),
+(4, '0000-00-00 00:00:00', 1),
+(5, '0000-00-00 00:00:00', 1),
+(6, '0000-00-00 00:00:00', 1),
+(7, '0000-00-00 00:00:00', 1),
+(8, '0000-00-00 00:00:00', 1),
+(9, '0000-00-00 00:00:00', 1),
+(10, '0000-00-00 00:00:00', 1),
+(11, '0000-00-00 00:00:00', 1),
+(12, '0000-00-00 00:00:00', 1),
+(13, '0000-00-00 00:00:00', 1),
+(14, '0000-00-00 00:00:00', 1),
+(15, '0000-00-00 00:00:00', 1),
+(16, '0000-00-00 00:00:00', 1),
+(17, '0000-00-00 00:00:00', 1),
+(18, '0000-00-00 00:00:00', 1),
+(19, '0000-00-00 00:00:00', 1),
+(20, '0000-00-00 00:00:00', 1),
+(21, '0000-00-00 00:00:00', 1),
+(22, '0000-00-00 00:00:00', 1),
+(23, '0000-00-00 00:00:00', 1),
+(24, '0000-00-00 00:00:00', 1),
+(25, '0000-00-00 00:00:00', 1),
+(26, '0000-00-00 00:00:00', 1),
+(27, '0000-00-00 00:00:00', 1),
+(28, '0000-00-00 00:00:00', 1),
+(29, '0000-00-00 00:00:00', 1),
+(30, '0000-00-00 00:00:00', 1),
+(31, '0000-00-00 00:00:00', 1),
+(32, '0000-00-00 00:00:00', 1),
+(33, '0000-00-00 00:00:00', 1),
+(34, '0000-00-00 00:00:00', 1),
+(35, '0000-00-00 00:00:00', 1),
+(36, '0000-00-00 00:00:00', 1),
+(37, '0000-00-00 00:00:00', 1),
+(38, '0000-00-00 00:00:00', 1),
+(39, '0000-00-00 00:00:00', 1),
+(40, '0000-00-00 00:00:00', 1),
+(41, '0000-00-00 00:00:00', 1),
+(42, '0000-00-00 00:00:00', 1),
+(43, '0000-00-00 00:00:00', 1),
+(44, '0000-00-00 00:00:00', 1),
+(45, '0000-00-00 00:00:00', 1),
+(46, '0000-00-00 00:00:00', 1),
+(47, '0000-00-00 00:00:00', 1),
+(48, '0000-00-00 00:00:00', 1),
+(49, '0000-00-00 00:00:00', 1),
+(50, '0000-00-00 00:00:00', 1),
+(51, '0000-00-00 00:00:00', 1),
+(52, '0000-00-00 00:00:00', 1),
+(53, '0000-00-00 00:00:00', 1),
+(54, '0000-00-00 00:00:00', 1),
+(55, '0000-00-00 00:00:00', 1),
+(56, '0000-00-00 00:00:00', 1),
+(57, '0000-00-00 00:00:00', 1),
+(58, '0000-00-00 00:00:00', 1),
+(59, '0000-00-00 00:00:00', 1),
+(60, '0000-00-00 00:00:00', 1),
+(61, '0000-00-00 00:00:00', 1),
+(62, '0000-00-00 00:00:00', 1),
+(63, '0000-00-00 00:00:00', 1),
+(64, '0000-00-00 00:00:00', 1),
+(65, '0000-00-00 00:00:00', 1),
+(66, '0000-00-00 00:00:00', 1),
+(67, '0000-00-00 00:00:00', 1),
+(68, '0000-00-00 00:00:00', 1),
+(69, '0000-00-00 00:00:00', 1),
+(70, '0000-00-00 00:00:00', 1),
+(71, '0000-00-00 00:00:00', 1),
+(72, '0000-00-00 00:00:00', 1),
+(73, '0000-00-00 00:00:00', 1),
+(74, '0000-00-00 00:00:00', 1),
+(75, '0000-00-00 00:00:00', 1),
+(76, '0000-00-00 00:00:00', 1),
+(77, '0000-00-00 00:00:00', 1),
+(78, '0000-00-00 00:00:00', 1),
+(79, '0000-00-00 00:00:00', 1),
+(80, '0000-00-00 00:00:00', 1),
+(81, '0000-00-00 00:00:00', 1),
+(82, '0000-00-00 00:00:00', 1),
+(83, '0000-00-00 00:00:00', 1),
+(84, '0000-00-00 00:00:00', 1),
+(85, '0000-00-00 00:00:00', 1),
+(86, '0000-00-00 00:00:00', 1),
+(87, '0000-00-00 00:00:00', 1),
+(88, '0000-00-00 00:00:00', 1),
+(89, '0000-00-00 00:00:00', 1),
+(90, '0000-00-00 00:00:00', 1),
+(91, '0000-00-00 00:00:00', 1),
+(92, '0000-00-00 00:00:00', 1),
+(93, '0000-00-00 00:00:00', 1),
+(94, '0000-00-00 00:00:00', 1),
+(95, '0000-00-00 00:00:00', 1),
+(96, '0000-00-00 00:00:00', 1),
+(97, '0000-00-00 00:00:00', 1),
+(98, '0000-00-00 00:00:00', 1),
+(99, '0000-00-00 00:00:00', 1),
+(100, '0000-00-00 00:00:00', 1),
+(101, '0000-00-00 00:00:00', 1),
+(102, '0000-00-00 00:00:00', 1),
+(103, '0000-00-00 00:00:00', 1),
+(104, '0000-00-00 00:00:00', 1),
+(105, '0000-00-00 00:00:00', 1),
+(106, '0000-00-00 00:00:00', 1),
+(107, '0000-00-00 00:00:00', 1),
+(108, '0000-00-00 00:00:00', 1),
+(109, '0000-00-00 00:00:00', 1),
+(110, '0000-00-00 00:00:00', 1),
+(111, '0000-00-00 00:00:00', 1),
+(112, '0000-00-00 00:00:00', 1),
+(113, '0000-00-00 00:00:00', 1),
+(114, '0000-00-00 00:00:00', 1),
+(115, '0000-00-00 00:00:00', 1),
+(116, '0000-00-00 00:00:00', 1),
+(117, '0000-00-00 00:00:00', 1),
+(118, '0000-00-00 00:00:00', 1),
+(119, '0000-00-00 00:00:00', 1),
+(120, '0000-00-00 00:00:00', 1),
+(121, '0000-00-00 00:00:00', 1),
+(122, '0000-00-00 00:00:00', 1),
+(123, '0000-00-00 00:00:00', 1),
+(124, '0000-00-00 00:00:00', 1),
+(125, '0000-00-00 00:00:00', 1),
+(126, '0000-00-00 00:00:00', 1),
+(127, '0000-00-00 00:00:00', 1),
+(128, '0000-00-00 00:00:00', 1),
+(129, '0000-00-00 00:00:00', 1),
+(130, '0000-00-00 00:00:00', 1),
+(131, '0000-00-00 00:00:00', 1),
+(132, '0000-00-00 00:00:00', 1),
+(133, '0000-00-00 00:00:00', 1),
+(134, '0000-00-00 00:00:00', 1),
+(135, '0000-00-00 00:00:00', 1),
+(136, '0000-00-00 00:00:00', 1),
+(137, '0000-00-00 00:00:00', 1),
+(138, '0000-00-00 00:00:00', 1),
+(139, '0000-00-00 00:00:00', 1),
+(140, '0000-00-00 00:00:00', 1),
+(141, '0000-00-00 00:00:00', 1),
+(142, '0000-00-00 00:00:00', 1),
+(143, '0000-00-00 00:00:00', 1),
+(144, '0000-00-00 00:00:00', 1),
+(145, '0000-00-00 00:00:00', 1),
+(146, '0000-00-00 00:00:00', 1),
+(147, '0000-00-00 00:00:00', 1),
+(148, '0000-00-00 00:00:00', 1),
+(149, '0000-00-00 00:00:00', 1),
+(150, '0000-00-00 00:00:00', 1),
+(151, '0000-00-00 00:00:00', 1),
+(152, '0000-00-00 00:00:00', 1),
+(153, '0000-00-00 00:00:00', 1),
+(154, '0000-00-00 00:00:00', 1),
+(155, '0000-00-00 00:00:00', 1),
+(156, '0000-00-00 00:00:00', 1),
+(157, '0000-00-00 00:00:00', 1),
+(158, '0000-00-00 00:00:00', 1),
+(159, '0000-00-00 00:00:00', 1),
+(160, '0000-00-00 00:00:00', 1),
+(161, '0000-00-00 00:00:00', 1),
+(162, '0000-00-00 00:00:00', 1),
+(163, '0000-00-00 00:00:00', 1),
+(164, '0000-00-00 00:00:00', 1),
+(165, '0000-00-00 00:00:00', 1),
+(166, '0000-00-00 00:00:00', 1),
+(167, '0000-00-00 00:00:00', 1),
+(168, '0000-00-00 00:00:00', 1),
+(169, '0000-00-00 00:00:00', 1),
+(170, '0000-00-00 00:00:00', 1),
+(171, '0000-00-00 00:00:00', 1),
+(172, '0000-00-00 00:00:00', 1),
+(173, '0000-00-00 00:00:00', 1),
+(174, '0000-00-00 00:00:00', 1),
+(175, '0000-00-00 00:00:00', 1),
+(176, '0000-00-00 00:00:00', 1),
+(177, '0000-00-00 00:00:00', 1),
+(178, '0000-00-00 00:00:00', 1),
+(179, '0000-00-00 00:00:00', 1),
+(180, '0000-00-00 00:00:00', 1),
+(181, '0000-00-00 00:00:00', 1),
+(182, '0000-00-00 00:00:00', 1),
+(183, '0000-00-00 00:00:00', 1),
+(184, '0000-00-00 00:00:00', 1),
+(185, '0000-00-00 00:00:00', 1),
+(186, '0000-00-00 00:00:00', 1),
+(187, '0000-00-00 00:00:00', 1),
+(188, '0000-00-00 00:00:00', 1),
+(189, '0000-00-00 00:00:00', 1),
+(190, '0000-00-00 00:00:00', 1),
+(191, '0000-00-00 00:00:00', 1),
+(192, '0000-00-00 00:00:00', 1),
+(193, '0000-00-00 00:00:00', 1),
+(194, '0000-00-00 00:00:00', 1),
+(195, '0000-00-00 00:00:00', 1),
+(196, '0000-00-00 00:00:00', 1),
+(197, '0000-00-00 00:00:00', 1),
+(198, '0000-00-00 00:00:00', 1),
+(199, '0000-00-00 00:00:00', 1),
+(200, '0000-00-00 00:00:00', 1),
+(201, '0000-00-00 00:00:00', 1),
+(202, '0000-00-00 00:00:00', 1),
+(203, '0000-00-00 00:00:00', 1),
+(204, '0000-00-00 00:00:00', 1),
+(205, '0000-00-00 00:00:00', 1),
+(206, '0000-00-00 00:00:00', 1),
+(207, '0000-00-00 00:00:00', 1),
+(208, '0000-00-00 00:00:00', 1),
+(209, '0000-00-00 00:00:00', 1),
+(210, '0000-00-00 00:00:00', 1),
+(211, '0000-00-00 00:00:00', 1),
+(212, '0000-00-00 00:00:00', 1),
+(213, '0000-00-00 00:00:00', 1),
+(214, '0000-00-00 00:00:00', 1),
+(215, '0000-00-00 00:00:00', 1),
+(216, '0000-00-00 00:00:00', 1),
+(217, '0000-00-00 00:00:00', 1),
+(218, '0000-00-00 00:00:00', 1),
+(219, '0000-00-00 00:00:00', 1),
+(220, '0000-00-00 00:00:00', 1),
+(221, '0000-00-00 00:00:00', 1),
+(222, '0000-00-00 00:00:00', 1),
+(223, '0000-00-00 00:00:00', 1),
+(224, '0000-00-00 00:00:00', 1),
+(225, '0000-00-00 00:00:00', 1),
+(226, '0000-00-00 00:00:00', 1),
+(227, '0000-00-00 00:00:00', 1),
+(228, '0000-00-00 00:00:00', 1),
+(229, '0000-00-00 00:00:00', 1),
+(230, '0000-00-00 00:00:00', 1),
+(231, '0000-00-00 00:00:00', 1),
+(232, '0000-00-00 00:00:00', 1),
+(233, '0000-00-00 00:00:00', 1),
+(234, '0000-00-00 00:00:00', 1),
+(235, '0000-00-00 00:00:00', 1),
+(236, '0000-00-00 00:00:00', 1),
+(237, '0000-00-00 00:00:00', 1),
+(238, '0000-00-00 00:00:00', 1),
+(239, '0000-00-00 00:00:00', 1),
+(240, '0000-00-00 00:00:00', 1),
+(241, '0000-00-00 00:00:00', 1),
+(242, '0000-00-00 00:00:00', 1),
+(243, '0000-00-00 00:00:00', 1),
+(244, '0000-00-00 00:00:00', 1),
+(245, '0000-00-00 00:00:00', 1),
+(246, '0000-00-00 00:00:00', 1),
+(247, '0000-00-00 00:00:00', 1),
+(248, '0000-00-00 00:00:00', 1),
+(249, '0000-00-00 00:00:00', 1),
+(250, '0000-00-00 00:00:00', 1),
+(251, '0000-00-00 00:00:00', 1),
+(252, '0000-00-00 00:00:00', 1),
+(253, '0000-00-00 00:00:00', 1),
+(254, '0000-00-00 00:00:00', 1),
+(255, '0000-00-00 00:00:00', 1),
+(256, '0000-00-00 00:00:00', 1),
+(257, '0000-00-00 00:00:00', 1),
+(258, '0000-00-00 00:00:00', 1),
+(259, '0000-00-00 00:00:00', 1),
+(260, '0000-00-00 00:00:00', 1),
+(261, '0000-00-00 00:00:00', 1),
+(262, '0000-00-00 00:00:00', 1),
+(263, '0000-00-00 00:00:00', 1),
+(264, '0000-00-00 00:00:00', 1),
+(265, '0000-00-00 00:00:00', 1),
+(266, '0000-00-00 00:00:00', 1),
+(267, '0000-00-00 00:00:00', 1),
+(268, '0000-00-00 00:00:00', 1),
+(269, '0000-00-00 00:00:00', 1),
+(270, '0000-00-00 00:00:00', 1),
+(271, '0000-00-00 00:00:00', 1),
+(272, '0000-00-00 00:00:00', 1),
+(273, '0000-00-00 00:00:00', 1),
+(274, '0000-00-00 00:00:00', 1),
+(275, '0000-00-00 00:00:00', 1),
+(276, '0000-00-00 00:00:00', 1),
+(277, '0000-00-00 00:00:00', 1),
+(278, '0000-00-00 00:00:00', 1),
+(279, '0000-00-00 00:00:00', 1),
+(280, '0000-00-00 00:00:00', 1),
+(281, '0000-00-00 00:00:00', 1),
+(282, '0000-00-00 00:00:00', 1),
+(283, '0000-00-00 00:00:00', 1),
+(284, '0000-00-00 00:00:00', 1),
+(285, '0000-00-00 00:00:00', 1),
+(286, '0000-00-00 00:00:00', 1),
+(287, '0000-00-00 00:00:00', 1),
+(288, '0000-00-00 00:00:00', 1),
+(289, '0000-00-00 00:00:00', 1),
+(290, '0000-00-00 00:00:00', 1),
+(291, '0000-00-00 00:00:00', 1),
+(292, '0000-00-00 00:00:00', 1),
+(293, '0000-00-00 00:00:00', 1),
+(294, '0000-00-00 00:00:00', 1),
+(295, '0000-00-00 00:00:00', 1),
+(296, '0000-00-00 00:00:00', 1),
+(297, '0000-00-00 00:00:00', 1),
+(298, '0000-00-00 00:00:00', 1),
+(299, '0000-00-00 00:00:00', 1),
+(300, '0000-00-00 00:00:00', 1),
+(301, '0000-00-00 00:00:00', 1),
+(302, '0000-00-00 00:00:00', 1),
+(303, '0000-00-00 00:00:00', 1),
+(304, '0000-00-00 00:00:00', 1),
+(305, '0000-00-00 00:00:00', 1),
+(306, '0000-00-00 00:00:00', 1),
+(307, '0000-00-00 00:00:00', 1),
+(308, '0000-00-00 00:00:00', 1),
+(309, '0000-00-00 00:00:00', 1),
+(310, '0000-00-00 00:00:00', 1),
+(311, '0000-00-00 00:00:00', 1),
+(312, '0000-00-00 00:00:00', 1),
+(313, '0000-00-00 00:00:00', 1),
+(314, '0000-00-00 00:00:00', 1),
+(315, '0000-00-00 00:00:00', 1),
+(316, '0000-00-00 00:00:00', 1),
+(317, '0000-00-00 00:00:00', 1),
+(318, '0000-00-00 00:00:00', 1),
+(319, '0000-00-00 00:00:00', 1),
+(320, '0000-00-00 00:00:00', 1),
+(321, '0000-00-00 00:00:00', 1),
+(322, '0000-00-00 00:00:00', 1),
+(323, '0000-00-00 00:00:00', 1),
+(324, '0000-00-00 00:00:00', 1),
+(325, '0000-00-00 00:00:00', 1),
+(326, '0000-00-00 00:00:00', 1),
+(327, '0000-00-00 00:00:00', 1),
+(328, '0000-00-00 00:00:00', 1),
+(329, '0000-00-00 00:00:00', 1),
+(330, '0000-00-00 00:00:00', 1),
+(331, '0000-00-00 00:00:00', 1),
+(332, '0000-00-00 00:00:00', 1),
+(333, '0000-00-00 00:00:00', 1),
+(334, '0000-00-00 00:00:00', 1),
+(335, '0000-00-00 00:00:00', 1),
+(336, '0000-00-00 00:00:00', 1),
+(337, '0000-00-00 00:00:00', 1),
+(338, '0000-00-00 00:00:00', 1),
+(339, '0000-00-00 00:00:00', 1),
+(340, '0000-00-00 00:00:00', 1),
+(341, '0000-00-00 00:00:00', 1),
+(342, '0000-00-00 00:00:00', 1),
+(343, '0000-00-00 00:00:00', 1),
+(344, '0000-00-00 00:00:00', 1),
+(345, '0000-00-00 00:00:00', 1),
+(346, '0000-00-00 00:00:00', 1),
+(347, '0000-00-00 00:00:00', 1),
+(348, '0000-00-00 00:00:00', 1),
+(349, '0000-00-00 00:00:00', 1),
+(350, '0000-00-00 00:00:00', 1),
+(351, '0000-00-00 00:00:00', 1),
+(352, '0000-00-00 00:00:00', 1),
+(353, '0000-00-00 00:00:00', 1),
+(354, '0000-00-00 00:00:00', 1),
+(355, '0000-00-00 00:00:00', 1),
+(356, '0000-00-00 00:00:00', 1),
+(357, '0000-00-00 00:00:00', 1),
+(358, '0000-00-00 00:00:00', 1),
+(359, '0000-00-00 00:00:00', 1),
+(360, '0000-00-00 00:00:00', 1),
+(361, '0000-00-00 00:00:00', 1),
+(362, '0000-00-00 00:00:00', 1),
+(363, '0000-00-00 00:00:00', 1),
+(364, '0000-00-00 00:00:00', 1),
+(365, '0000-00-00 00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `histocli_d1`
+--
+
+CREATE TABLE `histocli_d1` (
+  `id_D1` int(11) NOT NULL,
+  `D1_d4` varchar(10) NOT NULL,
+  `D1_d5` varchar(10) NOT NULL,
+  `D1_d6` varchar(50) NOT NULL,
+  `D1_d7` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `histocli_d1`
+--
+
+INSERT INTO `histocli_d1` (`id_D1`, `D1_d4`, `D1_d5`, `D1_d6`, `D1_d7`) VALUES
+(1, '', '', '', 'Hermano mayor'),
+(2, 'si', '17', 'Jose Aparicio Salsedo', 'Hermana menor');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `histocli_d2`
+--
+
+CREATE TABLE `histocli_d2` (
+  `id_D2` int(11) NOT NULL,
+  `D2_d1` varchar(100) NOT NULL,
+  `D2_d2` varchar(30) NOT NULL,
+  `D2_d3` varchar(30) NOT NULL,
+  `D2_d4` varchar(60) NOT NULL,
+  `D2_d5` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `histocli_d2`
+--
+
+INSERT INTO `histocli_d2` (`id_D2`, `D2_d1`, `D2_d2`, `D2_d3`, `D2_d4`, `D2_d5`) VALUES
+(1, 'Poco sociable', 'Madre', 'No se', '', ''),
+(2, 'Algo', 'alguien', 'no se ', 'moderada', 'normal');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `histocli_d3`
+--
+
+CREATE TABLE `histocli_d3` (
+  `id_D3` int(11) NOT NULL,
+  `D3_d1` varchar(100) NOT NULL,
+  `D3_d2` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `histocli_d3`
+--
+
+INSERT INTO `histocli_d3` (`id_D3`, `D3_d1`, `D3_d2`) VALUES
+(1, 'Normal', 'Infancia normal'),
+(2, 'no se', 'no se');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `histocli_d4`
+--
+
+CREATE TABLE `histocli_d4` (
+  `id_D4` int(11) NOT NULL,
+  `D4_d1` varchar(50) NOT NULL,
+  `D4_d2` varchar(50) NOT NULL,
+  `D4_d3` varchar(50) NOT NULL,
+  `D4_d4` varchar(50) NOT NULL,
+  `D4_d5` varchar(60) NOT NULL,
+  `D4_d6` varchar(60) NOT NULL,
+  `D4_d7` varchar(60) NOT NULL,
+  `D4_d8` varchar(60) NOT NULL,
+  `D4_d9` varchar(60) NOT NULL,
+  `D4_d10` varchar(60) NOT NULL,
+  `D4_d11` varchar(60) NOT NULL,
+  `D4_d12` varchar(60) NOT NULL,
+  `D4_d13` varchar(10) NOT NULL,
+  `D4_d14` varchar(40) NOT NULL,
+  `D4_d15` varchar(60) NOT NULL,
+  `D4_d16` varchar(10) NOT NULL,
+  `D4_d17` varchar(10) NOT NULL,
+  `D4_d18` varchar(50) NOT NULL,
+  `D4_d19` varchar(50) NOT NULL,
+  `D4_d20` varchar(50) NOT NULL,
+  `D4_d21` varchar(40) NOT NULL,
+  `D4_d22` varchar(10) NOT NULL,
+  `D4_d23` varchar(40) NOT NULL,
+  `D4_d24` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `histocli_d4`
+--
+
+INSERT INTO `histocli_d4` (`id_D4`, `D4_d1`, `D4_d2`, `D4_d3`, `D4_d4`, `D4_d5`, `D4_d6`, `D4_d7`, `D4_d8`, `D4_d9`, `D4_d10`, `D4_d11`, `D4_d12`, `D4_d13`, `D4_d14`, `D4_d15`, `D4_d16`, `D4_d17`, `D4_d18`, `D4_d19`, `D4_d20`, `D4_d21`, `D4_d22`, `D4_d23`, `D4_d24`) VALUES
+(1, 'Rafael', 'Sonny', 'Bien', 'Bien', 'Bachiller', 'TSU Agropecuaria', 'Reparacion de Aires acondicionados', 'Director de Liceo', 'de lunes a viernes', 'de lunes a viernes', 'ninguno', 'ninguno', '', '', '', '', '', '', '', '', '', '', '', ''),
+(2, 'Rafael', 'Sonny', 'Bien', 'Bien', 'Bachiller', 'TSU Agropecuaria', 'Reparacion de Aires acondicionados', 'Director de Liceo', 'de lunes a viernes', 'de lunes a viernes', 'ninguno', 'no', '', '', '', '', '', '', 'no', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `histocli_d5`
+--
+
+CREATE TABLE `histocli_d5` (
+  `id_D5` int(11) NOT NULL,
+  `D5_d1` varchar(200) NOT NULL,
+  `D5_d2` varchar(200) NOT NULL,
+  `D5_d3` varchar(200) NOT NULL,
+  `D5_d4` varchar(200) NOT NULL,
+  `D5_d5` varchar(200) NOT NULL,
+  `D5_d6` tinyint(1) NOT NULL,
+  `D5_d7` tinyint(1) NOT NULL,
+  `D5_d8` tinyint(1) NOT NULL,
+  `D5_d9` tinyint(1) NOT NULL,
+  `D5_d10` tinyint(1) NOT NULL,
+  `D5_d11` tinyint(1) NOT NULL,
+  `D5_d12` tinyint(1) NOT NULL,
+  `D5_d13` tinyint(1) NOT NULL,
+  `D5_d14` tinyint(1) NOT NULL,
+  `D5_d15` tinyint(1) NOT NULL,
+  `D5_d16` tinyint(1) NOT NULL,
+  `D5_d17` tinyint(1) NOT NULL,
+  `D5_d18` tinyint(1) NOT NULL,
+  `D5_d19` tinyint(1) NOT NULL,
+  `D5_d20` tinyint(1) NOT NULL,
+  `D5_d21` tinyint(1) NOT NULL,
+  `D5_d22` tinyint(1) NOT NULL,
+  `D5_d23` tinyint(1) NOT NULL,
+  `D5_d24` tinyint(1) NOT NULL,
+  `D5_d25` tinyint(1) NOT NULL,
+  `D5_d26` tinyint(1) NOT NULL,
+  `D5_d27` tinyint(1) NOT NULL,
+  `D5_d28` tinyint(1) NOT NULL,
+  `D5_d29` tinyint(1) NOT NULL,
+  `D5_d30` tinyint(1) NOT NULL,
+  `D5_d31` tinyint(1) NOT NULL,
+  `D5_d32` tinyint(1) NOT NULL,
+  `D5_d33` tinyint(1) NOT NULL,
+  `D5_d34` tinyint(1) NOT NULL,
+  `D5_d35` tinyint(1) NOT NULL,
+  `D5_d36` tinyint(1) NOT NULL,
+  `D5_d37` tinyint(1) NOT NULL,
+  `D5_d38` tinyint(1) NOT NULL,
+  `D5_d39` tinyint(1) NOT NULL,
+  `D5_d40` tinyint(1) NOT NULL,
+  `D5_d41` tinyint(1) NOT NULL,
+  `D5_d42` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `histocli_d5`
+--
+
+INSERT INTO `histocli_d5` (`id_D5`, `D5_d1`, `D5_d2`, `D5_d3`, `D5_d4`, `D5_d5`, `D5_d6`, `D5_d7`, `D5_d8`, `D5_d9`, `D5_d10`, `D5_d11`, `D5_d12`, `D5_d13`, `D5_d14`, `D5_d15`, `D5_d16`, `D5_d17`, `D5_d18`, `D5_d19`, `D5_d20`, `D5_d21`, `D5_d22`, `D5_d23`, `D5_d24`, `D5_d25`, `D5_d26`, `D5_d27`, `D5_d28`, `D5_d29`, `D5_d30`, `D5_d31`, `D5_d32`, `D5_d33`, `D5_d34`, `D5_d35`, `D5_d36`, `D5_d37`, `D5_d38`, `D5_d39`, `D5_d40`, `D5_d41`, `D5_d42`) VALUES
+(1, 'Come bien', 'Duerme bien, intranqulo', 'ninguno', 'ninguna', 'ninguna', 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 'ninguna'),
+(2, 'Come bien, come demasiado', 'inquieta', 'nada', 'nada', 'nada', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Muy inquieta');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `histocli_d6`
+--
+
+CREATE TABLE `histocli_d6` (
+  `id_D6` int(11) NOT NULL,
+  `D6_d1` varchar(150) NOT NULL,
+  `D6_d2` varchar(150) NOT NULL,
+  `D6_d3` varchar(150) NOT NULL,
+  `D6_d4` varchar(150) NOT NULL,
+  `D6_d5` varchar(150) NOT NULL,
+  `D6_d6` varchar(150) NOT NULL,
+  `D6_d7` varchar(150) NOT NULL,
+  `D6_d8` varchar(150) NOT NULL,
+  `D6_d9` varchar(150) NOT NULL,
+  `D6_d10` varchar(150) NOT NULL,
+  `D6_d11` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `histocli_d6`
+--
+
+INSERT INTO `histocli_d6` (`id_D6`, `D6_d1`, `D6_d2`, `D6_d3`, `D6_d4`, `D6_d5`, `D6_d6`, `D6_d7`, `D6_d8`, `D6_d9`, `D6_d10`, `D6_d11`) VALUES
+(1, 'No se', 'ninguno', 'ninguno', 'ninguno', 'Poca', 'ninguno', 'ninguno', 'ninguno', 'ninguno', 'Tartamudea', 'ninguno'),
+(2, 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `histocli_d7`
+--
+
+CREATE TABLE `histocli_d7` (
+  `id_D7` int(11) NOT NULL,
+  `D7_d1` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `histocli_d7`
+--
+
+INSERT INTO `histocli_d7` (`id_D7`, `D7_d1`) VALUES
+(1, 'Se indica la descripcion :v'),
+(2, 'Se indica aqui ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `histocli_d8`
+--
+
+CREATE TABLE `histocli_d8` (
+  `id_D8` int(11) NOT NULL,
+  `D8_d1` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `histocli_d8`
+--
+
+INSERT INTO `histocli_d8` (`id_D8`, `D8_d1`) VALUES
+(1, 'Se le recomienda bla bla bla'),
+(2, 'Se recomienda bla bla bla');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `histocli_d9`
+--
+
+CREATE TABLE `histocli_d9` (
+  `id_D9` int(11) NOT NULL,
+  `D9_d1` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `histocli_d9`
+--
+
+INSERT INTO `histocli_d9` (`id_D9`, `D9_d1`) VALUES
+(1, 'Tal cosa'),
+(2, 'Otra cosa');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historial_clinico`
+--
+
+CREATE TABLE `historial_clinico` (
+  `id_histcli` int(11) NOT NULL,
+  `id_D1` int(11) NOT NULL,
+  `id_D2` int(11) NOT NULL,
+  `id_D3` int(11) NOT NULL,
+  `id_D4` int(11) NOT NULL,
+  `id_D5` int(11) NOT NULL,
+  `id_D6` int(11) NOT NULL,
+  `id_D7` int(11) NOT NULL,
+  `id_D8` int(11) NOT NULL,
+  `id_D9` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `historial_clinico`
+--
+
+INSERT INTO `historial_clinico` (`id_histcli`, `id_D1`, `id_D2`, `id_D3`, `id_D4`, `id_D5`, `id_D6`, `id_D7`, `id_D8`, `id_D9`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(2, 2, 2, 2, 2, 2, 2, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -667,6 +1343,13 @@ CREATE TABLE `historico` (
   `id_fac` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `historico`
+--
+
+INSERT INTO `historico` (`id_hist`, `id_con`, `id_pact`, `id_psi`, `id_fac`) VALUES
+(1, 1, 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -676,11 +1359,39 @@ CREATE TABLE `historico` (
 CREATE TABLE `horario` (
   `id_hor` int(11) NOT NULL,
   `id_psi` int(11) NOT NULL,
-  `id_con` int(11) NOT NULL,
-  `fecha_inicio` datetime NOT NULL,
-  `fecha_fin` datetime NOT NULL,
   `disponible` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `horario`
+--
+
+INSERT INTO `horario` (`id_hor`, `id_psi`, `disponible`) VALUES
+(1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `login`
+--
+
+CREATE TABLE `login` (
+  `id_login` int(11) NOT NULL,
+  `correo_user` varchar(60) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `tipo_user` enum('Paciente','Psicologo') NOT NULL,
+  `token` varchar(20) DEFAULT NULL,
+  `estatus` enum('Activo','Inactivo') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `login`
+--
+
+INSERT INTO `login` (`id_login`, `correo_user`, `password`, `tipo_user`, `token`, `estatus`) VALUES
+(1, 'mariadaniela@gmail.com', '263bce650e68ab4e23f28263760b9fa5', 'Psicologo', NULL, 'Activo'),
+(2, 'maximo32@gmail.com', 'd822eb65cbd84945f427dc08f4571694', 'Paciente', NULL, 'Activo'),
+(3, 'sonny@gmail.com', '17f83f724f242bbba2b12f85f6091d1f', 'Paciente', NULL, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -1043,14 +1754,72 @@ INSERT INTO `municipios` (`id_municipio`, `id_estado`, `municipio`) VALUES
 
 CREATE TABLE `paciente` (
   `id_pact` int(11) NOT NULL,
-  `id_histmed` int(11) NOT NULL,
+  `id_histcli` int(11) DEFAULT NULL,
   `n_pact` varchar(160) NOT NULL,
   `a_pact` varchar(160) NOT NULL,
+  `tipo_ced` enum('V','E','J') NOT NULL,
   `cedula_pact` varchar(12) NOT NULL,
   `correo_pact` varchar(50) NOT NULL,
-  `tlf_pact` int(18) NOT NULL,
-  `infante` tinyint(1) NOT NULL
+  `id_direccion` int(11) DEFAULT NULL,
+  `id_login` int(11) NOT NULL,
+  `tlf_pact` varchar(40) NOT NULL,
+  `fecha_nac` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `paciente`
+--
+
+INSERT INTO `paciente` (`id_pact`, `id_histcli`, `n_pact`, `a_pact`, `tipo_ced`, `cedula_pact`, `correo_pact`, `id_direccion`, `id_login`, `tlf_pact`, `fecha_nac`) VALUES
+(1, 1, 'Maximo Antonio', 'Aguilar Parra', 'V', '32897650', 'maximo32@gmail.com', 2, 1, '0424-5392282', '2005-04-21'),
+(2, NULL, 'Sonnymar', 'Lopez', 'V', '24389761', 'sonny@gmail.com', 3, 3, '0424-5392282', '2005-04-21');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `paciente_infantil`
+--
+
+CREATE TABLE `paciente_infantil` (
+  `id_pactinf` int(11) NOT NULL,
+  `id_pact` int(11) NOT NULL,
+  `nomb_infa` varchar(50) NOT NULL,
+  `apel_infa` varchar(50) NOT NULL,
+  `cedula_inf` varchar(15) NOT NULL,
+  `fecha_naci_infa` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `paciente_infantil`
+--
+
+INSERT INTO `paciente_infantil` (`id_pactinf`, `id_pact`, `nomb_infa`, `apel_infa`, `cedula_inf`, `fecha_naci_infa`) VALUES
+(1, 2, 'Ainhoa', 'Aguilar', '24389761-1', '2013-07-19');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `paciente_pareja`
+--
+
+CREATE TABLE `paciente_pareja` (
+  `id_pactpar` int(11) NOT NULL,
+  `id_pact` int(11) NOT NULL,
+  `n_par` varchar(160) NOT NULL,
+  `a_par` varchar(160) NOT NULL,
+  `tipo_ced` enum('V','E','J') NOT NULL,
+  `cedula_par` varchar(12) NOT NULL,
+  `tlf_par` varchar(40) NOT NULL,
+  `id_direccion` int(11) NOT NULL,
+  `fecha_nac` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `paciente_pareja`
+--
+
+INSERT INTO `paciente_pareja` (`id_pactpar`, `id_pact`, `n_par`, `a_par`, `tipo_ced`, `cedula_par`, `tlf_par`, `id_direccion`, `fecha_nac`) VALUES
+(1, 2, 'Rafael', 'Aguilar', 'V', '17654390', '0424-2876541', 3, '1990-03-09');
 
 -- --------------------------------------------------------
 
@@ -2216,12 +2985,21 @@ INSERT INTO `parroquias` (`id_parroquia`, `id_municipio`, `parroquia`) VALUES
 
 CREATE TABLE `psicologa` (
   `id_psi` int(11) NOT NULL,
-  `id_hor` int(11) NOT NULL,
   `n_psi` varchar(160) NOT NULL,
   `a_psi` varchar(160) NOT NULL,
   `correo_psi` varchar(50) NOT NULL,
-  `tlf_psi` int(18) NOT NULL
+  `tlf_psi` varchar(40) NOT NULL,
+  `id_direccion` int(11) NOT NULL,
+  `id_login` int(11) NOT NULL,
+  `estatus` enum('Activo','Inactivo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `psicologa`
+--
+
+INSERT INTO `psicologa` (`id_psi`, `n_psi`, `a_psi`, `correo_psi`, `tlf_psi`, `id_direccion`, `id_login`, `estatus`) VALUES
+(1, 'Maria Daniela', 'Mogollon', 'mariadaniela@gmail.com', '0424-4580234', 1, 1, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -2231,25 +3009,16 @@ CREATE TABLE `psicologa` (
 
 CREATE TABLE `tipo_consulta` (
   `id_tipocon` int(11) NOT NULL,
-  `id_con` int(11) NOT NULL,
   `tipo_consulta` enum('Infante','Adulto','Pareja','') NOT NULL,
   `precio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `usuario`
+-- Volcado de datos para la tabla `tipo_consulta`
 --
 
-CREATE TABLE `usuario` (
-  `id_us` int(11) NOT NULL,
-  `id_pact` int(11) NOT NULL,
-  `n_us` varchar(50) NOT NULL,
-  `cont_us` varchar(50) NOT NULL,
-  `correo_us` varchar(50) NOT NULL,
-  `estado_us` enum('Activo','Inactivo') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `tipo_consulta` (`id_tipocon`, `tipo_consulta`, `precio`) VALUES
+(1, 'Adulto', 25);
 
 -- --------------------------------------------------------
 
@@ -2277,13 +3046,6 @@ INSERT INTO `web_cabezera` (`id_web`, `n_web`, `rif`, `dir_web`, `fecha_web`) VA
 --
 
 --
--- Indices de la tabla `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_ad`),
-  ADD KEY `id_psi` (`id_psi`);
-
---
 -- Indices de la tabla `ciudades`
 --
 ALTER TABLE `ciudades`
@@ -2296,9 +3058,17 @@ ALTER TABLE `ciudades`
 ALTER TABLE `consulta`
   ADD PRIMARY KEY (`id_con`),
   ADD KEY `id_pact` (`id_pact`),
-  ADD KEY `id_histmed` (`id_histmed`),
   ADD KEY `id_psi` (`id_psi`),
-  ADD KEY `id_tipocon` (`id_tipocon`);
+  ADD KEY `id_tipocon` (`id_tipocon`),
+  ADD KEY `id_pactinf` (`id_pactinf`,`id_pactpar`);
+
+--
+-- Indices de la tabla `direccion`
+--
+ALTER TABLE `direccion`
+  ADD PRIMARY KEY (`id_direccion`),
+  ADD KEY `id_estado` (`id_estado`,`id_municipio`),
+  ADD KEY `id_municipio` (`id_municipio`);
 
 --
 -- Indices de la tabla `estados`
@@ -2323,11 +3093,79 @@ ALTER TABLE `factura_total`
   ADD KEY `id_con` (`id_con`);
 
 --
--- Indices de la tabla `historial_medico`
+-- Indices de la tabla `fecha`
 --
-ALTER TABLE `historial_medico`
-  ADD PRIMARY KEY (`id_histmed`),
-  ADD KEY `id_pact` (`id_pact`);
+ALTER TABLE `fecha`
+  ADD PRIMARY KEY (`Id_Fecha`);
+
+--
+-- Indices de la tabla `histocli_d1`
+--
+ALTER TABLE `histocli_d1`
+  ADD PRIMARY KEY (`id_D1`);
+
+--
+-- Indices de la tabla `histocli_d2`
+--
+ALTER TABLE `histocli_d2`
+  ADD PRIMARY KEY (`id_D2`);
+
+--
+-- Indices de la tabla `histocli_d3`
+--
+ALTER TABLE `histocli_d3`
+  ADD PRIMARY KEY (`id_D3`);
+
+--
+-- Indices de la tabla `histocli_d4`
+--
+ALTER TABLE `histocli_d4`
+  ADD PRIMARY KEY (`id_D4`);
+
+--
+-- Indices de la tabla `histocli_d5`
+--
+ALTER TABLE `histocli_d5`
+  ADD PRIMARY KEY (`id_D5`);
+
+--
+-- Indices de la tabla `histocli_d6`
+--
+ALTER TABLE `histocli_d6`
+  ADD PRIMARY KEY (`id_D6`);
+
+--
+-- Indices de la tabla `histocli_d7`
+--
+ALTER TABLE `histocli_d7`
+  ADD PRIMARY KEY (`id_D7`);
+
+--
+-- Indices de la tabla `histocli_d8`
+--
+ALTER TABLE `histocli_d8`
+  ADD PRIMARY KEY (`id_D8`);
+
+--
+-- Indices de la tabla `histocli_d9`
+--
+ALTER TABLE `histocli_d9`
+  ADD PRIMARY KEY (`id_D9`);
+
+--
+-- Indices de la tabla `historial_clinico`
+--
+ALTER TABLE `historial_clinico`
+  ADD PRIMARY KEY (`id_histcli`),
+  ADD KEY `historial_clinico_ibfk_10` (`id_D9`),
+  ADD KEY `historial_clinico_ibfk_2` (`id_D1`),
+  ADD KEY `historial_clinico_ibfk_3` (`id_D2`),
+  ADD KEY `historial_clinico_ibfk_4` (`id_D3`),
+  ADD KEY `historial_clinico_ibfk_5` (`id_D4`),
+  ADD KEY `historial_clinico_ibfk_6` (`id_D5`),
+  ADD KEY `historial_clinico_ibfk_7` (`id_D6`),
+  ADD KEY `historial_clinico_ibfk_8` (`id_D7`),
+  ADD KEY `historial_clinico_ibfk_9` (`id_D8`);
 
 --
 -- Indices de la tabla `historico`
@@ -2345,8 +3183,13 @@ ALTER TABLE `historico`
 --
 ALTER TABLE `horario`
   ADD PRIMARY KEY (`id_hor`),
-  ADD KEY `id_psi` (`id_psi`),
-  ADD KEY `id_con` (`id_con`);
+  ADD KEY `id_psi` (`id_psi`);
+
+--
+-- Indices de la tabla `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id_login`);
 
 --
 -- Indices de la tabla `municipios`
@@ -2360,8 +3203,25 @@ ALTER TABLE `municipios`
 --
 ALTER TABLE `paciente`
   ADD PRIMARY KEY (`id_pact`),
-  ADD KEY `id_histmed` (`id_histmed`),
-  ADD KEY `id_histmed_2` (`id_histmed`);
+  ADD KEY `id_histmed` (`id_histcli`),
+  ADD KEY `id_histmed_2` (`id_histcli`),
+  ADD KEY `id_direccion` (`id_direccion`),
+  ADD KEY `id_login` (`id_login`);
+
+--
+-- Indices de la tabla `paciente_infantil`
+--
+ALTER TABLE `paciente_infantil`
+  ADD PRIMARY KEY (`id_pactinf`),
+  ADD KEY `id_pact` (`id_pact`);
+
+--
+-- Indices de la tabla `paciente_pareja`
+--
+ALTER TABLE `paciente_pareja`
+  ADD PRIMARY KEY (`id_pactpar`),
+  ADD KEY `id_pact` (`id_pact`,`id_direccion`),
+  ADD KEY `id_direccion` (`id_direccion`);
 
 --
 -- Indices de la tabla `parroquias`
@@ -2375,21 +3235,14 @@ ALTER TABLE `parroquias`
 --
 ALTER TABLE `psicologa`
   ADD PRIMARY KEY (`id_psi`),
-  ADD KEY `id_hor` (`id_hor`);
+  ADD KEY `id_direccion` (`id_direccion`),
+  ADD KEY `id_login` (`id_login`);
 
 --
 -- Indices de la tabla `tipo_consulta`
 --
 ALTER TABLE `tipo_consulta`
-  ADD PRIMARY KEY (`id_tipocon`),
-  ADD KEY `id_con` (`id_con`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_us`),
-  ADD KEY `id_pact` (`id_pact`);
+  ADD PRIMARY KEY (`id_tipocon`);
 
 --
 -- Indices de la tabla `web_cabezera`
@@ -2402,12 +3255,6 @@ ALTER TABLE `web_cabezera`
 --
 
 --
--- AUTO_INCREMENT de la tabla `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id_ad` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `ciudades`
 --
 ALTER TABLE `ciudades`
@@ -2417,7 +3264,13 @@ ALTER TABLE `ciudades`
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `direccion`
+--
+ALTER TABLE `direccion`
+  MODIFY `id_direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `estados`
@@ -2429,31 +3282,97 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id_fac` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_fac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `factura_total`
 --
 ALTER TABLE `factura_total`
-  MODIFY `id_factotal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_factotal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `historial_medico`
+-- AUTO_INCREMENT de la tabla `fecha`
 --
-ALTER TABLE `historial_medico`
-  MODIFY `id_histmed` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `fecha`
+  MODIFY `Id_Fecha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=366;
+
+--
+-- AUTO_INCREMENT de la tabla `histocli_d1`
+--
+ALTER TABLE `histocli_d1`
+  MODIFY `id_D1` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `histocli_d2`
+--
+ALTER TABLE `histocli_d2`
+  MODIFY `id_D2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `histocli_d3`
+--
+ALTER TABLE `histocli_d3`
+  MODIFY `id_D3` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `histocli_d4`
+--
+ALTER TABLE `histocli_d4`
+  MODIFY `id_D4` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `histocli_d5`
+--
+ALTER TABLE `histocli_d5`
+  MODIFY `id_D5` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `histocli_d6`
+--
+ALTER TABLE `histocli_d6`
+  MODIFY `id_D6` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `histocli_d7`
+--
+ALTER TABLE `histocli_d7`
+  MODIFY `id_D7` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `histocli_d8`
+--
+ALTER TABLE `histocli_d8`
+  MODIFY `id_D8` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `histocli_d9`
+--
+ALTER TABLE `histocli_d9`
+  MODIFY `id_D9` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `historial_clinico`
+--
+ALTER TABLE `historial_clinico`
+  MODIFY `id_histcli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `historico`
 --
 ALTER TABLE `historico`
-  MODIFY `id_hist` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_hist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_hor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_hor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `login`
+--
+ALTER TABLE `login`
+  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `municipios`
@@ -2465,7 +3384,19 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id_pact` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `paciente_infantil`
+--
+ALTER TABLE `paciente_infantil`
+  MODIFY `id_pactinf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `paciente_pareja`
+--
+ALTER TABLE `paciente_pareja`
+  MODIFY `id_pactpar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `parroquias`
@@ -2477,19 +3408,13 @@ ALTER TABLE `parroquias`
 -- AUTO_INCREMENT de la tabla `psicologa`
 --
 ALTER TABLE `psicologa`
-  MODIFY `id_psi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_psi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_consulta`
 --
 ALTER TABLE `tipo_consulta`
-  MODIFY `id_tipocon` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id_us` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipocon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `web_cabezera`
@@ -2502,12 +3427,6 @@ ALTER TABLE `web_cabezera`
 --
 
 --
--- Filtros para la tabla `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`) ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `ciudades`
 --
 ALTER TABLE `ciudades`
@@ -2517,46 +3436,30 @@ ALTER TABLE `ciudades`
 -- Filtros para la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`id_histmed`) REFERENCES `historial_medico` (`id_histmed`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `consulta_ibfk_4` FOREIGN KEY (`id_tipocon`) REFERENCES `tipo_consulta` (`id_tipocon`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`),
+  ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`),
+  ADD CONSTRAINT `consulta_ibfk_4` FOREIGN KEY (`id_tipocon`) REFERENCES `tipo_consulta` (`id_tipocon`);
+
+--
+-- Filtros para la tabla `direccion`
+--
+ALTER TABLE `direccion`
+  ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`),
+  ADD CONSTRAINT `direccion_ibfk_2` FOREIGN KEY (`id_municipio`) REFERENCES `municipios` (`id_municipio`);
 
 --
 -- Filtros para la tabla `factura`
 --
 ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_web`) REFERENCES `web_cabezera` (`id_web`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_factotal`) REFERENCES `factura_total` (`id_factotal`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `factura_ibfk_3` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `factura_total`
---
-ALTER TABLE `factura_total`
-  ADD CONSTRAINT `factura_total_ibfk_1` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `historial_medico`
---
-ALTER TABLE `historial_medico`
-  ADD CONSTRAINT `historial_medico_ibfk_1` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `historico`
---
-ALTER TABLE `historico`
-  ADD CONSTRAINT `historico_ibfk_1` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `historico_ibfk_2` FOREIGN KEY (`id_fac`) REFERENCES `factura` (`id_fac`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `historico_ibfk_3` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `historico_ibfk_4` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`),
+  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_web`) REFERENCES `web_cabezera` (`id_web`),
+  ADD CONSTRAINT `factura_ibfk_3` FOREIGN KEY (`id_factotal`) REFERENCES `factura_total` (`id_factotal`);
 
 --
 -- Filtros para la tabla `horario`
 --
 ALTER TABLE `horario`
-  ADD CONSTRAINT `horario_ibfk_1` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `horario_ibfk_2` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `horario_ibfk_1` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`);
 
 --
 -- Filtros para la tabla `municipios`
@@ -2568,7 +3471,22 @@ ALTER TABLE `municipios`
 -- Filtros para la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`id_histmed`) REFERENCES `paciente` (`id_histmed`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`id_login`) REFERENCES `login` (`id_login`),
+  ADD CONSTRAINT `paciente_ibfk_2` FOREIGN KEY (`id_direccion`) REFERENCES `direccion` (`id_direccion`),
+  ADD CONSTRAINT `paciente_ibfk_3` FOREIGN KEY (`id_histcli`) REFERENCES `historial_clinico` (`id_histcli`);
+
+--
+-- Filtros para la tabla `paciente_infantil`
+--
+ALTER TABLE `paciente_infantil`
+  ADD CONSTRAINT `paciente_infantil_ibfk_1` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`);
+
+--
+-- Filtros para la tabla `paciente_pareja`
+--
+ALTER TABLE `paciente_pareja`
+  ADD CONSTRAINT `paciente_pareja_ibfk_1` FOREIGN KEY (`id_direccion`) REFERENCES `direccion` (`id_direccion`),
+  ADD CONSTRAINT `paciente_pareja_ibfk_2` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`);
 
 --
 -- Filtros para la tabla `parroquias`
@@ -2580,19 +3498,8 @@ ALTER TABLE `parroquias`
 -- Filtros para la tabla `psicologa`
 --
 ALTER TABLE `psicologa`
-  ADD CONSTRAINT `psicologa_ibfk_1` FOREIGN KEY (`id_hor`) REFERENCES `horario` (`id_hor`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tipo_consulta`
---
-ALTER TABLE `tipo_consulta`
-  ADD CONSTRAINT `tipo_consulta_ibfk_1` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `psicologa_ibfk_1` FOREIGN KEY (`id_direccion`) REFERENCES `direccion` (`id_direccion`),
+  ADD CONSTRAINT `psicologa_ibfk_2` FOREIGN KEY (`id_login`) REFERENCES `login` (`id_login`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
