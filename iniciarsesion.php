@@ -1,5 +1,7 @@
 <?php
 
+// Hola amigos de Youtube :)
+
 session_start();
 $user="root";
 $pass="";
