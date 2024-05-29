@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2024 a las 00:15:49
+-- Tiempo de generación: 28-05-2024 a las 17:38:24
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -587,6 +587,33 @@ INSERT INTO `direccion` (`id_direccion`, `id_estado`, `id_municipio`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `escuela_lugarfamiliar_d1`
+--
+
+CREATE TABLE `escuela_lugarfamiliar_d1` (
+  `id_D1` int(11) NOT NULL,
+  `D1_d1` varchar(60) NOT NULL,
+  `D1_d2` varchar(12) NOT NULL,
+  `D1_d3` date NOT NULL,
+  `D1_d4` varchar(150) NOT NULL,
+  `D1_d5` varchar(30) NOT NULL,
+  `D1_d6` varchar(10) NOT NULL,
+  `D1_d7` varchar(100) NOT NULL,
+  `D1_d8` varchar(10) NOT NULL,
+  `D1_d9` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `escuela_lugarfamiliar_d1`
+--
+
+INSERT INTO `escuela_lugarfamiliar_d1` (`id_D1`, `D1_d1`, `D1_d2`, `D1_d3`, `D1_d4`, `D1_d5`, `D1_d6`, `D1_d7`, `D1_d8`, `D1_d9`) VALUES
+(1, 'Maximo', '32897650', '2005-04-21', 'El Tamarindo', '0424-5392282', 'No', '', '', 'Hermano mayor'),
+(2, 'Ainhoa', '24389761-1', '2013-07-19', 'El Tamarindo', '', 'Si', 'Jose Aparicio Salsedo', '17', 'Hermana menor');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `estados`
 --
 
@@ -665,6 +692,180 @@ CREATE TABLE `factura_total` (
 
 INSERT INTO `factura_total` (`id_factotal`, `id_con`, `precio_tot`) VALUES
 (1, 1, 25);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fact_familiares_d4`
+--
+
+CREATE TABLE `fact_familiares_d4` (
+  `id_D4` int(11) NOT NULL,
+  `D4_d1` varchar(50) NOT NULL,
+  `D4_d2` varchar(50) NOT NULL,
+  `D4_d3` varchar(50) NOT NULL,
+  `D4_d4` varchar(50) NOT NULL,
+  `D4_d5` varchar(60) NOT NULL,
+  `D4_d6` varchar(60) NOT NULL,
+  `D4_d7` varchar(60) NOT NULL,
+  `D4_d8` varchar(60) NOT NULL,
+  `D4_d9` varchar(60) NOT NULL,
+  `D4_d10` varchar(60) NOT NULL,
+  `D4_d11` varchar(60) NOT NULL,
+  `D4_d12` varchar(60) NOT NULL,
+  `D4_d13` varchar(10) NOT NULL,
+  `D4_d14` varchar(40) NOT NULL,
+  `D4_d15` varchar(60) NOT NULL,
+  `D4_d16` varchar(10) NOT NULL,
+  `D4_d17` varchar(10) NOT NULL,
+  `D4_d18` varchar(50) NOT NULL,
+  `D4_d19` varchar(50) NOT NULL,
+  `D4_d20` varchar(50) NOT NULL,
+  `D4_d21` varchar(40) NOT NULL,
+  `D4_d22` varchar(10) NOT NULL,
+  `D4_d23` varchar(40) NOT NULL,
+  `D4_d24` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `fact_familiares_d4`
+--
+
+INSERT INTO `fact_familiares_d4` (`id_D4`, `D4_d1`, `D4_d2`, `D4_d3`, `D4_d4`, `D4_d5`, `D4_d6`, `D4_d7`, `D4_d8`, `D4_d9`, `D4_d10`, `D4_d11`, `D4_d12`, `D4_d13`, `D4_d14`, `D4_d15`, `D4_d16`, `D4_d17`, `D4_d18`, `D4_d19`, `D4_d20`, `D4_d21`, `D4_d22`, `D4_d23`, `D4_d24`) VALUES
+(1, 'Rafael', 'Sonny', 'Bien', 'Bien', 'Bachiller', 'TSU Agropecuaria', 'Reparacion de Aires acondicionados', 'Director de Liceo', 'de lunes a viernes', 'de lunes a viernes', 'ninguno', 'ninguno', '', '', '', '', '', '', '', '', '', '', '', ''),
+(2, 'Rafael', 'Sonny', 'Bien', 'Bien', 'Bachiller', 'TSU Agropecuaria', 'Reparacion de Aires acondicionados', 'Director de Liceo', 'de lunes a viernes', 'de lunes a viernes', 'ninguno', 'no', '', '', '', '', '', '', 'no', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fact_fisicos_d3`
+--
+
+CREATE TABLE `fact_fisicos_d3` (
+  `id_D3` int(11) NOT NULL,
+  `D3_d1` varchar(100) NOT NULL,
+  `D3_d2` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `fact_fisicos_d3`
+--
+
+INSERT INTO `fact_fisicos_d3` (`id_D3`, `D3_d1`, `D3_d2`) VALUES
+(1, 'Normal', 'Infancia normal'),
+(2, 'no se', 'no se');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fact_hereditarios_d6`
+--
+
+CREATE TABLE `fact_hereditarios_d6` (
+  `id_D6` int(11) NOT NULL,
+  `D6_d1` varchar(150) NOT NULL,
+  `D6_d2` varchar(150) NOT NULL,
+  `D6_d3` varchar(150) NOT NULL,
+  `D6_d4` varchar(150) NOT NULL,
+  `D6_d5` varchar(150) NOT NULL,
+  `D6_d6` varchar(150) NOT NULL,
+  `D6_d7` varchar(150) NOT NULL,
+  `D6_d8` varchar(150) NOT NULL,
+  `D6_d9` varchar(150) NOT NULL,
+  `D6_d10` varchar(150) NOT NULL,
+  `D6_d11` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `fact_hereditarios_d6`
+--
+
+INSERT INTO `fact_hereditarios_d6` (`id_D6`, `D6_d1`, `D6_d2`, `D6_d3`, `D6_d4`, `D6_d5`, `D6_d6`, `D6_d7`, `D6_d8`, `D6_d9`, `D6_d10`, `D6_d11`) VALUES
+(1, 'No se', 'ninguno', 'ninguno', 'ninguno', 'Poca', 'ninguno', 'ninguno', 'ninguno', 'ninguno', 'Tartamudea', 'ninguno'),
+(2, 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fact_motivacion_d2`
+--
+
+CREATE TABLE `fact_motivacion_d2` (
+  `id_D2` int(11) NOT NULL,
+  `D2_d1` varchar(100) NOT NULL,
+  `D2_d2` varchar(30) NOT NULL,
+  `D2_d3` varchar(30) NOT NULL,
+  `D2_d4` varchar(60) NOT NULL,
+  `D2_d5` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `fact_motivacion_d2`
+--
+
+INSERT INTO `fact_motivacion_d2` (`id_D2`, `D2_d1`, `D2_d2`, `D2_d3`, `D2_d4`, `D2_d5`) VALUES
+(1, 'Poco sociable', 'Madre', 'No se', '', ''),
+(2, 'Algo', 'alguien', 'no se ', 'moderada', 'normal');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fact_persoz_y_conduc_d5`
+--
+
+CREATE TABLE `fact_persoz_y_conduc_d5` (
+  `id_D5` int(11) NOT NULL,
+  `D5_d1` varchar(200) NOT NULL,
+  `D5_d2` varchar(200) NOT NULL,
+  `D5_d3` varchar(200) NOT NULL,
+  `D5_d4` varchar(200) NOT NULL,
+  `D5_d5` varchar(200) NOT NULL,
+  `D5_d6` varchar(200) NOT NULL,
+  `D5_d7` tinyint(1) NOT NULL,
+  `D5_d8` tinyint(1) NOT NULL,
+  `D5_d9` tinyint(1) NOT NULL,
+  `D5_d10` tinyint(1) NOT NULL,
+  `D5_d11` tinyint(1) NOT NULL,
+  `D5_d12` tinyint(1) NOT NULL,
+  `D5_d13` tinyint(1) NOT NULL,
+  `D5_d14` tinyint(1) NOT NULL,
+  `D5_d15` tinyint(1) NOT NULL,
+  `D5_d16` tinyint(1) NOT NULL,
+  `D5_d17` tinyint(1) NOT NULL,
+  `D5_d18` tinyint(1) NOT NULL,
+  `D5_d19` tinyint(1) NOT NULL,
+  `D5_d20` tinyint(1) NOT NULL,
+  `D5_d21` tinyint(1) NOT NULL,
+  `D5_d22` tinyint(1) NOT NULL,
+  `D5_d23` tinyint(1) NOT NULL,
+  `D5_d24` tinyint(1) NOT NULL,
+  `D5_d25` tinyint(1) NOT NULL,
+  `D5_d26` tinyint(1) NOT NULL,
+  `D5_d27` tinyint(1) NOT NULL,
+  `D5_d28` tinyint(1) NOT NULL,
+  `D5_d29` tinyint(1) NOT NULL,
+  `D5_d30` tinyint(1) NOT NULL,
+  `D5_d31` tinyint(1) NOT NULL,
+  `D5_d32` tinyint(1) NOT NULL,
+  `D5_d33` tinyint(1) NOT NULL,
+  `D5_d34` tinyint(1) NOT NULL,
+  `D5_d35` tinyint(1) NOT NULL,
+  `D5_d36` tinyint(1) NOT NULL,
+  `D5_d37` tinyint(1) NOT NULL,
+  `D5_d38` tinyint(1) NOT NULL,
+  `D5_d39` tinyint(1) NOT NULL,
+  `D5_d40` tinyint(1) NOT NULL,
+  `D5_d41` tinyint(1) NOT NULL,
+  `D5_d42` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `fact_persoz_y_conduc_d5`
+--
+
+INSERT INTO `fact_persoz_y_conduc_d5` (`id_D5`, `D5_d1`, `D5_d2`, `D5_d3`, `D5_d4`, `D5_d5`, `D5_d6`, `D5_d7`, `D5_d8`, `D5_d9`, `D5_d10`, `D5_d11`, `D5_d12`, `D5_d13`, `D5_d14`, `D5_d15`, `D5_d16`, `D5_d17`, `D5_d18`, `D5_d19`, `D5_d20`, `D5_d21`, `D5_d22`, `D5_d23`, `D5_d24`, `D5_d25`, `D5_d26`, `D5_d27`, `D5_d28`, `D5_d29`, `D5_d30`, `D5_d31`, `D5_d32`, `D5_d33`, `D5_d34`, `D5_d35`, `D5_d36`, `D5_d37`, `D5_d38`, `D5_d39`, `D5_d40`, `D5_d41`, `D5_d42`) VALUES
+(1, 'Come bien', 'Duerme bien, intranqulo', 'ninguno', 'ninguna', 'ninguna', 'nada', 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0),
+(2, 'Come bien, come demasiado', 'inquieta', 'nada', 'nada', 'nada', 'nada', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1052,259 +1253,6 @@ INSERT INTO `fecha` (`Id_Fecha`, `Dia`, `Status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `histocli_d1`
---
-
-CREATE TABLE `histocli_d1` (
-  `id_D1` int(11) NOT NULL,
-  `D1_d4` varchar(10) NOT NULL,
-  `D1_d5` varchar(10) NOT NULL,
-  `D1_d6` varchar(50) NOT NULL,
-  `D1_d7` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `histocli_d1`
---
-
-INSERT INTO `histocli_d1` (`id_D1`, `D1_d4`, `D1_d5`, `D1_d6`, `D1_d7`) VALUES
-(1, '', '', '', 'Hermano mayor'),
-(2, 'si', '17', 'Jose Aparicio Salsedo', 'Hermana menor');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `histocli_d2`
---
-
-CREATE TABLE `histocli_d2` (
-  `id_D2` int(11) NOT NULL,
-  `D2_d1` varchar(100) NOT NULL,
-  `D2_d2` varchar(30) NOT NULL,
-  `D2_d3` varchar(30) NOT NULL,
-  `D2_d4` varchar(60) NOT NULL,
-  `D2_d5` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `histocli_d2`
---
-
-INSERT INTO `histocli_d2` (`id_D2`, `D2_d1`, `D2_d2`, `D2_d3`, `D2_d4`, `D2_d5`) VALUES
-(1, 'Poco sociable', 'Madre', 'No se', '', ''),
-(2, 'Algo', 'alguien', 'no se ', 'moderada', 'normal');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `histocli_d3`
---
-
-CREATE TABLE `histocli_d3` (
-  `id_D3` int(11) NOT NULL,
-  `D3_d1` varchar(100) NOT NULL,
-  `D3_d2` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `histocli_d3`
---
-
-INSERT INTO `histocli_d3` (`id_D3`, `D3_d1`, `D3_d2`) VALUES
-(1, 'Normal', 'Infancia normal'),
-(2, 'no se', 'no se');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `histocli_d4`
---
-
-CREATE TABLE `histocli_d4` (
-  `id_D4` int(11) NOT NULL,
-  `D4_d1` varchar(50) NOT NULL,
-  `D4_d2` varchar(50) NOT NULL,
-  `D4_d3` varchar(50) NOT NULL,
-  `D4_d4` varchar(50) NOT NULL,
-  `D4_d5` varchar(60) NOT NULL,
-  `D4_d6` varchar(60) NOT NULL,
-  `D4_d7` varchar(60) NOT NULL,
-  `D4_d8` varchar(60) NOT NULL,
-  `D4_d9` varchar(60) NOT NULL,
-  `D4_d10` varchar(60) NOT NULL,
-  `D4_d11` varchar(60) NOT NULL,
-  `D4_d12` varchar(60) NOT NULL,
-  `D4_d13` varchar(10) NOT NULL,
-  `D4_d14` varchar(40) NOT NULL,
-  `D4_d15` varchar(60) NOT NULL,
-  `D4_d16` varchar(10) NOT NULL,
-  `D4_d17` varchar(10) NOT NULL,
-  `D4_d18` varchar(50) NOT NULL,
-  `D4_d19` varchar(50) NOT NULL,
-  `D4_d20` varchar(50) NOT NULL,
-  `D4_d21` varchar(40) NOT NULL,
-  `D4_d22` varchar(10) NOT NULL,
-  `D4_d23` varchar(40) NOT NULL,
-  `D4_d24` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `histocli_d4`
---
-
-INSERT INTO `histocli_d4` (`id_D4`, `D4_d1`, `D4_d2`, `D4_d3`, `D4_d4`, `D4_d5`, `D4_d6`, `D4_d7`, `D4_d8`, `D4_d9`, `D4_d10`, `D4_d11`, `D4_d12`, `D4_d13`, `D4_d14`, `D4_d15`, `D4_d16`, `D4_d17`, `D4_d18`, `D4_d19`, `D4_d20`, `D4_d21`, `D4_d22`, `D4_d23`, `D4_d24`) VALUES
-(1, 'Rafael', 'Sonny', 'Bien', 'Bien', 'Bachiller', 'TSU Agropecuaria', 'Reparacion de Aires acondicionados', 'Director de Liceo', 'de lunes a viernes', 'de lunes a viernes', 'ninguno', 'ninguno', '', '', '', '', '', '', '', '', '', '', '', ''),
-(2, 'Rafael', 'Sonny', 'Bien', 'Bien', 'Bachiller', 'TSU Agropecuaria', 'Reparacion de Aires acondicionados', 'Director de Liceo', 'de lunes a viernes', 'de lunes a viernes', 'ninguno', 'no', '', '', '', '', '', '', 'no', '', '', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `histocli_d5`
---
-
-CREATE TABLE `histocli_d5` (
-  `id_D5` int(11) NOT NULL,
-  `D5_d1` varchar(200) NOT NULL,
-  `D5_d2` varchar(200) NOT NULL,
-  `D5_d3` varchar(200) NOT NULL,
-  `D5_d4` varchar(200) NOT NULL,
-  `D5_d5` varchar(200) NOT NULL,
-  `D5_d6` tinyint(1) NOT NULL,
-  `D5_d7` tinyint(1) NOT NULL,
-  `D5_d8` tinyint(1) NOT NULL,
-  `D5_d9` tinyint(1) NOT NULL,
-  `D5_d10` tinyint(1) NOT NULL,
-  `D5_d11` tinyint(1) NOT NULL,
-  `D5_d12` tinyint(1) NOT NULL,
-  `D5_d13` tinyint(1) NOT NULL,
-  `D5_d14` tinyint(1) NOT NULL,
-  `D5_d15` tinyint(1) NOT NULL,
-  `D5_d16` tinyint(1) NOT NULL,
-  `D5_d17` tinyint(1) NOT NULL,
-  `D5_d18` tinyint(1) NOT NULL,
-  `D5_d19` tinyint(1) NOT NULL,
-  `D5_d20` tinyint(1) NOT NULL,
-  `D5_d21` tinyint(1) NOT NULL,
-  `D5_d22` tinyint(1) NOT NULL,
-  `D5_d23` tinyint(1) NOT NULL,
-  `D5_d24` tinyint(1) NOT NULL,
-  `D5_d25` tinyint(1) NOT NULL,
-  `D5_d26` tinyint(1) NOT NULL,
-  `D5_d27` tinyint(1) NOT NULL,
-  `D5_d28` tinyint(1) NOT NULL,
-  `D5_d29` tinyint(1) NOT NULL,
-  `D5_d30` tinyint(1) NOT NULL,
-  `D5_d31` tinyint(1) NOT NULL,
-  `D5_d32` tinyint(1) NOT NULL,
-  `D5_d33` tinyint(1) NOT NULL,
-  `D5_d34` tinyint(1) NOT NULL,
-  `D5_d35` tinyint(1) NOT NULL,
-  `D5_d36` tinyint(1) NOT NULL,
-  `D5_d37` tinyint(1) NOT NULL,
-  `D5_d38` tinyint(1) NOT NULL,
-  `D5_d39` tinyint(1) NOT NULL,
-  `D5_d40` tinyint(1) NOT NULL,
-  `D5_d41` tinyint(1) NOT NULL,
-  `D5_d42` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `histocli_d5`
---
-
-INSERT INTO `histocli_d5` (`id_D5`, `D5_d1`, `D5_d2`, `D5_d3`, `D5_d4`, `D5_d5`, `D5_d6`, `D5_d7`, `D5_d8`, `D5_d9`, `D5_d10`, `D5_d11`, `D5_d12`, `D5_d13`, `D5_d14`, `D5_d15`, `D5_d16`, `D5_d17`, `D5_d18`, `D5_d19`, `D5_d20`, `D5_d21`, `D5_d22`, `D5_d23`, `D5_d24`, `D5_d25`, `D5_d26`, `D5_d27`, `D5_d28`, `D5_d29`, `D5_d30`, `D5_d31`, `D5_d32`, `D5_d33`, `D5_d34`, `D5_d35`, `D5_d36`, `D5_d37`, `D5_d38`, `D5_d39`, `D5_d40`, `D5_d41`, `D5_d42`) VALUES
-(1, 'Come bien', 'Duerme bien, intranqulo', 'ninguno', 'ninguna', 'ninguna', 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 'ninguna'),
-(2, 'Come bien, come demasiado', 'inquieta', 'nada', 'nada', 'nada', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Muy inquieta');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `histocli_d6`
---
-
-CREATE TABLE `histocli_d6` (
-  `id_D6` int(11) NOT NULL,
-  `D6_d1` varchar(150) NOT NULL,
-  `D6_d2` varchar(150) NOT NULL,
-  `D6_d3` varchar(150) NOT NULL,
-  `D6_d4` varchar(150) NOT NULL,
-  `D6_d5` varchar(150) NOT NULL,
-  `D6_d6` varchar(150) NOT NULL,
-  `D6_d7` varchar(150) NOT NULL,
-  `D6_d8` varchar(150) NOT NULL,
-  `D6_d9` varchar(150) NOT NULL,
-  `D6_d10` varchar(150) NOT NULL,
-  `D6_d11` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `histocli_d6`
---
-
-INSERT INTO `histocli_d6` (`id_D6`, `D6_d1`, `D6_d2`, `D6_d3`, `D6_d4`, `D6_d5`, `D6_d6`, `D6_d7`, `D6_d8`, `D6_d9`, `D6_d10`, `D6_d11`) VALUES
-(1, 'No se', 'ninguno', 'ninguno', 'ninguno', 'Poca', 'ninguno', 'ninguno', 'ninguno', 'ninguno', 'Tartamudea', 'ninguno'),
-(2, 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `histocli_d7`
---
-
-CREATE TABLE `histocli_d7` (
-  `id_D7` int(11) NOT NULL,
-  `D7_d1` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `histocli_d7`
---
-
-INSERT INTO `histocli_d7` (`id_D7`, `D7_d1`) VALUES
-(1, 'Se indica la descripcion :v'),
-(2, 'Se indica aqui ');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `histocli_d8`
---
-
-CREATE TABLE `histocli_d8` (
-  `id_D8` int(11) NOT NULL,
-  `D8_d1` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `histocli_d8`
---
-
-INSERT INTO `histocli_d8` (`id_D8`, `D8_d1`) VALUES
-(1, 'Se le recomienda bla bla bla'),
-(2, 'Se recomienda bla bla bla');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `histocli_d9`
---
-
-CREATE TABLE `histocli_d9` (
-  `id_D9` int(11) NOT NULL,
-  `D9_d1` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `histocli_d9`
---
-
-INSERT INTO `histocli_d9` (`id_D9`, `D9_d1`) VALUES
-(1, 'Tal cosa'),
-(2, 'Otra cosa');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `historial_clinico`
 --
 
@@ -1368,6 +1316,25 @@ CREATE TABLE `horario` (
 
 INSERT INTO `horario` (`id_hor`, `id_psi`, `disponible`) VALUES
 (1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `impresion_psi_d7`
+--
+
+CREATE TABLE `impresion_psi_d7` (
+  `id_D7` int(11) NOT NULL,
+  `D7_d1` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `impresion_psi_d7`
+--
+
+INSERT INTO `impresion_psi_d7` (`id_D7`, `D7_d1`) VALUES
+(1, 'Se indica la descripcion :v'),
+(2, 'Se indica aqui ');
 
 -- --------------------------------------------------------
 
@@ -1785,6 +1752,7 @@ CREATE TABLE `paciente_infantil` (
   `id_pact` int(11) NOT NULL,
   `nomb_infa` varchar(50) NOT NULL,
   `apel_infa` varchar(50) NOT NULL,
+  `numero_hijo` varchar(10) NOT NULL,
   `cedula_inf` varchar(15) NOT NULL,
   `fecha_naci_infa` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1793,8 +1761,8 @@ CREATE TABLE `paciente_infantil` (
 -- Volcado de datos para la tabla `paciente_infantil`
 --
 
-INSERT INTO `paciente_infantil` (`id_pactinf`, `id_pact`, `nomb_infa`, `apel_infa`, `cedula_inf`, `fecha_naci_infa`) VALUES
-(1, 2, 'Ainhoa', 'Aguilar', '24389761-1', '2013-07-19');
+INSERT INTO `paciente_infantil` (`id_pactinf`, `id_pact`, `nomb_infa`, `apel_infa`, `numero_hijo`, `cedula_inf`, `fecha_naci_infa`) VALUES
+(1, 2, 'Ainhoa', 'Aguilar', '1', '24389761-1', '2013-07-19');
 
 -- --------------------------------------------------------
 
@@ -2980,6 +2948,25 @@ INSERT INTO `parroquias` (`id_parroquia`, `id_municipio`, `parroquia`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `plan_psicoterapeutico_d9`
+--
+
+CREATE TABLE `plan_psicoterapeutico_d9` (
+  `id_D9` int(11) NOT NULL,
+  `D9_d1` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `plan_psicoterapeutico_d9`
+--
+
+INSERT INTO `plan_psicoterapeutico_d9` (`id_D9`, `D9_d1`) VALUES
+(1, 'Tal cosa'),
+(2, 'Otra cosa');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `psicologa`
 --
 
@@ -3000,6 +2987,25 @@ CREATE TABLE `psicologa` (
 
 INSERT INTO `psicologa` (`id_psi`, `n_psi`, `a_psi`, `correo_psi`, `tlf_psi`, `id_direccion`, `id_login`, `estatus`) VALUES
 (1, 'Maria Daniela', 'Mogollon', 'mariadaniela@gmail.com', '0424-4580234', 1, 1, 'Activo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recomendaciones_d8`
+--
+
+CREATE TABLE `recomendaciones_d8` (
+  `id_D8` int(11) NOT NULL,
+  `D8_d1` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `recomendaciones_d8`
+--
+
+INSERT INTO `recomendaciones_d8` (`id_D8`, `D8_d1`) VALUES
+(1, 'Se le recomienda bla bla bla'),
+(2, 'Se recomienda bla bla bla');
 
 -- --------------------------------------------------------
 
@@ -3071,6 +3077,12 @@ ALTER TABLE `direccion`
   ADD KEY `id_municipio` (`id_municipio`);
 
 --
+-- Indices de la tabla `escuela_lugarfamiliar_d1`
+--
+ALTER TABLE `escuela_lugarfamiliar_d1`
+  ADD PRIMARY KEY (`id_D1`);
+
+--
 -- Indices de la tabla `estados`
 --
 ALTER TABLE `estados`
@@ -3093,79 +3105,55 @@ ALTER TABLE `factura_total`
   ADD KEY `id_con` (`id_con`);
 
 --
+-- Indices de la tabla `fact_familiares_d4`
+--
+ALTER TABLE `fact_familiares_d4`
+  ADD PRIMARY KEY (`id_D4`);
+
+--
+-- Indices de la tabla `fact_fisicos_d3`
+--
+ALTER TABLE `fact_fisicos_d3`
+  ADD PRIMARY KEY (`id_D3`);
+
+--
+-- Indices de la tabla `fact_hereditarios_d6`
+--
+ALTER TABLE `fact_hereditarios_d6`
+  ADD PRIMARY KEY (`id_D6`);
+
+--
+-- Indices de la tabla `fact_motivacion_d2`
+--
+ALTER TABLE `fact_motivacion_d2`
+  ADD PRIMARY KEY (`id_D2`);
+
+--
+-- Indices de la tabla `fact_persoz_y_conduc_d5`
+--
+ALTER TABLE `fact_persoz_y_conduc_d5`
+  ADD PRIMARY KEY (`id_D5`);
+
+--
 -- Indices de la tabla `fecha`
 --
 ALTER TABLE `fecha`
   ADD PRIMARY KEY (`Id_Fecha`);
 
 --
--- Indices de la tabla `histocli_d1`
---
-ALTER TABLE `histocli_d1`
-  ADD PRIMARY KEY (`id_D1`);
-
---
--- Indices de la tabla `histocli_d2`
---
-ALTER TABLE `histocli_d2`
-  ADD PRIMARY KEY (`id_D2`);
-
---
--- Indices de la tabla `histocli_d3`
---
-ALTER TABLE `histocli_d3`
-  ADD PRIMARY KEY (`id_D3`);
-
---
--- Indices de la tabla `histocli_d4`
---
-ALTER TABLE `histocli_d4`
-  ADD PRIMARY KEY (`id_D4`);
-
---
--- Indices de la tabla `histocli_d5`
---
-ALTER TABLE `histocli_d5`
-  ADD PRIMARY KEY (`id_D5`);
-
---
--- Indices de la tabla `histocli_d6`
---
-ALTER TABLE `histocli_d6`
-  ADD PRIMARY KEY (`id_D6`);
-
---
--- Indices de la tabla `histocli_d7`
---
-ALTER TABLE `histocli_d7`
-  ADD PRIMARY KEY (`id_D7`);
-
---
--- Indices de la tabla `histocli_d8`
---
-ALTER TABLE `histocli_d8`
-  ADD PRIMARY KEY (`id_D8`);
-
---
--- Indices de la tabla `histocli_d9`
---
-ALTER TABLE `histocli_d9`
-  ADD PRIMARY KEY (`id_D9`);
-
---
 -- Indices de la tabla `historial_clinico`
 --
 ALTER TABLE `historial_clinico`
   ADD PRIMARY KEY (`id_histcli`),
-  ADD KEY `historial_clinico_ibfk_10` (`id_D9`),
-  ADD KEY `historial_clinico_ibfk_2` (`id_D1`),
-  ADD KEY `historial_clinico_ibfk_3` (`id_D2`),
-  ADD KEY `historial_clinico_ibfk_4` (`id_D3`),
-  ADD KEY `historial_clinico_ibfk_5` (`id_D4`),
-  ADD KEY `historial_clinico_ibfk_6` (`id_D5`),
-  ADD KEY `historial_clinico_ibfk_7` (`id_D6`),
-  ADD KEY `historial_clinico_ibfk_8` (`id_D7`),
-  ADD KEY `historial_clinico_ibfk_9` (`id_D8`);
+  ADD KEY `id_D1` (`id_D1`),
+  ADD KEY `id_D2` (`id_D2`),
+  ADD KEY `id_D3` (`id_D3`),
+  ADD KEY `id_D4` (`id_D4`),
+  ADD KEY `id_D5` (`id_D5`),
+  ADD KEY `id_D6` (`id_D6`),
+  ADD KEY `id_D7` (`id_D7`),
+  ADD KEY `id_D8` (`id_D8`),
+  ADD KEY `id_D9` (`id_D9`);
 
 --
 -- Indices de la tabla `historico`
@@ -3184,6 +3172,12 @@ ALTER TABLE `historico`
 ALTER TABLE `horario`
   ADD PRIMARY KEY (`id_hor`),
   ADD KEY `id_psi` (`id_psi`);
+
+--
+-- Indices de la tabla `impresion_psi_d7`
+--
+ALTER TABLE `impresion_psi_d7`
+  ADD PRIMARY KEY (`id_D7`);
 
 --
 -- Indices de la tabla `login`
@@ -3221,7 +3215,7 @@ ALTER TABLE `paciente_infantil`
 ALTER TABLE `paciente_pareja`
   ADD PRIMARY KEY (`id_pactpar`),
   ADD KEY `id_pact` (`id_pact`,`id_direccion`),
-  ADD KEY `id_direccion` (`id_direccion`);
+  ADD KEY `paciente_pareja_ibfk_1` (`id_direccion`);
 
 --
 -- Indices de la tabla `parroquias`
@@ -3231,12 +3225,24 @@ ALTER TABLE `parroquias`
   ADD KEY `id_municipio` (`id_municipio`);
 
 --
+-- Indices de la tabla `plan_psicoterapeutico_d9`
+--
+ALTER TABLE `plan_psicoterapeutico_d9`
+  ADD PRIMARY KEY (`id_D9`);
+
+--
 -- Indices de la tabla `psicologa`
 --
 ALTER TABLE `psicologa`
   ADD PRIMARY KEY (`id_psi`),
   ADD KEY `id_direccion` (`id_direccion`),
   ADD KEY `id_login` (`id_login`);
+
+--
+-- Indices de la tabla `recomendaciones_d8`
+--
+ALTER TABLE `recomendaciones_d8`
+  ADD PRIMARY KEY (`id_D8`);
 
 --
 -- Indices de la tabla `tipo_consulta`
@@ -3273,6 +3279,12 @@ ALTER TABLE `direccion`
   MODIFY `id_direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `escuela_lugarfamiliar_d1`
+--
+ALTER TABLE `escuela_lugarfamiliar_d1`
+  MODIFY `id_D1` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `estados`
 --
 ALTER TABLE `estados`
@@ -3291,64 +3303,40 @@ ALTER TABLE `factura_total`
   MODIFY `id_factotal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `fact_familiares_d4`
+--
+ALTER TABLE `fact_familiares_d4`
+  MODIFY `id_D4` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `fact_fisicos_d3`
+--
+ALTER TABLE `fact_fisicos_d3`
+  MODIFY `id_D3` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `fact_hereditarios_d6`
+--
+ALTER TABLE `fact_hereditarios_d6`
+  MODIFY `id_D6` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `fact_motivacion_d2`
+--
+ALTER TABLE `fact_motivacion_d2`
+  MODIFY `id_D2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `fact_persoz_y_conduc_d5`
+--
+ALTER TABLE `fact_persoz_y_conduc_d5`
+  MODIFY `id_D5` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `fecha`
 --
 ALTER TABLE `fecha`
   MODIFY `Id_Fecha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=366;
-
---
--- AUTO_INCREMENT de la tabla `histocli_d1`
---
-ALTER TABLE `histocli_d1`
-  MODIFY `id_D1` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `histocli_d2`
---
-ALTER TABLE `histocli_d2`
-  MODIFY `id_D2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `histocli_d3`
---
-ALTER TABLE `histocli_d3`
-  MODIFY `id_D3` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `histocli_d4`
---
-ALTER TABLE `histocli_d4`
-  MODIFY `id_D4` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `histocli_d5`
---
-ALTER TABLE `histocli_d5`
-  MODIFY `id_D5` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `histocli_d6`
---
-ALTER TABLE `histocli_d6`
-  MODIFY `id_D6` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `histocli_d7`
---
-ALTER TABLE `histocli_d7`
-  MODIFY `id_D7` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `histocli_d8`
---
-ALTER TABLE `histocli_d8`
-  MODIFY `id_D8` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `histocli_d9`
---
-ALTER TABLE `histocli_d9`
-  MODIFY `id_D9` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_clinico`
@@ -3367,6 +3355,12 @@ ALTER TABLE `historico`
 --
 ALTER TABLE `horario`
   MODIFY `id_hor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `impresion_psi_d7`
+--
+ALTER TABLE `impresion_psi_d7`
+  MODIFY `id_D7` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `login`
@@ -3405,10 +3399,22 @@ ALTER TABLE `parroquias`
   MODIFY `id_parroquia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1139;
 
 --
+-- AUTO_INCREMENT de la tabla `plan_psicoterapeutico_d9`
+--
+ALTER TABLE `plan_psicoterapeutico_d9`
+  MODIFY `id_D9` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `psicologa`
 --
 ALTER TABLE `psicologa`
   MODIFY `id_psi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `recomendaciones_d8`
+--
+ALTER TABLE `recomendaciones_d8`
+  MODIFY `id_D8` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_consulta`
@@ -3436,9 +3442,9 @@ ALTER TABLE `ciudades`
 -- Filtros para la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`),
-  ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`),
-  ADD CONSTRAINT `consulta_ibfk_4` FOREIGN KEY (`id_tipocon`) REFERENCES `tipo_consulta` (`id_tipocon`);
+  ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`) ON DELETE CASCADE,
+  ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`) ON DELETE CASCADE,
+  ADD CONSTRAINT `consulta_ibfk_4` FOREIGN KEY (`id_tipocon`) REFERENCES `tipo_consulta` (`id_tipocon`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `direccion`
@@ -3451,15 +3457,38 @@ ALTER TABLE `direccion`
 -- Filtros para la tabla `factura`
 --
 ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`),
-  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_web`) REFERENCES `web_cabezera` (`id_web`),
-  ADD CONSTRAINT `factura_ibfk_3` FOREIGN KEY (`id_factotal`) REFERENCES `factura_total` (`id_factotal`);
+  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`) ON DELETE CASCADE,
+  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_web`) REFERENCES `web_cabezera` (`id_web`) ON DELETE CASCADE,
+  ADD CONSTRAINT `factura_ibfk_3` FOREIGN KEY (`id_factotal`) REFERENCES `factura_total` (`id_factotal`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `historial_clinico`
+--
+ALTER TABLE `historial_clinico`
+  ADD CONSTRAINT `historial_clinico_ibfk_1` FOREIGN KEY (`id_D1`) REFERENCES `escuela_lugarfamiliar_d1` (`id_D1`),
+  ADD CONSTRAINT `historial_clinico_ibfk_2` FOREIGN KEY (`id_D2`) REFERENCES `fact_motivacion_d2` (`id_D2`),
+  ADD CONSTRAINT `historial_clinico_ibfk_3` FOREIGN KEY (`id_D3`) REFERENCES `fact_fisicos_d3` (`id_D3`),
+  ADD CONSTRAINT `historial_clinico_ibfk_4` FOREIGN KEY (`id_D4`) REFERENCES `fact_familiares_d4` (`id_D4`),
+  ADD CONSTRAINT `historial_clinico_ibfk_5` FOREIGN KEY (`id_D5`) REFERENCES `fact_persoz_y_conduc_d5` (`id_D5`),
+  ADD CONSTRAINT `historial_clinico_ibfk_6` FOREIGN KEY (`id_D6`) REFERENCES `fact_hereditarios_d6` (`id_D6`),
+  ADD CONSTRAINT `historial_clinico_ibfk_7` FOREIGN KEY (`id_D7`) REFERENCES `impresion_psi_d7` (`id_D7`),
+  ADD CONSTRAINT `historial_clinico_ibfk_8` FOREIGN KEY (`id_D8`) REFERENCES `recomendaciones_d8` (`id_D8`),
+  ADD CONSTRAINT `historial_clinico_ibfk_9` FOREIGN KEY (`id_D9`) REFERENCES `plan_psicoterapeutico_d9` (`id_D9`);
+
+--
+-- Filtros para la tabla `historico`
+--
+ALTER TABLE `historico`
+  ADD CONSTRAINT `historico_ibfk_1` FOREIGN KEY (`id_fac`) REFERENCES `factura` (`id_fac`),
+  ADD CONSTRAINT `historico_ibfk_2` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`),
+  ADD CONSTRAINT `historico_ibfk_3` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`),
+  ADD CONSTRAINT `historico_ibfk_4` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`);
 
 --
 -- Filtros para la tabla `horario`
 --
 ALTER TABLE `horario`
-  ADD CONSTRAINT `horario_ibfk_1` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`);
+  ADD CONSTRAINT `horario_ibfk_1` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `municipios`
@@ -3471,22 +3500,22 @@ ALTER TABLE `municipios`
 -- Filtros para la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`id_login`) REFERENCES `login` (`id_login`),
-  ADD CONSTRAINT `paciente_ibfk_2` FOREIGN KEY (`id_direccion`) REFERENCES `direccion` (`id_direccion`),
-  ADD CONSTRAINT `paciente_ibfk_3` FOREIGN KEY (`id_histcli`) REFERENCES `historial_clinico` (`id_histcli`);
+  ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`id_login`) REFERENCES `login` (`id_login`) ON DELETE CASCADE,
+  ADD CONSTRAINT `paciente_ibfk_2` FOREIGN KEY (`id_direccion`) REFERENCES `direccion` (`id_direccion`) ON DELETE CASCADE,
+  ADD CONSTRAINT `paciente_ibfk_3` FOREIGN KEY (`id_histcli`) REFERENCES `historial_clinico` (`id_histcli`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `paciente_infantil`
 --
 ALTER TABLE `paciente_infantil`
-  ADD CONSTRAINT `paciente_infantil_ibfk_1` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`);
+  ADD CONSTRAINT `paciente_infantil_ibfk_1` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `paciente_pareja`
 --
 ALTER TABLE `paciente_pareja`
-  ADD CONSTRAINT `paciente_pareja_ibfk_1` FOREIGN KEY (`id_direccion`) REFERENCES `direccion` (`id_direccion`),
-  ADD CONSTRAINT `paciente_pareja_ibfk_2` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`);
+  ADD CONSTRAINT `paciente_pareja_ibfk_1` FOREIGN KEY (`id_direccion`) REFERENCES `direccion` (`id_direccion`) ON DELETE CASCADE,
+  ADD CONSTRAINT `paciente_pareja_ibfk_2` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `parroquias`
@@ -3498,8 +3527,8 @@ ALTER TABLE `parroquias`
 -- Filtros para la tabla `psicologa`
 --
 ALTER TABLE `psicologa`
-  ADD CONSTRAINT `psicologa_ibfk_1` FOREIGN KEY (`id_direccion`) REFERENCES `direccion` (`id_direccion`),
-  ADD CONSTRAINT `psicologa_ibfk_2` FOREIGN KEY (`id_login`) REFERENCES `login` (`id_login`);
+  ADD CONSTRAINT `psicologa_ibfk_1` FOREIGN KEY (`id_direccion`) REFERENCES `direccion` (`id_direccion`) ON DELETE CASCADE,
+  ADD CONSTRAINT `psicologa_ibfk_2` FOREIGN KEY (`id_login`) REFERENCES `login` (`id_login`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
