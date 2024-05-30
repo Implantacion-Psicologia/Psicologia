@@ -1,0 +1,163 @@
+/*register*/
+
+body{
+    background-image: url("fondo.png");
+    background-size: cover ;
+    padding-left: "10px";
+    margin: 10px;
+    
+}
+
+header{
+    width: 240px;
+    margin: o auto;
+    text-align: center;
+    color: #305537;
+
+}
+
+html{
+width: 100%;
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.register{
+    width: 10%;
+    input[type="text"] {
+        padding: 100px;
+        margin:100px 0;
+    }
+
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 5px;
+    border: 1px solid #b4b4b4;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+input[type= "submit"] {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 5px;
+    border: 1px solid #305537;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: #305537;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edad{
+input[type="number"],
+button {
+    width: 20%;
+    padding: 6px;
+    margin-bottom: 5px;
+    border: 1px solid #b4b4b4;
+    border-radius: 30px;
+    box-sizing: border-box;
+}}
+
+footer{
+    width: 240px;
+    margin: o auto;
+    text-align: center;
+}
+
+.cedula{
+input[type="number"],
+button {
+    width: 77%;
+    padding: 6px;
+    margin-bottom: 5px;
+    border: 1px solid #b4b4b4;
+    border-radius: 30px;
+    box-sizing: border-box;
+    }}
+
+.cedula select{
+    appearance: none;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 5px;
+    width: 50px
+}
+
+.cedula select options{
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.edad select{
+    appearance: none;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 5px;
+    width: 77px
+}
+.edad select options{
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/* aegnda pareja */
+
+.fechacon select{
+    appearance: none;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 5px;
+    width: 77px
+}.fechacon select options{
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+
+
+.tipoced select{
+    appearance: none;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 5px;
+    width: 50px
+}.tipoced select options{
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 5px;}
+.tipoced{
+    input[type="number"],
+    button {
+    width: 77%;
+    padding: 6px;
+    margin-bottom: 5px;
+    border: 1px solid #b4b4b4;
+    border-radius: 30px;
+    box-sizing: border-box;
+}}
+
+
+/* infante*/
+

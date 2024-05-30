@@ -1,0 +1,118 @@
+/* botones de inicio y registro */
+
+
+
+
+.titulo{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 50%;
+}
+
+
+
+.botones-derecha {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  #inicio, #registro {
+    margin: 10px;
+    padding: 5px 15px;
+    border: none;
+    background-color: #305537;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    
+  }
+
+    #inicio:hover, #registro:hover{ /*color al pasar boton */
+    background-color: #214428
+  }
+
+  /* contenido pagina */
+
+  body{
+    background-image: url("fondo.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover ;
+    padding-left: "10px";
+    margin: 10px;
+  }
+
+
+
+
+/* contenido de texto*/
+
+.que-es {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  float:left;
+  border-radius: 20px;
+  margin: 15px;
+  width: 200px;
+  height: 200px;
+
+}
+
+/* barra navegacion */
+
+/* Estilos básicos para el menú */
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+}
+
+/* Estilo para los elementos del menú */
+#menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu li {
+  background-color: #333;
+  color: white;
+}
+
+#menu li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
+
+/* Estilos para los submenús */
+#menu ul ul {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+
+#menu ul li:hover > ul {
+  display: block;
+}
+
+
+input[type="text"],
+input[type="password"],
+button {
+    width: 300px;
+    padding: 6px;
+    margin-bottom: 5px;
+    border: 1px solid #b4b4b4;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
