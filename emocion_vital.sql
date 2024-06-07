@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2024 a las 17:38:24
+-- Tiempo de generación: 03-06-2024 a las 21:30:15
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -552,16 +552,18 @@ CREATE TABLE `consulta` (
   `id_pactpar` int(11) DEFAULT NULL,
   `id_psi` int(11) NOT NULL,
   `id_tipocon` int(11) NOT NULL,
-  `fecha_duracion` datetime NOT NULL,
-  `estado_con` enum('Espera','Realizada','Suspendida','Agendada') NOT NULL
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `duracion` varchar(10) NOT NULL,
+  `estado_con` enum('Agendada','Realizada','Suspendida') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `consulta`
 --
 
-INSERT INTO `consulta` (`id_con`, `id_pact`, `id_pactinf`, `id_pactpar`, `id_psi`, `id_tipocon`, `fecha_duracion`, `estado_con`) VALUES
-(1, 1, 0, 0, 1, 1, '2024-05-22 00:45:00', 'Espera');
+INSERT INTO `consulta` (`id_con`, `id_pact`, `id_pactinf`, `id_pactpar`, `id_psi`, `id_tipocon`, `fecha`, `hora`, `duracion`, `estado_con`) VALUES
+(1, 1, 0, 0, 1, 1, '2024-05-22', '12:00:00', '45 min', 'Agendada');
 
 -- --------------------------------------------------------
 
@@ -653,45 +655,6 @@ INSERT INTO `estados` (`id_estado`, `estado`, `iso_3166-2`) VALUES
 (23, 'Zulia', 'VE-V'),
 (24, 'Distrito Capital', 'VE-A'),
 (25, 'Dependencias Federales', 'VE-Z');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `factura`
---
-
-CREATE TABLE `factura` (
-  `id_fac` int(11) NOT NULL,
-  `id_web` int(11) NOT NULL,
-  `id_con` int(11) NOT NULL,
-  `id_factotal` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `factura`
---
-
-INSERT INTO `factura` (`id_fac`, `id_web`, `id_con`, `id_factotal`) VALUES
-(1, 1, 1, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `factura_total`
---
-
-CREATE TABLE `factura_total` (
-  `id_factotal` int(11) NOT NULL,
-  `id_con` int(11) NOT NULL,
-  `precio_tot` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `factura_total`
---
-
-INSERT INTO `factura_total` (`id_factotal`, `id_con`, `precio_tot`) VALUES
-(1, 1, 25);
 
 -- --------------------------------------------------------
 
@@ -870,389 +833,6 @@ INSERT INTO `fact_persoz_y_conduc_d5` (`id_D5`, `D5_d1`, `D5_d2`, `D5_d3`, `D5_d
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `fecha`
---
-
-CREATE TABLE `fecha` (
-  `Id_Fecha` int(11) NOT NULL,
-  `Dia` datetime NOT NULL,
-  `Status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `fecha`
---
-
-INSERT INTO `fecha` (`Id_Fecha`, `Dia`, `Status`) VALUES
-(1, '0000-00-00 00:00:00', 1),
-(2, '0000-00-00 00:00:00', 1),
-(3, '0000-00-00 00:00:00', 1),
-(4, '0000-00-00 00:00:00', 1),
-(5, '0000-00-00 00:00:00', 1),
-(6, '0000-00-00 00:00:00', 1),
-(7, '0000-00-00 00:00:00', 1),
-(8, '0000-00-00 00:00:00', 1),
-(9, '0000-00-00 00:00:00', 1),
-(10, '0000-00-00 00:00:00', 1),
-(11, '0000-00-00 00:00:00', 1),
-(12, '0000-00-00 00:00:00', 1),
-(13, '0000-00-00 00:00:00', 1),
-(14, '0000-00-00 00:00:00', 1),
-(15, '0000-00-00 00:00:00', 1),
-(16, '0000-00-00 00:00:00', 1),
-(17, '0000-00-00 00:00:00', 1),
-(18, '0000-00-00 00:00:00', 1),
-(19, '0000-00-00 00:00:00', 1),
-(20, '0000-00-00 00:00:00', 1),
-(21, '0000-00-00 00:00:00', 1),
-(22, '0000-00-00 00:00:00', 1),
-(23, '0000-00-00 00:00:00', 1),
-(24, '0000-00-00 00:00:00', 1),
-(25, '0000-00-00 00:00:00', 1),
-(26, '0000-00-00 00:00:00', 1),
-(27, '0000-00-00 00:00:00', 1),
-(28, '0000-00-00 00:00:00', 1),
-(29, '0000-00-00 00:00:00', 1),
-(30, '0000-00-00 00:00:00', 1),
-(31, '0000-00-00 00:00:00', 1),
-(32, '0000-00-00 00:00:00', 1),
-(33, '0000-00-00 00:00:00', 1),
-(34, '0000-00-00 00:00:00', 1),
-(35, '0000-00-00 00:00:00', 1),
-(36, '0000-00-00 00:00:00', 1),
-(37, '0000-00-00 00:00:00', 1),
-(38, '0000-00-00 00:00:00', 1),
-(39, '0000-00-00 00:00:00', 1),
-(40, '0000-00-00 00:00:00', 1),
-(41, '0000-00-00 00:00:00', 1),
-(42, '0000-00-00 00:00:00', 1),
-(43, '0000-00-00 00:00:00', 1),
-(44, '0000-00-00 00:00:00', 1),
-(45, '0000-00-00 00:00:00', 1),
-(46, '0000-00-00 00:00:00', 1),
-(47, '0000-00-00 00:00:00', 1),
-(48, '0000-00-00 00:00:00', 1),
-(49, '0000-00-00 00:00:00', 1),
-(50, '0000-00-00 00:00:00', 1),
-(51, '0000-00-00 00:00:00', 1),
-(52, '0000-00-00 00:00:00', 1),
-(53, '0000-00-00 00:00:00', 1),
-(54, '0000-00-00 00:00:00', 1),
-(55, '0000-00-00 00:00:00', 1),
-(56, '0000-00-00 00:00:00', 1),
-(57, '0000-00-00 00:00:00', 1),
-(58, '0000-00-00 00:00:00', 1),
-(59, '0000-00-00 00:00:00', 1),
-(60, '0000-00-00 00:00:00', 1),
-(61, '0000-00-00 00:00:00', 1),
-(62, '0000-00-00 00:00:00', 1),
-(63, '0000-00-00 00:00:00', 1),
-(64, '0000-00-00 00:00:00', 1),
-(65, '0000-00-00 00:00:00', 1),
-(66, '0000-00-00 00:00:00', 1),
-(67, '0000-00-00 00:00:00', 1),
-(68, '0000-00-00 00:00:00', 1),
-(69, '0000-00-00 00:00:00', 1),
-(70, '0000-00-00 00:00:00', 1),
-(71, '0000-00-00 00:00:00', 1),
-(72, '0000-00-00 00:00:00', 1),
-(73, '0000-00-00 00:00:00', 1),
-(74, '0000-00-00 00:00:00', 1),
-(75, '0000-00-00 00:00:00', 1),
-(76, '0000-00-00 00:00:00', 1),
-(77, '0000-00-00 00:00:00', 1),
-(78, '0000-00-00 00:00:00', 1),
-(79, '0000-00-00 00:00:00', 1),
-(80, '0000-00-00 00:00:00', 1),
-(81, '0000-00-00 00:00:00', 1),
-(82, '0000-00-00 00:00:00', 1),
-(83, '0000-00-00 00:00:00', 1),
-(84, '0000-00-00 00:00:00', 1),
-(85, '0000-00-00 00:00:00', 1),
-(86, '0000-00-00 00:00:00', 1),
-(87, '0000-00-00 00:00:00', 1),
-(88, '0000-00-00 00:00:00', 1),
-(89, '0000-00-00 00:00:00', 1),
-(90, '0000-00-00 00:00:00', 1),
-(91, '0000-00-00 00:00:00', 1),
-(92, '0000-00-00 00:00:00', 1),
-(93, '0000-00-00 00:00:00', 1),
-(94, '0000-00-00 00:00:00', 1),
-(95, '0000-00-00 00:00:00', 1),
-(96, '0000-00-00 00:00:00', 1),
-(97, '0000-00-00 00:00:00', 1),
-(98, '0000-00-00 00:00:00', 1),
-(99, '0000-00-00 00:00:00', 1),
-(100, '0000-00-00 00:00:00', 1),
-(101, '0000-00-00 00:00:00', 1),
-(102, '0000-00-00 00:00:00', 1),
-(103, '0000-00-00 00:00:00', 1),
-(104, '0000-00-00 00:00:00', 1),
-(105, '0000-00-00 00:00:00', 1),
-(106, '0000-00-00 00:00:00', 1),
-(107, '0000-00-00 00:00:00', 1),
-(108, '0000-00-00 00:00:00', 1),
-(109, '0000-00-00 00:00:00', 1),
-(110, '0000-00-00 00:00:00', 1),
-(111, '0000-00-00 00:00:00', 1),
-(112, '0000-00-00 00:00:00', 1),
-(113, '0000-00-00 00:00:00', 1),
-(114, '0000-00-00 00:00:00', 1),
-(115, '0000-00-00 00:00:00', 1),
-(116, '0000-00-00 00:00:00', 1),
-(117, '0000-00-00 00:00:00', 1),
-(118, '0000-00-00 00:00:00', 1),
-(119, '0000-00-00 00:00:00', 1),
-(120, '0000-00-00 00:00:00', 1),
-(121, '0000-00-00 00:00:00', 1),
-(122, '0000-00-00 00:00:00', 1),
-(123, '0000-00-00 00:00:00', 1),
-(124, '0000-00-00 00:00:00', 1),
-(125, '0000-00-00 00:00:00', 1),
-(126, '0000-00-00 00:00:00', 1),
-(127, '0000-00-00 00:00:00', 1),
-(128, '0000-00-00 00:00:00', 1),
-(129, '0000-00-00 00:00:00', 1),
-(130, '0000-00-00 00:00:00', 1),
-(131, '0000-00-00 00:00:00', 1),
-(132, '0000-00-00 00:00:00', 1),
-(133, '0000-00-00 00:00:00', 1),
-(134, '0000-00-00 00:00:00', 1),
-(135, '0000-00-00 00:00:00', 1),
-(136, '0000-00-00 00:00:00', 1),
-(137, '0000-00-00 00:00:00', 1),
-(138, '0000-00-00 00:00:00', 1),
-(139, '0000-00-00 00:00:00', 1),
-(140, '0000-00-00 00:00:00', 1),
-(141, '0000-00-00 00:00:00', 1),
-(142, '0000-00-00 00:00:00', 1),
-(143, '0000-00-00 00:00:00', 1),
-(144, '0000-00-00 00:00:00', 1),
-(145, '0000-00-00 00:00:00', 1),
-(146, '0000-00-00 00:00:00', 1),
-(147, '0000-00-00 00:00:00', 1),
-(148, '0000-00-00 00:00:00', 1),
-(149, '0000-00-00 00:00:00', 1),
-(150, '0000-00-00 00:00:00', 1),
-(151, '0000-00-00 00:00:00', 1),
-(152, '0000-00-00 00:00:00', 1),
-(153, '0000-00-00 00:00:00', 1),
-(154, '0000-00-00 00:00:00', 1),
-(155, '0000-00-00 00:00:00', 1),
-(156, '0000-00-00 00:00:00', 1),
-(157, '0000-00-00 00:00:00', 1),
-(158, '0000-00-00 00:00:00', 1),
-(159, '0000-00-00 00:00:00', 1),
-(160, '0000-00-00 00:00:00', 1),
-(161, '0000-00-00 00:00:00', 1),
-(162, '0000-00-00 00:00:00', 1),
-(163, '0000-00-00 00:00:00', 1),
-(164, '0000-00-00 00:00:00', 1),
-(165, '0000-00-00 00:00:00', 1),
-(166, '0000-00-00 00:00:00', 1),
-(167, '0000-00-00 00:00:00', 1),
-(168, '0000-00-00 00:00:00', 1),
-(169, '0000-00-00 00:00:00', 1),
-(170, '0000-00-00 00:00:00', 1),
-(171, '0000-00-00 00:00:00', 1),
-(172, '0000-00-00 00:00:00', 1),
-(173, '0000-00-00 00:00:00', 1),
-(174, '0000-00-00 00:00:00', 1),
-(175, '0000-00-00 00:00:00', 1),
-(176, '0000-00-00 00:00:00', 1),
-(177, '0000-00-00 00:00:00', 1),
-(178, '0000-00-00 00:00:00', 1),
-(179, '0000-00-00 00:00:00', 1),
-(180, '0000-00-00 00:00:00', 1),
-(181, '0000-00-00 00:00:00', 1),
-(182, '0000-00-00 00:00:00', 1),
-(183, '0000-00-00 00:00:00', 1),
-(184, '0000-00-00 00:00:00', 1),
-(185, '0000-00-00 00:00:00', 1),
-(186, '0000-00-00 00:00:00', 1),
-(187, '0000-00-00 00:00:00', 1),
-(188, '0000-00-00 00:00:00', 1),
-(189, '0000-00-00 00:00:00', 1),
-(190, '0000-00-00 00:00:00', 1),
-(191, '0000-00-00 00:00:00', 1),
-(192, '0000-00-00 00:00:00', 1),
-(193, '0000-00-00 00:00:00', 1),
-(194, '0000-00-00 00:00:00', 1),
-(195, '0000-00-00 00:00:00', 1),
-(196, '0000-00-00 00:00:00', 1),
-(197, '0000-00-00 00:00:00', 1),
-(198, '0000-00-00 00:00:00', 1),
-(199, '0000-00-00 00:00:00', 1),
-(200, '0000-00-00 00:00:00', 1),
-(201, '0000-00-00 00:00:00', 1),
-(202, '0000-00-00 00:00:00', 1),
-(203, '0000-00-00 00:00:00', 1),
-(204, '0000-00-00 00:00:00', 1),
-(205, '0000-00-00 00:00:00', 1),
-(206, '0000-00-00 00:00:00', 1),
-(207, '0000-00-00 00:00:00', 1),
-(208, '0000-00-00 00:00:00', 1),
-(209, '0000-00-00 00:00:00', 1),
-(210, '0000-00-00 00:00:00', 1),
-(211, '0000-00-00 00:00:00', 1),
-(212, '0000-00-00 00:00:00', 1),
-(213, '0000-00-00 00:00:00', 1),
-(214, '0000-00-00 00:00:00', 1),
-(215, '0000-00-00 00:00:00', 1),
-(216, '0000-00-00 00:00:00', 1),
-(217, '0000-00-00 00:00:00', 1),
-(218, '0000-00-00 00:00:00', 1),
-(219, '0000-00-00 00:00:00', 1),
-(220, '0000-00-00 00:00:00', 1),
-(221, '0000-00-00 00:00:00', 1),
-(222, '0000-00-00 00:00:00', 1),
-(223, '0000-00-00 00:00:00', 1),
-(224, '0000-00-00 00:00:00', 1),
-(225, '0000-00-00 00:00:00', 1),
-(226, '0000-00-00 00:00:00', 1),
-(227, '0000-00-00 00:00:00', 1),
-(228, '0000-00-00 00:00:00', 1),
-(229, '0000-00-00 00:00:00', 1),
-(230, '0000-00-00 00:00:00', 1),
-(231, '0000-00-00 00:00:00', 1),
-(232, '0000-00-00 00:00:00', 1),
-(233, '0000-00-00 00:00:00', 1),
-(234, '0000-00-00 00:00:00', 1),
-(235, '0000-00-00 00:00:00', 1),
-(236, '0000-00-00 00:00:00', 1),
-(237, '0000-00-00 00:00:00', 1),
-(238, '0000-00-00 00:00:00', 1),
-(239, '0000-00-00 00:00:00', 1),
-(240, '0000-00-00 00:00:00', 1),
-(241, '0000-00-00 00:00:00', 1),
-(242, '0000-00-00 00:00:00', 1),
-(243, '0000-00-00 00:00:00', 1),
-(244, '0000-00-00 00:00:00', 1),
-(245, '0000-00-00 00:00:00', 1),
-(246, '0000-00-00 00:00:00', 1),
-(247, '0000-00-00 00:00:00', 1),
-(248, '0000-00-00 00:00:00', 1),
-(249, '0000-00-00 00:00:00', 1),
-(250, '0000-00-00 00:00:00', 1),
-(251, '0000-00-00 00:00:00', 1),
-(252, '0000-00-00 00:00:00', 1),
-(253, '0000-00-00 00:00:00', 1),
-(254, '0000-00-00 00:00:00', 1),
-(255, '0000-00-00 00:00:00', 1),
-(256, '0000-00-00 00:00:00', 1),
-(257, '0000-00-00 00:00:00', 1),
-(258, '0000-00-00 00:00:00', 1),
-(259, '0000-00-00 00:00:00', 1),
-(260, '0000-00-00 00:00:00', 1),
-(261, '0000-00-00 00:00:00', 1),
-(262, '0000-00-00 00:00:00', 1),
-(263, '0000-00-00 00:00:00', 1),
-(264, '0000-00-00 00:00:00', 1),
-(265, '0000-00-00 00:00:00', 1),
-(266, '0000-00-00 00:00:00', 1),
-(267, '0000-00-00 00:00:00', 1),
-(268, '0000-00-00 00:00:00', 1),
-(269, '0000-00-00 00:00:00', 1),
-(270, '0000-00-00 00:00:00', 1),
-(271, '0000-00-00 00:00:00', 1),
-(272, '0000-00-00 00:00:00', 1),
-(273, '0000-00-00 00:00:00', 1),
-(274, '0000-00-00 00:00:00', 1),
-(275, '0000-00-00 00:00:00', 1),
-(276, '0000-00-00 00:00:00', 1),
-(277, '0000-00-00 00:00:00', 1),
-(278, '0000-00-00 00:00:00', 1),
-(279, '0000-00-00 00:00:00', 1),
-(280, '0000-00-00 00:00:00', 1),
-(281, '0000-00-00 00:00:00', 1),
-(282, '0000-00-00 00:00:00', 1),
-(283, '0000-00-00 00:00:00', 1),
-(284, '0000-00-00 00:00:00', 1),
-(285, '0000-00-00 00:00:00', 1),
-(286, '0000-00-00 00:00:00', 1),
-(287, '0000-00-00 00:00:00', 1),
-(288, '0000-00-00 00:00:00', 1),
-(289, '0000-00-00 00:00:00', 1),
-(290, '0000-00-00 00:00:00', 1),
-(291, '0000-00-00 00:00:00', 1),
-(292, '0000-00-00 00:00:00', 1),
-(293, '0000-00-00 00:00:00', 1),
-(294, '0000-00-00 00:00:00', 1),
-(295, '0000-00-00 00:00:00', 1),
-(296, '0000-00-00 00:00:00', 1),
-(297, '0000-00-00 00:00:00', 1),
-(298, '0000-00-00 00:00:00', 1),
-(299, '0000-00-00 00:00:00', 1),
-(300, '0000-00-00 00:00:00', 1),
-(301, '0000-00-00 00:00:00', 1),
-(302, '0000-00-00 00:00:00', 1),
-(303, '0000-00-00 00:00:00', 1),
-(304, '0000-00-00 00:00:00', 1),
-(305, '0000-00-00 00:00:00', 1),
-(306, '0000-00-00 00:00:00', 1),
-(307, '0000-00-00 00:00:00', 1),
-(308, '0000-00-00 00:00:00', 1),
-(309, '0000-00-00 00:00:00', 1),
-(310, '0000-00-00 00:00:00', 1),
-(311, '0000-00-00 00:00:00', 1),
-(312, '0000-00-00 00:00:00', 1),
-(313, '0000-00-00 00:00:00', 1),
-(314, '0000-00-00 00:00:00', 1),
-(315, '0000-00-00 00:00:00', 1),
-(316, '0000-00-00 00:00:00', 1),
-(317, '0000-00-00 00:00:00', 1),
-(318, '0000-00-00 00:00:00', 1),
-(319, '0000-00-00 00:00:00', 1),
-(320, '0000-00-00 00:00:00', 1),
-(321, '0000-00-00 00:00:00', 1),
-(322, '0000-00-00 00:00:00', 1),
-(323, '0000-00-00 00:00:00', 1),
-(324, '0000-00-00 00:00:00', 1),
-(325, '0000-00-00 00:00:00', 1),
-(326, '0000-00-00 00:00:00', 1),
-(327, '0000-00-00 00:00:00', 1),
-(328, '0000-00-00 00:00:00', 1),
-(329, '0000-00-00 00:00:00', 1),
-(330, '0000-00-00 00:00:00', 1),
-(331, '0000-00-00 00:00:00', 1),
-(332, '0000-00-00 00:00:00', 1),
-(333, '0000-00-00 00:00:00', 1),
-(334, '0000-00-00 00:00:00', 1),
-(335, '0000-00-00 00:00:00', 1),
-(336, '0000-00-00 00:00:00', 1),
-(337, '0000-00-00 00:00:00', 1),
-(338, '0000-00-00 00:00:00', 1),
-(339, '0000-00-00 00:00:00', 1),
-(340, '0000-00-00 00:00:00', 1),
-(341, '0000-00-00 00:00:00', 1),
-(342, '0000-00-00 00:00:00', 1),
-(343, '0000-00-00 00:00:00', 1),
-(344, '0000-00-00 00:00:00', 1),
-(345, '0000-00-00 00:00:00', 1),
-(346, '0000-00-00 00:00:00', 1),
-(347, '0000-00-00 00:00:00', 1),
-(348, '0000-00-00 00:00:00', 1),
-(349, '0000-00-00 00:00:00', 1),
-(350, '0000-00-00 00:00:00', 1),
-(351, '0000-00-00 00:00:00', 1),
-(352, '0000-00-00 00:00:00', 1),
-(353, '0000-00-00 00:00:00', 1),
-(354, '0000-00-00 00:00:00', 1),
-(355, '0000-00-00 00:00:00', 1),
-(356, '0000-00-00 00:00:00', 1),
-(357, '0000-00-00 00:00:00', 1),
-(358, '0000-00-00 00:00:00', 1),
-(359, '0000-00-00 00:00:00', 1),
-(360, '0000-00-00 00:00:00', 1),
-(361, '0000-00-00 00:00:00', 1),
-(362, '0000-00-00 00:00:00', 1),
-(363, '0000-00-00 00:00:00', 1),
-(364, '0000-00-00 00:00:00', 1),
-(365, '0000-00-00 00:00:00', 1);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `historial_clinico`
 --
 
@@ -1276,27 +856,6 @@ CREATE TABLE `historial_clinico` (
 INSERT INTO `historial_clinico` (`id_histcli`, `id_D1`, `id_D2`, `id_D3`, `id_D4`, `id_D5`, `id_D6`, `id_D7`, `id_D8`, `id_D9`) VALUES
 (1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 (2, 2, 2, 2, 2, 2, 2, 2, 2, 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `historico`
---
-
-CREATE TABLE `historico` (
-  `id_hist` int(11) NOT NULL,
-  `id_con` int(11) NOT NULL,
-  `id_pact` int(11) NOT NULL,
-  `id_psi` int(11) NOT NULL,
-  `id_fac` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `historico`
---
-
-INSERT INTO `historico` (`id_hist`, `id_con`, `id_pact`, `id_psi`, `id_fac`) VALUES
-(1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1738,7 +1297,7 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`id_pact`, `id_histcli`, `n_pact`, `a_pact`, `tipo_ced`, `cedula_pact`, `correo_pact`, `id_direccion`, `id_login`, `tlf_pact`, `fecha_nac`) VALUES
-(1, 1, 'Maximo Antonio', 'Aguilar Parra', 'V', '32897650', 'maximo32@gmail.com', 2, 1, '0424-5392282', '2005-04-21'),
+(1, 1, 'Maximo Antonio', 'Aguilar Parra', 'V', '32897650', 'maximo32@gmail.com', 2, 2, '0424-5392282', '2005-04-21'),
 (2, NULL, 'Sonnymar', 'Lopez', 'V', '24389761', 'sonny@gmail.com', 3, 3, '0424-5392282', '2005-04-21');
 
 -- --------------------------------------------------------
@@ -2967,6 +2526,25 @@ INSERT INTO `plan_psicoterapeutico_d9` (`id_D9`, `D9_d1`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `precio_total`
+--
+
+CREATE TABLE `precio_total` (
+  `id_pretotal` int(11) NOT NULL,
+  `id_con` int(11) NOT NULL,
+  `precio_tot` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `precio_total`
+--
+
+INSERT INTO `precio_total` (`id_pretotal`, `id_con`, `precio_tot`) VALUES
+(1, 1, 23.2);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `psicologa`
 --
 
@@ -3015,7 +2593,7 @@ INSERT INTO `recomendaciones_d8` (`id_D8`, `D8_d1`) VALUES
 
 CREATE TABLE `tipo_consulta` (
   `id_tipocon` int(11) NOT NULL,
-  `tipo_consulta` enum('Infante','Adulto','Pareja','') NOT NULL,
+  `tipo_consulta` enum('Individual','Infantil','Pareja') NOT NULL,
   `precio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -3024,28 +2602,9 @@ CREATE TABLE `tipo_consulta` (
 --
 
 INSERT INTO `tipo_consulta` (`id_tipocon`, `tipo_consulta`, `precio`) VALUES
-(1, 'Adulto', 25);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `web_cabezera`
---
-
-CREATE TABLE `web_cabezera` (
-  `id_web` int(11) NOT NULL,
-  `n_web` varchar(50) NOT NULL,
-  `rif` varchar(100) NOT NULL,
-  `dir_web` varchar(300) NOT NULL,
-  `fecha_web` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `web_cabezera`
---
-
-INSERT INTO `web_cabezera` (`id_web`, `n_web`, `rif`, `dir_web`, `fecha_web`) VALUES
-(1, 'Emoción Vital', 'V-40130192', 'No Posee', '2024-06-04');
+(1, 'Individual', 20),
+(2, 'Infantil', 30),
+(3, 'Pareja', 40);
 
 --
 -- Índices para tablas volcadas
@@ -3074,7 +2633,7 @@ ALTER TABLE `consulta`
 ALTER TABLE `direccion`
   ADD PRIMARY KEY (`id_direccion`),
   ADD KEY `id_estado` (`id_estado`,`id_municipio`),
-  ADD KEY `id_municipio` (`id_municipio`);
+  ADD KEY `direccion_ibfk_2` (`id_municipio`);
 
 --
 -- Indices de la tabla `escuela_lugarfamiliar_d1`
@@ -3087,22 +2646,6 @@ ALTER TABLE `escuela_lugarfamiliar_d1`
 --
 ALTER TABLE `estados`
   ADD PRIMARY KEY (`id_estado`);
-
---
--- Indices de la tabla `factura`
---
-ALTER TABLE `factura`
-  ADD PRIMARY KEY (`id_fac`),
-  ADD KEY `id_web` (`id_web`),
-  ADD KEY `id_con` (`id_con`),
-  ADD KEY `id_factotal` (`id_factotal`);
-
---
--- Indices de la tabla `factura_total`
---
-ALTER TABLE `factura_total`
-  ADD PRIMARY KEY (`id_factotal`),
-  ADD KEY `id_con` (`id_con`);
 
 --
 -- Indices de la tabla `fact_familiares_d4`
@@ -3135,36 +2678,19 @@ ALTER TABLE `fact_persoz_y_conduc_d5`
   ADD PRIMARY KEY (`id_D5`);
 
 --
--- Indices de la tabla `fecha`
---
-ALTER TABLE `fecha`
-  ADD PRIMARY KEY (`Id_Fecha`);
-
---
 -- Indices de la tabla `historial_clinico`
 --
 ALTER TABLE `historial_clinico`
   ADD PRIMARY KEY (`id_histcli`),
-  ADD KEY `id_D1` (`id_D1`),
-  ADD KEY `id_D2` (`id_D2`),
-  ADD KEY `id_D3` (`id_D3`),
-  ADD KEY `id_D4` (`id_D4`),
-  ADD KEY `id_D5` (`id_D5`),
-  ADD KEY `id_D6` (`id_D6`),
-  ADD KEY `id_D7` (`id_D7`),
-  ADD KEY `id_D8` (`id_D8`),
-  ADD KEY `id_D9` (`id_D9`);
-
---
--- Indices de la tabla `historico`
---
-ALTER TABLE `historico`
-  ADD PRIMARY KEY (`id_hist`),
-  ADD KEY `id_con` (`id_con`),
-  ADD KEY `id_pact` (`id_pact`),
-  ADD KEY `id_psi` (`id_psi`),
-  ADD KEY `id_psi_2` (`id_psi`),
-  ADD KEY `id_fac` (`id_fac`);
+  ADD KEY `historial_clinico_ibfk_1` (`id_D1`),
+  ADD KEY `historial_clinico_ibfk_2` (`id_D2`),
+  ADD KEY `historial_clinico_ibfk_3` (`id_D3`),
+  ADD KEY `historial_clinico_ibfk_4` (`id_D4`),
+  ADD KEY `historial_clinico_ibfk_5` (`id_D5`),
+  ADD KEY `historial_clinico_ibfk_6` (`id_D6`),
+  ADD KEY `historial_clinico_ibfk_7` (`id_D7`),
+  ADD KEY `historial_clinico_ibfk_8` (`id_D8`),
+  ADD KEY `historial_clinico_ibfk_9` (`id_D9`);
 
 --
 -- Indices de la tabla `horario`
@@ -3231,6 +2757,13 @@ ALTER TABLE `plan_psicoterapeutico_d9`
   ADD PRIMARY KEY (`id_D9`);
 
 --
+-- Indices de la tabla `precio_total`
+--
+ALTER TABLE `precio_total`
+  ADD PRIMARY KEY (`id_pretotal`),
+  ADD KEY `id_con` (`id_con`);
+
+--
 -- Indices de la tabla `psicologa`
 --
 ALTER TABLE `psicologa`
@@ -3249,12 +2782,6 @@ ALTER TABLE `recomendaciones_d8`
 --
 ALTER TABLE `tipo_consulta`
   ADD PRIMARY KEY (`id_tipocon`);
-
---
--- Indices de la tabla `web_cabezera`
---
-ALTER TABLE `web_cabezera`
-  ADD PRIMARY KEY (`id_web`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -3291,18 +2818,6 @@ ALTER TABLE `estados`
   MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT de la tabla `factura`
---
-ALTER TABLE `factura`
-  MODIFY `id_fac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `factura_total`
---
-ALTER TABLE `factura_total`
-  MODIFY `id_factotal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT de la tabla `fact_familiares_d4`
 --
 ALTER TABLE `fact_familiares_d4`
@@ -3333,22 +2848,10 @@ ALTER TABLE `fact_persoz_y_conduc_d5`
   MODIFY `id_D5` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `fecha`
---
-ALTER TABLE `fecha`
-  MODIFY `Id_Fecha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=366;
-
---
 -- AUTO_INCREMENT de la tabla `historial_clinico`
 --
 ALTER TABLE `historial_clinico`
   MODIFY `id_histcli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `historico`
---
-ALTER TABLE `historico`
-  MODIFY `id_hist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`
@@ -3405,6 +2908,12 @@ ALTER TABLE `plan_psicoterapeutico_d9`
   MODIFY `id_D9` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `precio_total`
+--
+ALTER TABLE `precio_total`
+  MODIFY `id_pretotal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `psicologa`
 --
 ALTER TABLE `psicologa`
@@ -3420,13 +2929,7 @@ ALTER TABLE `recomendaciones_d8`
 -- AUTO_INCREMENT de la tabla `tipo_consulta`
 --
 ALTER TABLE `tipo_consulta`
-  MODIFY `id_tipocon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `web_cabezera`
---
-ALTER TABLE `web_cabezera`
-  MODIFY `id_web` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tipocon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -3450,39 +2953,22 @@ ALTER TABLE `consulta`
 -- Filtros para la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`),
-  ADD CONSTRAINT `direccion_ibfk_2` FOREIGN KEY (`id_municipio`) REFERENCES `municipios` (`id_municipio`);
-
---
--- Filtros para la tabla `factura`
---
-ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`) ON DELETE CASCADE,
-  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_web`) REFERENCES `web_cabezera` (`id_web`) ON DELETE CASCADE,
-  ADD CONSTRAINT `factura_ibfk_3` FOREIGN KEY (`id_factotal`) REFERENCES `factura_total` (`id_factotal`) ON DELETE CASCADE;
+  ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE,
+  ADD CONSTRAINT `direccion_ibfk_2` FOREIGN KEY (`id_municipio`) REFERENCES `municipios` (`id_municipio`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `historial_clinico`
 --
 ALTER TABLE `historial_clinico`
-  ADD CONSTRAINT `historial_clinico_ibfk_1` FOREIGN KEY (`id_D1`) REFERENCES `escuela_lugarfamiliar_d1` (`id_D1`),
-  ADD CONSTRAINT `historial_clinico_ibfk_2` FOREIGN KEY (`id_D2`) REFERENCES `fact_motivacion_d2` (`id_D2`),
-  ADD CONSTRAINT `historial_clinico_ibfk_3` FOREIGN KEY (`id_D3`) REFERENCES `fact_fisicos_d3` (`id_D3`),
-  ADD CONSTRAINT `historial_clinico_ibfk_4` FOREIGN KEY (`id_D4`) REFERENCES `fact_familiares_d4` (`id_D4`),
-  ADD CONSTRAINT `historial_clinico_ibfk_5` FOREIGN KEY (`id_D5`) REFERENCES `fact_persoz_y_conduc_d5` (`id_D5`),
-  ADD CONSTRAINT `historial_clinico_ibfk_6` FOREIGN KEY (`id_D6`) REFERENCES `fact_hereditarios_d6` (`id_D6`),
-  ADD CONSTRAINT `historial_clinico_ibfk_7` FOREIGN KEY (`id_D7`) REFERENCES `impresion_psi_d7` (`id_D7`),
-  ADD CONSTRAINT `historial_clinico_ibfk_8` FOREIGN KEY (`id_D8`) REFERENCES `recomendaciones_d8` (`id_D8`),
-  ADD CONSTRAINT `historial_clinico_ibfk_9` FOREIGN KEY (`id_D9`) REFERENCES `plan_psicoterapeutico_d9` (`id_D9`);
-
---
--- Filtros para la tabla `historico`
---
-ALTER TABLE `historico`
-  ADD CONSTRAINT `historico_ibfk_1` FOREIGN KEY (`id_fac`) REFERENCES `factura` (`id_fac`),
-  ADD CONSTRAINT `historico_ibfk_2` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`),
-  ADD CONSTRAINT `historico_ibfk_3` FOREIGN KEY (`id_pact`) REFERENCES `paciente` (`id_pact`),
-  ADD CONSTRAINT `historico_ibfk_4` FOREIGN KEY (`id_psi`) REFERENCES `psicologa` (`id_psi`);
+  ADD CONSTRAINT `historial_clinico_ibfk_1` FOREIGN KEY (`id_D1`) REFERENCES `escuela_lugarfamiliar_d1` (`id_D1`) ON DELETE CASCADE,
+  ADD CONSTRAINT `historial_clinico_ibfk_2` FOREIGN KEY (`id_D2`) REFERENCES `fact_motivacion_d2` (`id_D2`) ON DELETE CASCADE,
+  ADD CONSTRAINT `historial_clinico_ibfk_3` FOREIGN KEY (`id_D3`) REFERENCES `fact_fisicos_d3` (`id_D3`) ON DELETE CASCADE,
+  ADD CONSTRAINT `historial_clinico_ibfk_4` FOREIGN KEY (`id_D4`) REFERENCES `fact_familiares_d4` (`id_D4`) ON DELETE CASCADE,
+  ADD CONSTRAINT `historial_clinico_ibfk_5` FOREIGN KEY (`id_D5`) REFERENCES `fact_persoz_y_conduc_d5` (`id_D5`) ON DELETE CASCADE,
+  ADD CONSTRAINT `historial_clinico_ibfk_6` FOREIGN KEY (`id_D6`) REFERENCES `fact_hereditarios_d6` (`id_D6`) ON DELETE CASCADE,
+  ADD CONSTRAINT `historial_clinico_ibfk_7` FOREIGN KEY (`id_D7`) REFERENCES `impresion_psi_d7` (`id_D7`) ON DELETE CASCADE,
+  ADD CONSTRAINT `historial_clinico_ibfk_8` FOREIGN KEY (`id_D8`) REFERENCES `recomendaciones_d8` (`id_D8`) ON DELETE CASCADE,
+  ADD CONSTRAINT `historial_clinico_ibfk_9` FOREIGN KEY (`id_D9`) REFERENCES `plan_psicoterapeutico_d9` (`id_D9`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `horario`
@@ -3522,6 +3008,12 @@ ALTER TABLE `paciente_pareja`
 --
 ALTER TABLE `parroquias`
   ADD CONSTRAINT `parroquias_ibfk_1` FOREIGN KEY (`id_municipio`) REFERENCES `municipios` (`id_municipio`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `precio_total`
+--
+ALTER TABLE `precio_total`
+  ADD CONSTRAINT `precio_total_ibfk_1` FOREIGN KEY (`id_con`) REFERENCES `consulta` (`id_con`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `psicologa`
