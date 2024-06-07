@@ -3,13 +3,68 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="Style-frente.css"/>
-    <div class="botones-derecha">
-        <a href="login.html"><button type="button" id="inicio"  >Iniciar</button> </a>
-        <a href="registro.html"><button type="button" id="registro">Registro</button> </a>
+    
 
+
+
+    
+<style>
+  /* Estilos para la barra de selección */
+  #barraSeleccion {
+    position: fixed; /* Fija la barra en la pantalla */
+    top: 0; /* Alinea la barra en la parte superior */
+    left: 0; /* Alinea la barra a la izquierda */
+    width: 100%; /* Ancho completo */
+    background-color: #64b468; /* Color de fondo */
+    color: white; /* Color del texto */
+    z-index: 1000; /* Asegura que la barra esté sobre otros elementos */
+  }
+
+  /* Estilos para los elementos dentro de la barra */
+  #barraSeleccion ul {
+    list-style-type: none; /* Remueve los estilos de lista */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  #barraSeleccion li {
+    float: left; /* Alinea los elementos horizontalmente */
+  }
+
+  #barraSeleccion li a {
+    display: block; /* Hace que los enlaces llenen el espacio del 'li' */
+    text-align: center; /* Centra el texto */
+    padding: 14px 16px; /* Espaciado interno */
+    text-decoration: none; /* Remueve el subrayado del enlace */
+  }
+
+  /* Cambia el color de fondo al pasar el mouse */
+  #barraSeleccion li a:hover {
+    background-color: #9eb952;
+  }
+</style>
+
+
+<!-- Barra de selección -->
+<div id="barraSeleccion">
+  <ul>
+    <li><a href="login.html">Inicio</a></li>
+    <li><a href="datosRegistro.php">Registro</a></li>
+    <li><a href="acerca-de.html">Acerca de</a></li>
+  </ul>
+</div>
+
+
+
+
+
+
+        
     </div>
 </head>
 <body>
+    <br>
     <br>
     <h1>
         Emoción Vital

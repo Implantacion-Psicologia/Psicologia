@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="Style-frente.css"/>
+
+    
+    <div class="botones-derecha">
+
+        <style>
+            /* Estilos generales para la barra de navegación */
+            .navbar {
+              overflow: hidden;
+              background-color: #64b468;
+              border-radius: 5px;
+
+            }
+          
+            /* Estilos para los elementos de la barra de navegación */
+            .navbar a {
+              float: left;
+              display: block;
+              color: white;
+              text-align: center;
+              padding: 14px 20px;
+              text-decoration: none;
+            }
+          
+            /* Estilos para las opciones desplegables */
+            .dropdown {
+              float: left;
+              overflow: hidden;
+            }
+          
+            /* Estilo para el botón desplegable */
+            .dropdown .dropbtn {
+              cursor: pointer;
+              font-size: 16px;    
+              border: none;
+              outline: none;
+              color: white;
+              padding: 14px 16px;
+              background-color: inherit;
+              font-family: inherit;
+              margin: 0;
+            }
+          
+            /* Estilo para los contenidos desplegables */
+            .dropdown-content {
+              display: none;
+              position: absolute;
+              background-color: #f9f9f9;
+              min-width: 160px;
+              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+              z-index: 1;
+            }
+          
+            /* Estilo para los enlaces dentro del contenido desplegable */
+            .dropdown-content a {
+              float: none;
+              color: black;
+              padding: 12px 16px;
+              text-decoration: none;
+              display: block;
+              text-align: left;
+            }
+          
+            /* Cambio de color al pasar el cursor */
+            .navbar a:hover, .dropdown:hover .dropbtn {
+              background-color: #4CAF50;
+            }
+          
+            /* Muestra el contenido desplegable al pasar el cursor */
+            .dropdown:hover .dropdown-content {
+              display: block;
+            }
+          </style>
+          </head>
+          <body>
+          
+          <div class="navbar">
+            <div class="dropdown">
+              <button class="dropbtn">Ver
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="consultasUsuario.php">Mis consultas</a>
+              </div>
+            </div> 
+            <a href="cerrarsesion.php">Cerrar sesion</a>
+            
+          </div>
+
+        
+          <br>
+        
+        </div>
+        </body>
+        </html>
+        
+    
+    
+    
+    </div>
+</head>
+<body>
+    <br>
+    <br>
+    <h1>
+        Emoción Vital
+    </h1>
+    
+    <div class="que_es" >
+
+            
+            
+            <img class="logo" src="Logo-Psicologia.jpeg" alt="">
+            
+            <h2>
+                ¿Qué es?
+            </h2>
+            <p>
+                La emoción vital es la capacidad de experimentar y expresar emociones de una manera auténtica y profunda, 
+                que refleja la vitalidad y energía de una persona. Implica estar conectado con las propias emociones, ser
+                capaz de reconocerlas, procesarlas y expresarlas de manera saludable. La emoción vital también implica 
+                estar en sintonía con uno mismo, con los demás y con el entorno, lo que contribuye a una sensación de 
+                plenitud y bienestar emocional.
+            </p>
+
+    <br> 
+    </div>
+
+    <div class="porque">     
+            <h2>
+                ¿Por que elegir Emocion Vital?
+            </h2>
+
+            <p>
+                Como especialista en psicología, mi enfoque terapéutico se centra en proporcionar un 
+                espacio seguro y confidencial donde pueda comprender y abordar sus desafíos emocionales. 
+                Con una amplia experiencia en el campo de la psicología clínica, ofrece un enfoque 
+                personalizado que se adapta a las necesidades individuales de cada cliente. Al elegirme 
+                como su terapeuta, se beneficiará de un enfoque compasivo y basado en la evidencia, 
+                diseñado para promover el crecimiento personal y el bienestar emocional. Mi objetivo 
+                es trabajar en colaboración con usted para fomentar el autoconocimiento, la resiliencia 
+                emocional y el desarrollo de estrategias efectivas para afrontar los desafíos de la 
+                vida. Le invitamos a considerar iniciar este viaje hacia el bienestar emocional y el 
+                crecimiento personal, y espero poder acompañarle en este proceso de cambio y transformación.
+            </p>
+    </div>
+
+</body>
+
+<footer>
+
+
+  <style>
+    .boton-redondeado {
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      border-radius: 20px; /* Bordes redondeados */
+    }
+  
+    .centrado {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+  
+    .boton-verde {
+      background-color: #64b468; 
+      color: black; 
+      border: 2px solid #64b468;
+    }
+  
+    .boton-verde:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .agen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+  </style>
+  
+  <br>
+
+  <h2 class="agen">
+    ¿Que tipo de consulta estas buscando?
+  </h2>
+  
+  <div class="centrado">
+    <!-- Botones centrados y redondeados -->
+    
+    <a href="datosPareja.php" class="boton-redondeado boton-verde"> Pareja </a>
+    <a href="datosInfante.php" class="boton-redondeado boton-verde"> Infantil </a>
+    <a href="datosPaciente.php" class="boton-redondeado boton-verde"> Individual </a>
+    
+  </div>
+  <br><br>
+  
+</footer>
+
+</html>
