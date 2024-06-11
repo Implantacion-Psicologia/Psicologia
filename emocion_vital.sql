@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-06-2024 a las 21:30:15
+-- Tiempo de generación: 11-06-2024 a las 00:47:53
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -601,7 +601,7 @@ CREATE TABLE `escuela_lugarfamiliar_d1` (
   `D1_d5` varchar(30) NOT NULL,
   `D1_d6` varchar(10) NOT NULL,
   `D1_d7` varchar(100) NOT NULL,
-  `D1_d8` varchar(10) NOT NULL,
+  `D1_d8` varchar(100) NOT NULL,
   `D1_d9` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -1281,8 +1281,8 @@ INSERT INTO `municipios` (`id_municipio`, `id_estado`, `municipio`) VALUES
 CREATE TABLE `paciente` (
   `id_pact` int(11) NOT NULL,
   `id_histcli` int(11) DEFAULT NULL,
-  `n_pact` varchar(160) NOT NULL,
-  `a_pact` varchar(160) NOT NULL,
+  `n_pact` varchar(60) NOT NULL,
+  `a_pact` varchar(60) NOT NULL,
   `tipo_ced` enum('V','E','J') NOT NULL,
   `cedula_pact` varchar(12) NOT NULL,
   `correo_pact` varchar(50) NOT NULL,
