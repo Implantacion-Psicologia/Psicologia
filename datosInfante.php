@@ -110,7 +110,7 @@ if(mysqli_num_rows($ejecute) > 0){
         <h2>Agenda de Consultas Infante</h2>
     </header>
 
-    <form class="row g-2 needs-validation" novalidate id= "agendaInfante" method="POST" action="agendarInfante.php">
+    <form class="needs-validation" novalidate id= "agendaInfante" method="POST" action="agendarInfante.php">
         <h3>
             Ingrese sus Datos
         </h3>
@@ -118,45 +118,46 @@ if(mysqli_num_rows($ejecute) > 0){
         <br>
     
         <!-- cedula -->
-        <div class="row">
-            <div class="col-md-6">
+        <div>
+            <div>
                 <label for="tipoced"></label>
-                <select name="tipoced" id="tipoced">
+                <select name="tipoced" id="tipoced" required>
+                <option value="">Seleccione...</option>
                 <option value="V">V</option>
                 <option value="E">E</option>
                 <option value="J">J</option>
                 </select>
-                <div class="valid-feedback">Verificado!</div>
-                <div class="invalid-feedback">Seleccione un Tipo</div>
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">Seleccione una Opcion</div>
+            </div>
                 
-                <div>
+            <div>
                 <Label for = "cedula"></Label>
                 <input type ="number" id= "cedula_pact" name ="cedula_pact" required pattern = "[0-9]+"
                 placeholder = "Cedula"/>
-                <div class="valid-feedback">Verificado!</div>
+                <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo numeros</div>
 
-                </div>
             </div>
         </div>
 
     
         <!-- correo -->
-        <div class="col-md-6">
+        <div>
             <Label for = "Correo"></Label>
             <input type ="text" id= "correo" name ="correo" required pattern = "^.+@(?:gmail|hotmail)\.(com)$"
             placeholder = "Correo" />
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">El correo debe tener el formato usuario@gmail.com o usuario@hotmail.com</div>
         </div>
     
         <br>
-        <div class="col-md-6">
+        <div>
             <Label for="tipoced"></label>
-            <input type ="text" id="numerohijo" name ="numerohijo" required pattern = "[0-9]{1}"
+            <input type ="text" id="numerohijo" name ="numerohijo" required pattern = "[0-9]" min="1" max=9
             placeholder = "Numero de Hijo"/>
-            <div class="valid-feedback">Verificado!</div>
-            <div class="invalid-feedback">Ingrese solo numeros no superiores a 9</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
+            <div class="invalid-feedback">Ingrese solo numeros no menores a 1 ni mayores a 9</div>
         </div>
         <br>
 
@@ -164,22 +165,22 @@ if(mysqli_num_rows($ejecute) > 0){
             Datos del Infante
         </h3>
         <!-- name -->
-        <div class="col-md-6">
+        <div>
             <Label for = "nombres"> </Label>
-            <input type ="text" id= "nombres" name ="nombres" required pattern = "[A-Za-z]"
+            <input type ="text" id= "nombres" name ="nombres" required pattern = "[A-Za-z]+"
             placeholder = "Nombres"/>
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Ingrese solo Letras</div>
         </div>
         
         <br>
         
         <!-- surname -->
-        <div class="col-md-6">
+        <div>
             <Label for = "apellidos"> </Label>
-            <input type ="text" id= "apellidos" name ="apellidos" required pattern = "[A-Za-z]"
+            <input type ="text" id= "apellidos" name ="apellidos" required pattern = "[A-Za-z]+"
             placeholder = "Apellidos"/>
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Ingrese solo Letras</div>
         </div>
         <br>
@@ -189,7 +190,7 @@ if(mysqli_num_rows($ejecute) > 0){
             <label> Fecha de Nacimiento del Niño: </label> 
             <Label for=""></label>
             <input type="date" name="fechainf" required max="<?php echo date('Y-m-d',strtotime('-1 day')); ?>"/> 
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Seleccione una Fecha Valida</div>
         </div>
 
@@ -198,13 +199,13 @@ if(mysqli_num_rows($ejecute) > 0){
         <h3>
             Datos de la Consulta
         </h3>
-        <div class="col-md-6">
+        <div>
             <label for="psicologa">Psicologa: </label>
             <select id="psicologa" name="psicologa" required>
             <option value="">Disponibles</option>
             <?php echo $psicologa_selec; ?>
             </select>    
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Seleccione una Opcion</div>
         </div>
 
@@ -212,19 +213,18 @@ if(mysqli_num_rows($ejecute) > 0){
 
         <!-- Male selection-->
         <div class="form-floating mb-3">
-            <label> Fecha de Consulta:</label> 
+            <label> Fecha de Consulta: </label> 
             <Label for=""></label>
             <input type="date" name="fechacon" required min="<?php echo date('Y-m-d'); ?>"/> 
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Seleccione una Fecha valida</div>
         </div>
 
         <br><br>
 
-        <!-- monto -->
-        <div class="col-md-6">
-        <label> Hora de Consulta:</label> 
-            <select name="hora" id="hora">
+        <div>
+        <label> Hora de Consulta: </label> 
+            <select name="hora" id="hora" required>
             <option value="">Seleccionar</option>
             <option value="08:00:00">08:00 AM</option>
             <option value="10:00:00">10:00 AM</option>
@@ -233,14 +233,15 @@ if(mysqli_num_rows($ejecute) > 0){
             <option value="16:00:00">04:00 PM</option>
             <option value="18:00:00">06:00 PM</option>
             </select>
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Seleccione una Opcion</div>
         </div>
 
         <br>
+        <!-- monto -->
         <label>Precio de la Consulta</label> 
-        <div class="row">
-            <div class="col-md-6">
+        <div>
+            <div>
                 <Label for="cedula"></label>
                 <input type="text" name="precio" value="<?php echo $precio ?>" disabled/>
                 <br>

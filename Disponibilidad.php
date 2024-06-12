@@ -119,17 +119,18 @@ if(mysqli_num_rows($ejecute) > 0){
         <div>
     </header>
     <body>
-        <form class="row g-1 needs-validation" novalidate method="POST" action="psiDisponible.php">
+        <form class="needs-validation" novalidate method="POST" action="psiDisponible.php">
             <p><?php echo $disponiblecon; ?></p>
             <br>
             <h3>¿Desea Modificar su Disponibilidad?</h3>
-            <div class="col-md-6">
-                <label for="tipo_ced"></label>
-                <select name="disponible" id="disponible">
-                <option value="1">Activa</option>
-                <option value="0">Inactiva</option>
-                <div class="valid-feedback">Verificado!</div>
-                <div class="invalid-feedback">Seleccione una opcion</div>
+            <div>
+              <label for="tipo_ced"></label>
+              <select name="disponible" id="disponible" required>
+              <option value="">Seleccione...</option>
+              <option value="1">Activa</option>
+              <option value="0">Inactiva</option>
+              <div class="valid-feedback">¡Todo Correcto!</div>
+              <div class="invalid-feedback">Seleccione una opcion</div>
             </div>
             <br>
             <div class="enviar">

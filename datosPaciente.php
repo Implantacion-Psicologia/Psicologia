@@ -112,7 +112,7 @@ if(mysqli_num_rows($ejecute) > 0){
         <h2>Agenda de Consultas</h2>
     </header>
 
-    <form class="row g-2 needs-validation" novalidate id= "agendaPaciente" method="POST" action="agendaPaciente.php">
+    <form class="needs-validation" novalidate id= "agendaPaciente" method="POST" action="agendaPaciente.php">
         
         <h3>
             Ingrese sus Datos
@@ -121,34 +121,35 @@ if(mysqli_num_rows($ejecute) > 0){
         <br>
 
         <!-- cedula -->
-        <div class="row">
-            <div class="col-md-6">
+        <div>
+            <div>
                 <label for="tipoced"></label>
-                <select name="tipoced" id="tipoced">
+                <select name="tipoced" id="tipoced" required>
+                <option value="">Seleccione...</option>
                 <option value="V">V</option>
                 <option value="E">E</option>
                 <option value="J">J</option>
                 </select>
-                <div class="valid-feedback">Verificado!</div>
-                <div class="invalid-feedback">Seleccione un Tipo</div>
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">Seleccione una Opcion</div>
+            </div>
                 
-                <div>
+            <div>
                 <Label for = "cedula"></Label>
                 <input type ="number" id= "cedula_pact" name ="cedula_pact" required pattern = "[0-9]+"
                 placeholder = "Cedula"/>
-                <div class="valid-feedback">Verificado!</div>
+                <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo numeros</div>
-                </div>
             </div>
         </div>
 
     
         <!-- correo -->
-        <div class="col-md-6">
+        <div>
             <Label for = "Correo"></Label>
             <input type ="text" id= "correo" name ="correo" required pattern = "^.+@(?:gmail|hotmail)\.(com)$"
             placeholder = "Correo" />
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">El correo debe tener el formato usuario@gmail.com o usuario@hotmail.com</div>
         </div>
 
@@ -157,13 +158,13 @@ if(mysqli_num_rows($ejecute) > 0){
         <h3>
             Datos de la Consulta
         </h3>
-        <div class="col-md-6">
+        <div>
             <label for="psicologa">Psicologa: </label>
             <select id="psicologa" name="psicologa" required>
             <option value="">Disponibles</option>
             <?php echo $psicologa_selec; ?>
             </select>    
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Seleccione una Opcion</div>
         </div>
 
@@ -171,10 +172,10 @@ if(mysqli_num_rows($ejecute) > 0){
 
         <!-- Male selection-->
         <div class="form-floating mb-3">
-            <label> Fecha de Consulta:</label> 
+            <label> Fecha de Consulta: </label> 
             <Label for=""></label>
             <input type="date" name="fechacon" required min="<?php echo date('Y-m-d'); ?>"/> 
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Seleccione una Fecha valida</div>
         </div>
 
@@ -182,8 +183,8 @@ if(mysqli_num_rows($ejecute) > 0){
 
         <!-- monto -->
         <div class="col-md-6">
-        <label> Hora de Consulta:</label> 
-            <select name="hora" id="hora">
+        <label> Hora de Consulta: </label> 
+            <select name="hora" id="hora" required>
             <option value="">Seleccionar</option>
             <option value="08:00:00">08:00 AM</option>
             <option value="10:00:00">10:00 AM</option>
@@ -192,14 +193,14 @@ if(mysqli_num_rows($ejecute) > 0){
             <option value="16:00:00">04:00 PM</option>
             <option value="18:00:00">06:00 PM</option>
             </select>
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Seleccione una Opcion</div>
         </div>
 
         <br>
         <label>Precio de la Consulta</label> 
-        <div class="row">
-            <div class="col-md-6">
+        <div>
+            <div>
                 <Label for="cedula"></label>
                 <input type="text" name="precio" value="<?php echo $precio ?>" disabled/>
                 <br>

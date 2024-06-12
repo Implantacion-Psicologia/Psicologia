@@ -86,24 +86,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_estado'])) {
 
 
     
-    <form class="row g-2 needs-validation" novalidate id="register" method="post" action="registro.php">
+    <form class="needs-validation" novalidate id="register" method="post" action="registro.php">
         
-        <div class="row">
-            <div class="col-md-6">
+        <div>
+            <div>
                 <!-- name -->
                 <Label for = "nombre"> </Label>
-                <input type ="text" id= "nombres" name ="nombres" required pattern="[A-Za-z]"
+                <input type ="text" id= "nombres" name ="nombres" required pattern="[A-Za-z]+"
                 placeholder = "Nombres"/>
-                <div class="valid-feedback">Verificado!</div>
+                <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
-                
-                <br>
-                
+            </div>
+            <br>
+            <div>
                 <!-- surname -->
                 <Label for = "apellido"> </Label>
-                <input type ="text" id= "apellidos" name ="apellidos" required pattern="[A-Za-z]"
+                <input type ="text" id= "apellidos" name ="apellidos" required pattern="[A-Za-z]+"
                 placeholder = "Apellidos"/>
-                <div class="valid-feedback">Verificado!</div>
+                <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
         </div>
@@ -112,21 +112,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_estado'])) {
 
         
         <!-- cedula -->
-        <div class="row">
-            <div class="col-md-6">
+        <div>
+            <div>
                 <label for="tipo_ced"></label>
-                <select name="tipo_ced" id="languages">
+                <select name="tipo_ced" id="languages" required>
+                <option value="">Seleccione...</option>
                 <option value="V">V</option>
                 <option value="E">E</option>
                 <option value="J">J</option>
                 </select>
-                <div class="valid-feedback">Verificado!</div>
-                <div class="invalid-feedback">Seleccione un Tipo</div>
-        
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">Seleccione una Opcion</div>
+            </div>
+            <div>
                 <Label for = "cedula"></Label>
                 <input type ="text" id= "cedula" name ="cedula" required pattern = "[0-9]{8}"
                 placeholder = "Cedula"/>
-                <div class="valid-feedback">Verificado!</div>
+                <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">La cédula debe tener 8 dígitos numéricos</div>
             </div>
         </div>
@@ -134,36 +136,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_estado'])) {
         <br>
 
         <!-- Tlf -->
-        <div class="col-md-6">
+        <div>
             <Label for = "Telefono"></Label>
             <input type ="text" id= "tlf" name ="tlf" required pattern = "^04[12]{2}-\d{4}-\d{6}$"
             placeholder = "Telefono" />
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">El teléfono debe tener el formato 04XX-XXXXXXX</div>
         </div>
         
         <p>
             Direccion
         </p>
-        <div class = "col-md-6">
+        <div>
             <label for="estado">Estados: </label>
             <select id="estado" name="estado" id="languages" required onchange="showMunicipios()">
             <option value="">Seleccionar Estado</option>
             <?php echo $estado_selec; ?>
             </select>
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Seleccione una opcion</div>
         </div>
 
         <br>
         
-        <div class = "col-md-6">
+        <div>
             <label for="municipio">Municipios: </label>
             <select id="municipio" name="municipio" id="languages" require disabled>
             <option value="">Seleccionar Municipio</option>
             <?php echo loadMunicipiosOptions($con) ?>
             </select>
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Seleccione una opcion</div>
         </div>
 
@@ -172,34 +174,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_estado'])) {
             <label> Fecha de Nacimiento: </label> 
             <Label for=""></label>
             <input type="date" name="fechanac" required max="<?php echo date('Y-m-d',strtotime('-1 day')); ?>"/> 
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">Seleccione una Fecha Valida</div>
         </div>
         <br>
 
         <!-- E.mail -->
-        <div class="col-md-6">
+        <div>
             <Label for = "Correo"></Label>
             <input type ="text" id= "correo" name ="correo" required pattern = "^.+@(?:gmail|hotmail)\.(com)$"
             placeholder = "Correo" />
-            <div class="valid-feedback">Verificado!</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">El correo debe tener el formato usuario@gmail.com o usuario@hotmail.com</div>
         </div>
 
         <br>
 
         <!-- password -->
-        <div class = "col-md-6">
+        <div>
             <label for = "contraseña"></label>
             <input id = "contraseña" name = "contraseña" type = "password" requiered pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\W]).{8,}$"
             placeholder="Contraseña"/>
-            <div class="valid-feedback">Verificado</div>
+            <div class="valid-feedback">¡Todo Correcto!</div>
             <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres, incluir al menos una letra minúscula, una mayúscula, un número y un símbolo especial</div>
         </div>
         
         <br>
-        <div class = "col-md-6">
         <!-- password verification-->
+        <div>
             <label for = "verifica contraseña"> </label>
             <input id = "verificacont" name = "verificacont" type = "password" required 
             placeholder ="Verifica contraseña"/>

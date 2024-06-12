@@ -119,30 +119,31 @@ while ($rom = mysqli_fetch_array($ejecute)){
         <div>
     </header>
     <body>
-        <form class="row g-1 needs-validation" novalidate method="POST" action="cambiarPrecio.php">
+        <form class="needs-validation" novalidate method="POST" action="cambiarPrecio.php">
             <p><?php echo $individual; ?></p>
             <p><?php echo $infantil; ?></p>
             <p><?php echo $pareja; ?></p>
             <br>
             <h3>Ingrese el Nuevo Precio para una Consulta</h3>
-            <div class="col-md-6">
-                <label for="tipo_ced">Consulta:</label>
-                <select name="idtipocon" id="idtipocon">
-                <option value="1">Indivudual</option>
-                <option value="2">Infantil</option>
-                <option value="3">Pareja</option>
-                </select>
-                <div class="valid-feedback">Verificado!</div>
-                <div class="invalid-feedback">Seleccione una opcion</div>
+            <div>
+              <label for="tipo_ced">Consulta:</label>
+              <select name="idtipocon" id="idtipocon" required>
+              <option value="">Seleccione...</option>
+              <option value="1">Indivudual</option>
+              <option value="2">Infantil</option>
+              <option value="3">Pareja</option>
+              </select>
+              <div class="valid-feedback">¡Todo Correcto!</div>
+              <div class="invalid-feedback">Seleccione una opcion</div>
             </div>
 
-                <div class="col-md-6">
-                  <Label for = ""></Label>
-                  <input type="text" id= "precio" name ="precio" required pattern = "[0-9]+(\.[0-9]{1,2})?"
-                  placeholder = "Nuevo Precio: 00.00"/>
-                  <div class="valid-feedback">Verificado!</div>
-                  <div class="invalid-feedback">El precio debe ser un número positivo puede tener hasta dos decimales</div>
-                </div>
+            <div>
+              <Label for = ""></Label>
+              <input type="text" id= "precio" name ="precio" required pattern = "[0-9]+(\.[0-9]{1,2})?"
+              placeholder = "Nuevo Precio: 00.00"/>
+              <div class="valid-feedback">¡Todo Correcto!</div>
+              <div class="invalid-feedback">El precio debe ser un número positivo puede tener hasta dos decimales</div>
+            </div>
 
             <br><br>
             <div class="enviar">
