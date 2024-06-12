@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 return;
             <script>';
     }
-
+    
     mysqli_close($con);
 }
 

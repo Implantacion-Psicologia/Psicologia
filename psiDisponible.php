@@ -14,7 +14,9 @@ if($con->connect_error){
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $disponibilidad = $_POST['disponible'];
-    if($disponibilidad === 1){
+    
+    $estatus = "";
+    if($disponibilidad == 1){
         $estatus = "Activo";
     }else{
         $estatus = "Inactivo";
@@ -28,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("location: Disponibilidad.php");
     }else{
         echo '<script>
-                alert("Fallo al cambiar al cambiar la disponibilidad");
+                alert("Fallo al cambiar la disponibilidad");
                 return;
             <script>';
     }
