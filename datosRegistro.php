@@ -9,18 +9,29 @@ if($con->connect_error){
     die("Connection failet: " .$con->connect_error);
 }
 
-function loadMunicipiosOptions($con) {
+function loadMunicipiosOptions($con, $selected_estado = null) {
     $sql = "SELECT municipios.id_municipio, municipios.municipio, estados.estado 
             FROM municipios 
             INNER JOIN estados ON municipios.id_estado = estados.id_estado";
-    $result = $con->query($sql);
+    
+    if ($selected_estado) {
+        $sql .= " WHERE municipios.id_estado = ?";
+    }
+    
+    $stmt = $con->prepare($sql);
+    if ($selected_estado) {
+        $stmt->bind_param("i", $selected_estado);
+    }
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
+        $municipio_options = "<option value=''>Seleccione...</option>";
         while ($row = $result->fetch_assoc()) {
             $municipio_id = $row["id_municipio"];
             $municipio = $row["municipio"];
             $estado = $row["estado"];
-            $municipio_options .= "<option value='$municipio_id'>$municipio ($estado)</option>";
+            $municipio_options .= "<option value='$municipio_id'>$municipio</option>";
         }
     } else {
         $municipio_options = "<option value=''>No hay Municipios disponibles</option>";
@@ -29,17 +40,28 @@ function loadMunicipiosOptions($con) {
     return $municipio_options;
 }
 
-$estado_selec= "";
-$consulta = "SELECT id_estado, estado FROM estados";
-$ejecut = mysqli_query($con, $consulta);
-if(mysqli_num_rows($ejecut) > 0){ 
-    while($rom = mysqli_fetch_assoc($ejecut)){
-        $id_estado = $rom["id_estado"];
-        $nom_estado = $rom["estado"];
-        $estado_selec .= "<option value='$id_estado'>$nom_estado</option>"; 
+function loadEstadosOptions($con) {
+    $sql = "SELECT id_estado, estado FROM estados";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        $estado_options = "<option value=''>Seleccione...</option>";
+        while ($row = $result->fetch_assoc()) {
+            $estado_id = $row["id_estado"];
+            $estado_nombre = $row["estado"];
+            $estado_options .= "<option value='$estado_id'>$estado_nombre</option>";
+        }
+    } else {
+        $estado_options = "<option value=''>No hay estados disponibles</option>";
     }
-}else{
-    $estado_selec = "<option value=''>No se han encontrado Estados</option>";
+
+    return $estado_options;
+}
+
+// Procesar la solicitud AJAX para cargar municipios
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_estado'])) {
+    echo loadMunicipiosOptions($con, $_POST['id_estado']);
+    exit;
 }
 
 ?>
@@ -242,9 +264,26 @@ if(mysqli_num_rows($ejecut) > 0){
 </script>
 
 <script>
-    function showMunicipios() {
-        var estadoSelect = document.getElementById("estado");
-        var municipioSelect = document.getElementById("municipio");
-        municipioSelect.disabled = estadoSelect.value === "";
-    }
+   function showMunicipios() {
+                var estadoSelect = document.getElementById('estado');
+                var municipioSelect = document.getElementById('municipio');
+                var estado_id = estadoSelect.value;
+    
+                if (estado_id === '') {
+                    municipioSelect.innerHTML = "<option value=''>Seleccione un estado primero</option>";
+                    municipioSelect.disabled = true;
+                    return;
+                }
+    
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        municipioSelect.innerHTML = xhr.responseText;
+                        municipioSelect.disabled = false;
+                    }
+                };
+                xhr.send('id_estado=' + estado_id);
+            }
 </script>

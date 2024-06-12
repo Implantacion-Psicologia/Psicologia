@@ -16,8 +16,8 @@ if(isset($_SESSION['user_id'])){
 }else{
     echo 'No se encontro nada';
 }
-
-if($user_id === 1){
+$menu = "";
+if($user_id == 1){
     $menu =  '<div id="barraSeleccion">
                 <ul>
                 <li><a href="index-psi.html">Volver al Menu</a></li>
@@ -132,11 +132,13 @@ if(mysqli_num_rows($ejecute) > 0){
                 <div class="valid-feedback">Verificado!</div>
                 <div class="invalid-feedback">Seleccione un Tipo</div>
                 
+                <div>
                 <Label for = "cedula"></Label>
-                <input type ="text" id= "cedula" name ="cedula" required pattern = "[0-9]"
+                <input type ="number" id= "cedula_pact" name ="cedula_pact" required pattern = "[0-9]+"
                 placeholder = "Cedula"/>
                 <div class="valid-feedback">Verificado!</div>
                 <div class="invalid-feedback">Ingrese solo numeros</div>
+                </div>
             </div>
         </div>
 

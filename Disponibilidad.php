@@ -11,7 +11,6 @@ if($con->connect_error){
     die("Connection failet: " .$con->connect_error);
 }
 
-$disponible = "";
 $consulta = "SELECT p.n_psi AS Psicologa, h.disponible AS Disponibilidad FROM psicologa p 
             INNER JOIN horario h ON p.id_psi=h.id_psi WHERE p.id_psi=1";
 $ejecute = mysqli_query($con, $consulta);
@@ -19,14 +18,14 @@ if(mysqli_num_rows($ejecute) > 0){
     while($rom = mysqli_fetch_assoc($ejecute)){
         $n_psi = $rom["Psicologa"];
         $disponible = $rom["Disponibilidad"];
-        if($rom["Disponibilidad"] === 1){
-            $disponible .='Psicologa: ' . $n_psi . ' -- ' . "Disponibilidad: Activa";
+        if($rom["Disponibilidad"] == 1){
+            $disponiblecon ='Psicologa: ' . $n_psi . ' -- ' . "Disponibilidad: Activa";
         }else{
-            $disponible .='Psicologa: ' . $n_psi . ' -- ' . "Disponibilidad: Inactiva";
+            $disponiblecon ='Psicologa: ' . $n_psi . ' -- ' . "Disponibilidad: Inactiva";
         }
     }
 }else{
-    $disponible = "No se ha encontrada Psicologas/Psicologos";
+    $disponiblecon = "No se ha encontrada Psicologas/Psicologos";
 }
 
 ?>
@@ -121,7 +120,7 @@ if(mysqli_num_rows($ejecute) > 0){
     </header>
     <body>
         <form class="row g-1 needs-validation" novalidate method="POST" action="psiDisponible.php">
-            <p><?php echo $disponible; ?></p>
+            <p><?php echo $disponiblecon; ?></p>
             <br>
             <h3>¿Desea Modificar su Disponibilidad?</h3>
             <div class="col-md-6">

@@ -86,14 +86,14 @@
         <div>
     </header>
     <body>
-    <form class="row g-3 needs-validation" novalidate id= "HistorialClinico" method="POST" action="guardarHistClin.php">
+    <form class="row needs-validation" novalidate id= "HistorialClinico" method="POST" action="guardarHistClin.php">
 
         <div class="row">
             <h3>I. DATOS DE IDENTIFICACIÓN</h3>
             <div class="col-md-6">
                 <label>Nombre:</label>
                 <Label for = ""> </Label>
-                <input type ="text" name ="nombre" required pattern="[A-Za-z]"/>
+                <input type ="text" name ="nombre" required pattern="[A-Za-z]+"/>
                 <div class="valid-feedback">Verificado!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -108,6 +108,7 @@
                 <br>
             <div class="form-floating mb-3">
                 <label> Fecha de Nacimiento:</label> 
+                <br><br>
                 <Label for=""></label>
                 <input type="date" name="fechanac" required max="<?php echo date('Y-m-d',strtotime('-1 day')); ?>"/>
                 <div class="valid-feedback">Verificado!</div>

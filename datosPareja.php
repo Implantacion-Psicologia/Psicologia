@@ -15,8 +15,8 @@ if(isset($_SESSION['user_id'])){
 }else{
     echo 'No se encontro nada';
 }
-
-if($user_id === 1){
+$menu = "";
+if($user_id == 1){
     $menu =  '<div id="barraSeleccion">
                 <ul>
                 <li><a href="index-psi.html">Volver al Menu</a></li>
@@ -30,34 +30,59 @@ if($user_id === 1){
             </div>';
 }
 
-$muninipio_selec = "";
-$consulta = "SELECT municipios.id_municipio, municipios.municipio, estados.estado 
-FROM municipios 
-INNER JOIN estados ON municipios.id_estado = estados.id_estado";
-$ejecut = mysqli_query($con, $consulta);
-if (mysqli_num_rows($ejecut) > 0){
-    $muninipio_selec .= "<option value=''>Seleccionar</option>";
-    while($rom = mysqli_fetch_assoc($ejecut)){
-        $id_municipio = $rom["id_municipio"];
-        $nom_municipio = $rom["municipio"];
-        $estado = $rom["estado"]; 
-        $muninipio_selec .= "<option value='$id_municipio'>$nom_municipio ($estado)</option>"; 
+function loadMunicipiosOptions($con, $selected_estado = null) {
+    $sql = "SELECT municipios.id_municipio, municipios.municipio, estados.estado 
+            FROM municipios 
+            INNER JOIN estados ON municipios.id_estado = estados.id_estado";
+    
+    if ($selected_estado) {
+        $sql .= " WHERE municipios.id_estado = ?";
     }
-}else{
-    $muninipio_selec = "<option value=''>No se han encontrado Municipios...</option>";
+    
+    $stmt = $con->prepare($sql);
+    if ($selected_estado) {
+        $stmt->bind_param("i", $selected_estado);
+    }
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $municipio_options = "<option value=''>Seleccione...</option>";
+        while ($row = $result->fetch_assoc()) {
+            $municipio_id = $row["id_municipio"];
+            $municipio = $row["municipio"];
+            $estado = $row["estado"];
+            $municipio_options .= "<option value='$municipio_id'>$municipio</option>";
+        }
+    } else {
+        $municipio_options = "<option value=''>No hay Municipios disponibles</option>";
+    }
+
+    return $municipio_options;
 }
 
-$estado_selec= "";
-$consulta = "SELECT id_estado, estado FROM estados";
-$ejecut = mysqli_query($con, $consulta);
-if(mysqli_num_rows($ejecut) > 0){
-    while($rom = mysqli_fetch_assoc($ejecut)){
-        $id_estado = $rom["id_estado"];
-        $nom_estado = $rom["estado"];
-        $estado_selec .= "<option value='$id_estado'>$nom_estado</option>"; 
+function loadEstadosOptions($con) {
+    $sql = "SELECT id_estado, estado FROM estados";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        $estado_options = "<option value=''>Seleccione...</option>";
+        while ($row = $result->fetch_assoc()) {
+            $estado_id = $row["id_estado"];
+            $estado_nombre = $row["estado"];
+            $estado_options .= "<option value='$estado_id'>$estado_nombre</option>";
+        }
+    } else {
+        $estado_options = "<option value=''>No hay estados disponibles</option>";
     }
-}else{
-    $estado_selec = "<option value=''>No se han encontrado Estados</option>";
+
+    return $estado_options;
+}
+
+// Procesar la solicitud AJAX para cargar municipios
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_estado'])) {
+    echo loadMunicipiosOptions($con, $_POST['id_estado']);
+    exit;
 }
 
 $psicologa_selec="";
@@ -70,7 +95,7 @@ if(mysqli_num_rows($ejecut) > 0){
         $psicologa_selec .= "<option value='$id_psi'>$n_psi</option>";
     }
 }else{
-    $psicologa_selec = "<option value=''>No hay Psicologas Disponibles>/option>";
+    $psicologa_selec = "<option value=''>No hay Psicologas Disponibles";
 }
 
 $preciocon = "";
@@ -165,11 +190,16 @@ if(mysqli_num_rows($ejecute) > 0){
                 <div class="valid-feedback">Verificado!</div>
                 <div class="invalid-feedback">Seleccione un Tipo</div>
                 
+
+                <div>
                 <Label for = "cedula"></Label>
-                <input type ="number" id= "cedula_pact" name ="cedula_pact" required pattern = "[0-9]"
+                <input type ="number" id= "cedula_pact" name ="cedula_pact" required pattern = "[0-9]+"
                 placeholder = "Cedula"/>
                 <div class="valid-feedback">Verificado!</div>
                 <div class="invalid-feedback">Ingrese solo numeros</div>
+
+                </div>
+                
             </div>
         </div>
 
@@ -258,7 +288,7 @@ if(mysqli_num_rows($ejecute) > 0){
             <label for="estado">Estados: </label>
             <select id="estado" name="estado" id="languages" required onchange="showMunicipios()">
             <option value="">Seleccionar Estado</option>
-            <?php echo $estado_selec; ?>
+            <?php echo loadEstadosOptions($con); ?>
             </select>
             <div class="valid-feedback">Verificado!</div>
             <div class="invalid-feedback">Seleccione una opcion</div>
@@ -266,11 +296,10 @@ if(mysqli_num_rows($ejecute) > 0){
 
         <br>
         
-        <div class = "col-md-6">
+        <div class="col-md-6">
             <label for="municipio">Municipios: </label>
-            <select id="municipio" name="municipio" id="languages" require disabled>
-            <option value="">Seleccionar Municipio</option>
-            <?php echo loadMunicipiosOptions($con) ?>
+            <select id="municipio" name="municipio" required disabled>
+            <option value=''>Seleccione un estado primero</option>
             </select>
             <div class="valid-feedback">Verificado!</div>
             <div class="invalid-feedback">Seleccione una opcion</div>
@@ -285,8 +314,8 @@ if(mysqli_num_rows($ejecute) > 0){
         <div class="col-md-6">
             <label for="psicologa">Psicologa: </label>
             <select id="psicologa" name="psicologa" required>
-            <option value="">Disponibles</option>
-            <?php echo $psicologa_selec; ?>
+                <option value="">Disponibles</option>
+                <?php echo $psicologa_selec; ?>
             </select>    
             <div class="valid-feedback">Verificado!</div>
             <div class="invalid-feedback">Seleccione una Opcion</div>
@@ -307,15 +336,15 @@ if(mysqli_num_rows($ejecute) > 0){
 
         <!-- monto -->
         <div class="col-md-6">
-        <label> Hora de Consulta:</label> 
+            <label> Hora de Consulta:</label> 
             <select name="hora" id="hora">
-            <option value="">Seleccionar</option>
-            <option value="08:00:00">08:00 AM</option>
-            <option value="10:00:00">10:00 AM</option>
-            <option value="12:00:00">12:00:PM</option>
-            <option value="14:00:00">02:00 PM</option>
-            <option value="16:00:00">04:00 PM</option>
-            <option value="18:00:00">06:00 PM</option>
+                <option value="">Seleccionar</option>
+                <option value="08:00:00">08:00 AM</option>
+                <option value="10:00:00">10:00 AM</option>
+                <option value="12:00:00">12:00 PM</option>
+                <option value="14:00:00">02:00 PM</option>
+                <option value="16:00:00">04:00 PM</option>
+                <option value="18:00:00">06:00 PM</option>
             </select>
             <div class="valid-feedback">Verificado!</div>
             <div class="invalid-feedback">Seleccione una Opcion</div>
@@ -325,18 +354,18 @@ if(mysqli_num_rows($ejecute) > 0){
         <label>Precio de la Consulta</label> 
         <div class="row">
             <div class="col-md-6">
-                <Label for="cedula"></label>
+                <Label for="cedula"></Label>
                 <input type="text" name="precio" value="<?php echo $precio ?>" disabled/>
                 <br>
                 <label>IVA</label> 
-                <Label for="cedula"></label>
+                <Label for="cedula"></Label>
                 <input type="text" name="iva" value="<?php echo $iva ?>" disabled/>
             </div>
         </div>
         <p>Duracion de Consultas: 45 min</p>
        
         <div class="enviar">
-            <input type ="submit" value = "Agendar Consulta" />
+            <input type="submit" value="Agendar Consulta" />
         </div>
 
     </form>
@@ -366,9 +395,26 @@ if(mysqli_num_rows($ejecute) > 0){
 </script>
 
 <script>
-    function MuestraMunicipio() {
-        var option_estado = document.getElementById("estados");
-        var option_municipios = document.getElementById("municipios");
-        option_municipios.disabled = option_estado.value === "";
-    }
+   function showMunicipios() {
+                var estadoSelect = document.getElementById('estado');
+                var municipioSelect = document.getElementById('municipio');
+                var estado_id = estadoSelect.value;
+    
+                if (estado_id === '') {
+                    municipioSelect.innerHTML = "<option value=''>Seleccione un estado primero</option>";
+                    municipioSelect.disabled = true;
+                    return;
+                }
+    
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        municipioSelect.innerHTML = xhr.responseText;
+                        municipioSelect.disabled = false;
+                    }
+                };
+                xhr.send('id_estado=' + estado_id);
+            }
 </script>

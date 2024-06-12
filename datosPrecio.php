@@ -138,8 +138,8 @@ while ($rom = mysqli_fetch_array($ejecute)){
 
                 <div class="col-md-6">
                   <Label for = ""></Label>
-                  <input type="text" id= "precio" name ="precio" required pattern = "[1-9]+(\.[0-9]{1,2})?"
-                  placeholder = "Nuevo Precio: 00.0S"/>
+                  <input type="text" id= "precio" name ="precio" required pattern = "[0-9]+(\.[0-9]{1,2})?"
+                  placeholder = "Nuevo Precio: 00.00"/>
                   <div class="valid-feedback">Verificado!</div>
                   <div class="invalid-feedback">El precio debe ser un número positivo puede tener hasta dos decimales</div>
                 </div>
