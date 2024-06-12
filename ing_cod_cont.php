@@ -15,7 +15,7 @@ $codigo = $_POST['codigo'];
     $validar_codigo = "SELECT * FROM login WHERE token LIKE '$codigo'";
     $ejecutar = mysqli_query($con, $validar_codigo);
     if(mysqli_num_rows($ejecutar) > 0){
-        $sql = "SELECT id_login FROM login WHERE correo_user = '$usuario' AND password= MD5('$contraseña')";
+        $sql = "SELECT id_con FROM login WHERE token = '$codigo'";
         $result = $con->query($sql);
         if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();  
@@ -24,7 +24,7 @@ $codigo = $_POST['codigo'];
         }
         echo '
         <script>
-            alert("Codigo aceptado");
+            alert("Codigo Confirmado");
         </script>
         ';
         header("location: index-pasiente.html");
