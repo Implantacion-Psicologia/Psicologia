@@ -9,8 +9,9 @@ if($con->connect_error){
     die("Connection failet: " .$con->connect_error);
 }
 
-$codigo = $_POST['codigo'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+$codigo = $_POST['codigo'];
 
     $validar_codigo = "SELECT * FROM login WHERE token LIKE '$codigo'";
     $ejecutar = mysqli_query($con, $validar_codigo);
@@ -38,5 +39,6 @@ $codigo = $_POST['codigo'];
     }
 
     mysqli_close($con);
+}
 
 ?>

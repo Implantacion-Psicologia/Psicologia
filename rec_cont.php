@@ -8,6 +8,9 @@ $con=mysqli_connect($server, $user, $pass, $db) or die ("No se pudo conectar ".m
 if($con->connect_error){
     die("Connection failet: " .$con->connect_error);
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 $correo = $_POST['correo'];
 
 function genera_token(){
@@ -48,5 +51,7 @@ function genera_token(){
     }
 
 mysql_close($con);
+
+}
 
 ?>
