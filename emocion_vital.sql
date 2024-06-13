@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2024 a las 00:47:53
+-- Tiempo de generación: 13-06-2024 a las 07:59:14
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -563,7 +563,9 @@ CREATE TABLE `consulta` (
 --
 
 INSERT INTO `consulta` (`id_con`, `id_pact`, `id_pactinf`, `id_pactpar`, `id_psi`, `id_tipocon`, `fecha`, `hora`, `duracion`, `estado_con`) VALUES
-(1, 1, 0, 0, 1, 1, '2024-05-22', '12:00:00', '45 min', 'Agendada');
+(1, 1, 0, 0, 1, 1, '2024-05-22', '12:00:00', '45 min', 'Agendada'),
+(2, 3, NULL, NULL, 1, 1, '2024-06-21', '12:00:00', '45 min', 'Realizada'),
+(3, 4, NULL, 2, 1, 3, '2024-08-22', '10:00:00', '45 min', 'Suspendida');
 
 -- --------------------------------------------------------
 
@@ -582,9 +584,16 @@ CREATE TABLE `direccion` (
 --
 
 INSERT INTO `direccion` (`id_direccion`, `id_estado`, `id_municipio`) VALUES
+(6, 2, 9),
+(7, 3, 30),
 (1, 12, 146),
 (2, 12, 149),
-(3, 12, 149);
+(3, 12, 149),
+(4, 12, 149),
+(8, 12, 149),
+(10, 12, 149),
+(9, 12, 150),
+(5, 12, 152);
 
 -- --------------------------------------------------------
 
@@ -611,7 +620,8 @@ CREATE TABLE `escuela_lugarfamiliar_d1` (
 
 INSERT INTO `escuela_lugarfamiliar_d1` (`id_D1`, `D1_d1`, `D1_d2`, `D1_d3`, `D1_d4`, `D1_d5`, `D1_d6`, `D1_d7`, `D1_d8`, `D1_d9`) VALUES
 (1, 'Maximo', '32897650', '2005-04-21', 'El Tamarindo', '0424-5392282', 'No', '', '', 'Hermano mayor'),
-(2, 'Ainhoa', '24389761-1', '2013-07-19', 'El Tamarindo', '', 'Si', 'Jose Aparicio Salsedo', '17', 'Hermana menor');
+(2, 'Ainhoa', '24389761-1', '2013-07-19', 'El Tamarindo', '', 'Si', 'Jose Aparicio Salsedo', '17', 'Hermana menor'),
+(3, 'Jesus', '29970338', '2003-08-07', 'El tamarindo', '04121244252', 'No', '', '', 'Hermano Menor');
 
 -- --------------------------------------------------------
 
@@ -696,7 +706,8 @@ CREATE TABLE `fact_familiares_d4` (
 
 INSERT INTO `fact_familiares_d4` (`id_D4`, `D4_d1`, `D4_d2`, `D4_d3`, `D4_d4`, `D4_d5`, `D4_d6`, `D4_d7`, `D4_d8`, `D4_d9`, `D4_d10`, `D4_d11`, `D4_d12`, `D4_d13`, `D4_d14`, `D4_d15`, `D4_d16`, `D4_d17`, `D4_d18`, `D4_d19`, `D4_d20`, `D4_d21`, `D4_d22`, `D4_d23`, `D4_d24`) VALUES
 (1, 'Rafael', 'Sonny', 'Bien', 'Bien', 'Bachiller', 'TSU Agropecuaria', 'Reparacion de Aires acondicionados', 'Director de Liceo', 'de lunes a viernes', 'de lunes a viernes', 'ninguno', 'ninguno', '', '', '', '', '', '', '', '', '', '', '', ''),
-(2, 'Rafael', 'Sonny', 'Bien', 'Bien', 'Bachiller', 'TSU Agropecuaria', 'Reparacion de Aires acondicionados', 'Director de Liceo', 'de lunes a viernes', 'de lunes a viernes', 'ninguno', 'no', '', '', '', '', '', '', 'no', '', '', '', '', '');
+(2, 'Rafael', 'Sonny', 'Bien', 'Bien', 'Bachiller', 'TSU Agropecuaria', 'Reparacion de Aires acondicionados', 'Director de Liceo', 'de lunes a viernes', 'de lunes a viernes', 'ninguno', 'no', '', '', '', '', '', '', 'no', '', '', '', '', ''),
+(3, 'Mariano', 'Orlinda', 'Bien', 'Buen', 'De liceo', 'Liceo', 'No', 'No', 'No', 'No', 'Regar matas', 'No', 'No', ' ', ' ', '5', 'No', ' ', ' ', 'No', ' ', '5', 'No hay', 'No hay');
 
 -- --------------------------------------------------------
 
@@ -716,7 +727,8 @@ CREATE TABLE `fact_fisicos_d3` (
 
 INSERT INTO `fact_fisicos_d3` (`id_D3`, `D3_d1`, `D3_d2`) VALUES
 (1, 'Normal', 'Infancia normal'),
-(2, 'no se', 'no se');
+(2, 'no se', 'no se'),
+(3, 'No tengo', 'Fue buena');
 
 -- --------------------------------------------------------
 
@@ -745,7 +757,8 @@ CREATE TABLE `fact_hereditarios_d6` (
 
 INSERT INTO `fact_hereditarios_d6` (`id_D6`, `D6_d1`, `D6_d2`, `D6_d3`, `D6_d4`, `D6_d5`, `D6_d6`, `D6_d7`, `D6_d8`, `D6_d9`, `D6_d10`, `D6_d11`) VALUES
 (1, 'No se', 'ninguno', 'ninguno', 'ninguno', 'Poca', 'ninguno', 'ninguno', 'ninguno', 'ninguno', 'Tartamudea', 'ninguno'),
-(2, 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada');
+(2, 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada'),
+(3, 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No');
 
 -- --------------------------------------------------------
 
@@ -768,7 +781,11 @@ CREATE TABLE `fact_motivacion_d2` (
 
 INSERT INTO `fact_motivacion_d2` (`id_D2`, `D2_d1`, `D2_d2`, `D2_d3`, `D2_d4`, `D2_d5`) VALUES
 (1, 'Poco sociable', 'Madre', 'No se', '', ''),
-(2, 'Algo', 'alguien', 'no se ', 'moderada', 'normal');
+(2, 'Algo', 'alguien', 'no se ', 'moderada', 'normal'),
+(3, 'Pq si', 'La psicologa', 'No hay', '', ''),
+(4, 'Pq si', 'La psicologa', 'No hay', '', ''),
+(5, 'Pq si', 'La psicologa', 'No hay', '', ''),
+(6, 'Pq si', 'La psicologa', 'No hay', '', '');
 
 -- --------------------------------------------------------
 
@@ -828,7 +845,8 @@ CREATE TABLE `fact_persoz_y_conduc_d5` (
 
 INSERT INTO `fact_persoz_y_conduc_d5` (`id_D5`, `D5_d1`, `D5_d2`, `D5_d3`, `D5_d4`, `D5_d5`, `D5_d6`, `D5_d7`, `D5_d8`, `D5_d9`, `D5_d10`, `D5_d11`, `D5_d12`, `D5_d13`, `D5_d14`, `D5_d15`, `D5_d16`, `D5_d17`, `D5_d18`, `D5_d19`, `D5_d20`, `D5_d21`, `D5_d22`, `D5_d23`, `D5_d24`, `D5_d25`, `D5_d26`, `D5_d27`, `D5_d28`, `D5_d29`, `D5_d30`, `D5_d31`, `D5_d32`, `D5_d33`, `D5_d34`, `D5_d35`, `D5_d36`, `D5_d37`, `D5_d38`, `D5_d39`, `D5_d40`, `D5_d41`, `D5_d42`) VALUES
 (1, 'Come bien', 'Duerme bien, intranqulo', 'ninguno', 'ninguna', 'ninguna', 'nada', 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0),
-(2, 'Come bien, come demasiado', 'inquieta', 'nada', 'nada', 'nada', 'nada', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(2, 'Come bien, come demasiado', 'inquieta', 'nada', 'nada', 'nada', 'nada', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 'Come mucho', '', '', 'No', 'No', 'No', 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -855,7 +873,8 @@ CREATE TABLE `historial_clinico` (
 
 INSERT INTO `historial_clinico` (`id_histcli`, `id_D1`, `id_D2`, `id_D3`, `id_D4`, `id_D5`, `id_D6`, `id_D7`, `id_D8`, `id_D9`) VALUES
 (1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-(2, 2, 2, 2, 2, 2, 2, 2, 2, 2);
+(2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+(3, 3, 3, 3, 3, 3, 3, 3, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -893,7 +912,8 @@ CREATE TABLE `impresion_psi_d7` (
 
 INSERT INTO `impresion_psi_d7` (`id_D7`, `D7_d1`) VALUES
 (1, 'Se indica la descripcion :v'),
-(2, 'Se indica aqui ');
+(2, 'Se indica aqui '),
+(3, 'Refirido por Maria Daniela');
 
 -- --------------------------------------------------------
 
@@ -917,7 +937,9 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`id_login`, `correo_user`, `password`, `tipo_user`, `token`, `estatus`) VALUES
 (1, 'mariadaniela@gmail.com', '263bce650e68ab4e23f28263760b9fa5', 'Psicologo', NULL, 'Activo'),
 (2, 'maximo32@gmail.com', 'd822eb65cbd84945f427dc08f4571694', 'Paciente', NULL, 'Activo'),
-(3, 'sonny@gmail.com', '17f83f724f242bbba2b12f85f6091d1f', 'Paciente', NULL, 'Activo');
+(3, 'sonny@gmail.com', '17f83f724f242bbba2b12f85f6091d1f', 'Paciente', NULL, 'Activo'),
+(4, 'jesuslparra24@gmail.com', '542395b59bfee646c49f1d5498622dd2', 'Paciente', NULL, 'Activo'),
+(5, 'rafael@gmail.com', '7c8d6f3588e90d3d2be62f3d29d43c18', 'Paciente', NULL, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -1298,7 +1320,9 @@ CREATE TABLE `paciente` (
 
 INSERT INTO `paciente` (`id_pact`, `id_histcli`, `n_pact`, `a_pact`, `tipo_ced`, `cedula_pact`, `correo_pact`, `id_direccion`, `id_login`, `tlf_pact`, `fecha_nac`) VALUES
 (1, 1, 'Maximo Antonio', 'Aguilar Parra', 'V', '32897650', 'maximo32@gmail.com', 2, 2, '0424-5392282', '2005-04-21'),
-(2, NULL, 'Sonnymar', 'Lopez', 'V', '24389761', 'sonny@gmail.com', 3, 3, '0424-5392282', '2005-04-21');
+(2, NULL, 'Sonnymar', 'Lopez', 'V', '24389761', 'sonny@gmail.com', 3, 3, '0424-5392282', '2005-04-21'),
+(3, 3, 'Jesus Mariano', 'Parra Lopez', 'V', '29970338', 'jesuslparra24@gmail.com', 8, 4, '04121323123', '2003-08-07'),
+(4, 2, 'Rafael ', 'Aguilar', 'V', '23987650', 'rafael@gmail.com', 9, 5, '04245612809', '1986-05-24');
 
 -- --------------------------------------------------------
 
@@ -1346,7 +1370,8 @@ CREATE TABLE `paciente_pareja` (
 --
 
 INSERT INTO `paciente_pareja` (`id_pactpar`, `id_pact`, `n_par`, `a_par`, `tipo_ced`, `cedula_par`, `tlf_par`, `id_direccion`, `fecha_nac`) VALUES
-(1, 2, 'Rafael', 'Aguilar', 'V', '17654390', '0424-2876541', 3, '1990-03-09');
+(1, 2, 'Rafael', 'Aguilar', 'V', '17654390', '0424-2876541', 3, '1990-03-09'),
+(2, 4, 'Sonny Mar', 'Parra', '', '24389761', '04245392282', 10, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -2521,7 +2546,11 @@ CREATE TABLE `plan_psicoterapeutico_d9` (
 
 INSERT INTO `plan_psicoterapeutico_d9` (`id_D9`, `D9_d1`) VALUES
 (1, 'Tal cosa'),
-(2, 'Otra cosa');
+(2, 'Otra cosa'),
+(3, ''),
+(4, ''),
+(5, ''),
+(6, '');
 
 -- --------------------------------------------------------
 
@@ -2540,7 +2569,9 @@ CREATE TABLE `precio_total` (
 --
 
 INSERT INTO `precio_total` (`id_pretotal`, `id_con`, `precio_tot`) VALUES
-(1, 1, 23.2);
+(1, 1, 23.2),
+(2, 2, 0),
+(3, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -2583,7 +2614,11 @@ CREATE TABLE `recomendaciones_d8` (
 
 INSERT INTO `recomendaciones_d8` (`id_D8`, `D8_d1`) VALUES
 (1, 'Se le recomienda bla bla bla'),
-(2, 'Se recomienda bla bla bla');
+(2, 'Se recomienda bla bla bla'),
+(3, 'Comer mas '),
+(4, 'Comer mas '),
+(5, 'Comer mas '),
+(6, 'Comer mas ');
 
 -- --------------------------------------------------------
 
@@ -2797,19 +2832,19 @@ ALTER TABLE `ciudades`
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `id_direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_direccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `escuela_lugarfamiliar_d1`
 --
 ALTER TABLE `escuela_lugarfamiliar_d1`
-  MODIFY `id_D1` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_D1` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `estados`
@@ -2821,37 +2856,37 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `fact_familiares_d4`
 --
 ALTER TABLE `fact_familiares_d4`
-  MODIFY `id_D4` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_D4` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `fact_fisicos_d3`
 --
 ALTER TABLE `fact_fisicos_d3`
-  MODIFY `id_D3` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_D3` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `fact_hereditarios_d6`
 --
 ALTER TABLE `fact_hereditarios_d6`
-  MODIFY `id_D6` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_D6` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `fact_motivacion_d2`
 --
 ALTER TABLE `fact_motivacion_d2`
-  MODIFY `id_D2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_D2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `fact_persoz_y_conduc_d5`
 --
 ALTER TABLE `fact_persoz_y_conduc_d5`
-  MODIFY `id_D5` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_D5` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_clinico`
 --
 ALTER TABLE `historial_clinico`
-  MODIFY `id_histcli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_histcli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`
@@ -2863,13 +2898,13 @@ ALTER TABLE `horario`
 -- AUTO_INCREMENT de la tabla `impresion_psi_d7`
 --
 ALTER TABLE `impresion_psi_d7`
-  MODIFY `id_D7` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_D7` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `login`
 --
 ALTER TABLE `login`
-  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `municipios`
@@ -2881,7 +2916,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id_pact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente_infantil`
@@ -2893,7 +2928,7 @@ ALTER TABLE `paciente_infantil`
 -- AUTO_INCREMENT de la tabla `paciente_pareja`
 --
 ALTER TABLE `paciente_pareja`
-  MODIFY `id_pactpar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pactpar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `parroquias`
@@ -2905,13 +2940,13 @@ ALTER TABLE `parroquias`
 -- AUTO_INCREMENT de la tabla `plan_psicoterapeutico_d9`
 --
 ALTER TABLE `plan_psicoterapeutico_d9`
-  MODIFY `id_D9` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_D9` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `precio_total`
 --
 ALTER TABLE `precio_total`
-  MODIFY `id_pretotal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pretotal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `psicologa`
@@ -2923,7 +2958,7 @@ ALTER TABLE `psicologa`
 -- AUTO_INCREMENT de la tabla `recomendaciones_d8`
 --
 ALTER TABLE `recomendaciones_d8`
-  MODIFY `id_D8` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_D8` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_consulta`
