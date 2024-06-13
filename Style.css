@@ -6,24 +6,19 @@ body{
     padding-left: "10px";
     margin: 10px;
     
+    
 }
 
-header{
+/* header{
     width: 240px;
     margin: o auto;
     text-align: center;
     color: #305537;
 
-}
+} */
 
-html{
-width: 100%;
-margin: 0;
-display: flex;
-justify-content: center;
-align-items: center;
-}
 
+ 
 .register{
     width: 10%;
     input[type="text"] {
@@ -42,14 +37,14 @@ button {
     border: 1px solid #b4b4b4;
     border-radius: 30px;
     box-sizing: border-box;
-}
+} 
 
 input[type= "submit"] {
-    width: 100%;
+    width: 300px;
     padding: 6px;
     margin-bottom: 5px;
     border: 1px solid #305537;
-    border-radius: 30px;
+    border-radius: 300px;
     box-sizing: border-box;
     background-color: #305537;
     color: #fff;
