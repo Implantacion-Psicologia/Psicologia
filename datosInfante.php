@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $user="root";
 $pass="";
 $server="localhost";
@@ -39,7 +41,7 @@ if(mysqli_num_rows($ejecut) > 0){
         $psicologa_selec .= "<option value='$id_psi'>$n_psi</option>";
     }
 }else{
-    $psicologa_selec = "<option value=''>No hay Psicologas Disponibles>/option>";
+    $psicologa_selec = "<option value=''>No hay Psicologas Disponibles</option>";
 }
 
 $preciocon = "";
@@ -99,165 +101,188 @@ if(mysqli_num_rows($ejecute) > 0){
       #barraSeleccion li a:hover {
         background-color: #9eb952;
       }
+
+      .caja{
+        border:2px solid #dbdbdb;
+        background-color: #ffffff;
+        padding: 50px;
+        margin: 50px;
+        width: 400px;
+        border-radius: 2%;
+        box-sizing: content-box;
+
+
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+        
+        }
     </style>
     
       <!-- Barra de selección -->
       <?php echo $menu; ?>
-    <header> 
-        <br>
-        <br>
-        <img src="Logo-Psicologia.jpeg" width="100"/>
-        <h2>Agenda de Consultas Infante</h2>
-    </header>
-
-    <form class="needs-validation" novalidate id= "agendaInfante" method="POST" action="agendarInfante.php">
-        <h3>
-            Ingrese sus Datos
-        </h3>
-            
-        <br>
     
-        <!-- cedula -->
-        <div>
+    <div class="caja">
+        <header class="text-center"> 
+            <img src="Logo-Psicologia.jpeg" width="100"/>
+            <h2>Agenda de Consultas Infante</h2>
+        </header>
+        <br>
+
+        <form class="needs-validation" novalidate id= "agendaInfante" method="POST" action="agendarInfante.php">
+            <h3>
+                Ingrese sus Datos
+            </h3>
+                
+            <br>
+        
+            <!-- cedula -->
+            <div class="row">
+                <div>
+                    <label for="tipoced"></label>
+                    <select class="col-md-4 form-control rounded" name="tipoced" id="tipoced" required>
+                    <option value="">Tipo Cedula...</option>
+                    <option value="V">V</option>
+                    <option value="E">E</option>
+                    <option value="J">J</option>
+                    </select>
+                    <div class="valid-feedback">¡Todo Correcto!</div>
+                    <div class="invalid-feedback">Seleccione una Opcion</div>
+                </div>
+                <div>
+                    <Label for = "cedula"></Label>
+                    <input class="col-md-4 form-control rounded" type ="text" id= "cedula" name ="cedula" required pattern = "[0-9]+"
+                    placeholder = "Cedula"/>
+                    <div class="valid-feedback">¡Todo Correcto!</div>
+                    <div class="invalid-feedback">Ingrese solo numeros</div>
+                </div>
+            </div>
+
+        
+            <!-- correo -->
             <div>
-                <label for="tipoced"></label>
-                <select name="tipoced" id="tipoced" required>
+                <Label for = "Correo"></Label>
+                <input class="col-md-4 form-control rounded" type ="text" id= "correo" name ="correo" required pattern = "^.+@(?:gmail|hotmail)\.(com)$"
+            placeholder = "Correo" />
+            <div class="valid-feedback">¡Todo Correcto!</div>
+            <div class="invalid-feedback">El correo debe tener el formato usuario@gmail.com o usuario@hotmail.com</div>
+            </div>
+        
+         
+            <div>
+                <Label for="tipoced"></label>
+                <input class="col-md-4 form-control rounded" type ="text" id="numerohijo" name ="numerohijo" required pattern = "[0-9]{1}" min="1" max=9
+            placeholder = "Numero de Hijo"/>
+            <div class="valid-feedback">¡Todo Correcto!</div>
+            <div class="invalid-feedback">Ingrese solo numeros no menores a 1 ni mayores a 9</div>
+            </div>
+            <br>
+
+            <h3>
+                Datos del Infante
+            </h3>
+            <!-- name -->
+            <div>
+                <Label for = "nombres"> </Label>
+                <input class="col-md-4 form-control rounded" type ="text" id= "nombres" name ="nombres" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+"
+                placeholder = "Nombres"/>
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">Ingrese solo Letras</div>
+            </div>
+            
+            
+            <!-- surname -->
+            <div>
+                <Label for = "apellidos"> </Label>
+                <input class="col-md-4 form-control rounded" type ="text" id= "apellidos" name ="apellidos" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+"
+                placeholder = "Apellidos"/>
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">Ingrese solo Letras</div>
+            </div>
+            
+
+            <!-- fecha-->
+            <label> Fecha de Nacimiento del Niño: </label> 
+            <div class="form-floating mb-3">
+                <Label for=""></label>
+                <div>
+                    <input class="col-md-4 form-control rounded" type="date" name="fechainf" required max="<?php echo date('Y-m-d',strtotime('-1 day')); ?>"/> 
+                    <div class="valid-feedback">¡Todo Correcto!</div>
+                    <div class="invalid-feedback">Seleccione una Fecha Valida</div>
+                </div>
+            </div>
+
+           
+            <br>
+
+            <h3>
+                Datos de la Consulta
+            </h3>
+            <label for="psicologa">Psicologa: </label>
+            <div>
+                <select class="col-md-4 form-control rounded" id="psicologa" name="psicologa" required>
+                <?php echo $psicologa_selec; ?>
+                </select>    
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">Seleccione una Opcion</div>
+            </div>
+
+            <br>
+
+            <!-- Male selection-->
+            <label> Fecha de Consulta: </label> 
+            <div class="form-floating mb-3">
+                <Label for=""></label>
+                <div>
+                    <input class="col-md-4 form-control rounded" type="date" name="fechacon" required min="<?php echo date('Y-m-d'); ?>"/> 
+                    <div class="valid-feedback">¡Todo Correcto!</div>
+                    <div class="invalid-feedback">Seleccione una Fecha valida</div>
+                </div>
+            </div>
+
+            
+
+            <!-- monto -->
+            <div>
+            <label> Hora de Consulta: </label> 
+                <select class="col-md-4 form-control rounded" name="hora" id="hora" required>
                 <option value="">Seleccione...</option>
-                <option value="V">V</option>
-                <option value="E">E</option>
-                <option value="J">J</option>
+                <option value="08:00:00">08:00 AM</option>
+                <option value="10:00:00">10:00 AM</option>
+                <option value="12:00:00">12:00:PM</option>
+                <option value="14:00:00">02:00 PM</option>
+                <option value="16:00:00">04:00 PM</option>
+                <option value="18:00:00">06:00 PM</option>
                 </select>
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Seleccione una Opcion</div>
             </div>
-                
-            <div>
-                <Label for = "cedula"></Label>
-                <input type ="number" id= "cedula_pact" name ="cedula_pact" required pattern = "[0-9]+"
-                placeholder = "Cedula"/>
-                <div class="valid-feedback">¡Todo Correcto!</div>
-                <div class="invalid-feedback">Ingrese solo numeros</div>
 
+            <br>
+            <label>Precio de la Consulta</label> 
+            <div class="row">
+                <div>
+                    <Label for="cedula"></label>
+                    <input class="col-md-4 form-control rounded" type="text" name="precio" value="<?php echo $precio ?>" disabled/>
+                    <br>
+                    <label>IVA</label> 
+                    <Label for="cedula"></label>
+                    <input class="col-md-4 form-control rounded" type="text" name="iva" value="<?php echo $iva ?>" disabled/>
+                </div>
             </div>
-        </div>
-
-    
-        <!-- correo -->
-        <div>
-            <Label for = "Correo"></Label>
-            <input type ="text" id= "correo" name ="correo" required pattern = "^.+@(?:gmail|hotmail)\.(com)$"
-            placeholder = "Correo" />
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">El correo debe tener el formato usuario@gmail.com o usuario@hotmail.com</div>
-        </div>
-    
-        <br>
-        <div>
-            <Label for="tipoced"></label>
-            <input type ="text" id="numerohijo" name ="numerohijo" required pattern = "[0-9]" min="1" max=9
-            placeholder = "Numero de Hijo"/>
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">Ingrese solo numeros no menores a 1 ni mayores a 9</div>
-        </div>
-        <br>
-
-        <h3>
-            Datos del Infante
-        </h3>
-        <!-- name -->
-        <div>
-            <Label for = "nombres"> </Label>
-            <input type ="text" id= "nombres" name ="nombres" required pattern = "[A-Za-z]+"
-            placeholder = "Nombres"/>
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">Ingrese solo Letras</div>
-        </div>
+            <br>
+            <p>Duracion de Consultas: 45 min</p>
         
-        <br>
-        
-        <!-- surname -->
-        <div>
-            <Label for = "apellidos"> </Label>
-            <input type ="text" id= "apellidos" name ="apellidos" required pattern = "[A-Za-z]+"
-            placeholder = "Apellidos"/>
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">Ingrese solo Letras</div>
-        </div>
-        <br>
-
-        <!-- Male selection-->
-        <div class="form-floating mb-3">
-            <label> Fecha de Nacimiento del Niño: </label> 
-            <Label for=""></label>
-            <input type="date" name="fechainf" required max="<?php echo date('Y-m-d',strtotime('-1 day')); ?>"/> 
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">Seleccione una Fecha Valida</div>
-        </div>
-
-        <br>
-
-        <h3>
-            Datos de la Consulta
-        </h3>
-        <div>
-            <label for="psicologa">Psicologa: </label>
-            <select id="psicologa" name="psicologa" required>
-            <option value="">Disponibles</option>
-            <?php echo $psicologa_selec; ?>
-            </select>    
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">Seleccione una Opcion</div>
-        </div>
-
-        <br><br>
-
-        <!-- Male selection-->
-        <div class="form-floating mb-3">
-            <label> Fecha de Consulta: </label> 
-            <Label for=""></label>
-            <input type="date" name="fechacon" required min="<?php echo date('Y-m-d'); ?>"/> 
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">Seleccione una Fecha valida</div>
-        </div>
-
-        <br><br>
-
-        <div>
-        <label> Hora de Consulta: </label> 
-            <select name="hora" id="hora" required>
-            <option value="">Seleccionar</option>
-            <option value="08:00:00">08:00 AM</option>
-            <option value="10:00:00">10:00 AM</option>
-            <option value="12:00:00">12:00:PM</option>
-            <option value="14:00:00">02:00 PM</option>
-            <option value="16:00:00">04:00 PM</option>
-            <option value="18:00:00">06:00 PM</option>
-            </select>
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">Seleccione una Opcion</div>
-        </div>
-
-        <br>
-        <!-- monto -->
-        <label>Precio de la Consulta</label> 
-        <div>
-            <div>
-                <Label for="cedula"></label>
-                <input type="text" name="precio" value="<?php echo $precio ?>" disabled/>
-                <br>
-                <label>IVA</label> 
-                <Label for="cedula"></label>
-                <input type="text" name="iva" value="<?php echo $iva ?>" disabled/>
+            <div class="enviar">   
+                <div class="col-md-12">    
+                    <input class="form-control rounded" type ="submit" value = "Agendar Consulta" />
+                </div>
             </div>
-        </div>
-        <p>Duracion de Consultas: 45 min</p>
-       
-        <div class="enviar">
-            <input type ="submit" value = "Agendar Consulta" />
-        </div>
 
-    </form>
-</body>
+        </form>
+        </body>
+    </div>
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

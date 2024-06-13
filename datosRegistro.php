@@ -75,159 +75,243 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_estado'])) {
         <meta charset="utf-8">
     </head>
     
-<body>
-    <header> 
+<!-- Barra de selección -->
+<div id="barraSeleccion">
+  <ul Class="text-success">
+    <li><a href="index.php">Inicio</a></li>
+    <li><a href="login.php">Acceder</a></li>
+    <li><a href="acerca-de.html">Acerca de</a></li>
+    
+  </ul>
+</div>
+ 
+
+
+<div class="text-center">
+        <br>
         <br>
         <br>
         <img src="registro-ico.png" width="100"/>
-        <h1>Registro </h1>
-    </header>
-    
+        <h1 class="text-success">Registro </h1>
+</div>
 
 
+  
+<style>
     
-    <form class="needs-validation" novalidate id="register" method="post" action="registro.php">
-        
-        <div>
+ 
+    /* Estilos para la barra de selección */
+    #barraSeleccion {
+        position: fixed; /* Fija la barra en la pantalla */
+        top: 0; /* Alinea la barra en la parte superior */
+        left: 0; /* Alinea la barra a la izquierda */
+        width: 100%; /* Ancho completo */
+        background-color: #64b468; /* Color de fondo */
+        color: white; /* Color del texto */
+        z-index: 1000; /* Asegura que la barra esté sobre otros elementos */
+    }
+
+    /* Estilos para los elementos dentro de la barra */
+    #barraSeleccion ul {
+        list-style-type: none; /* Remueve los estilos de lista */
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    #barraSeleccion li {
+        float: left; /* Alinea los elementos horizontalmente */
+    }
+
+    #barraSeleccion li a {
+        display: block; /* Hace que los enlaces llenen el espacio del 'li' */
+        text-align: center; /* Centra el texto */
+        padding: 14px 16px; /* Espaciado interno */
+        text-decoration: none; /* Remueve el subrayado del enlace */
+    }
+
+    /* Cambia el color de fondo al pasar el mouse */
+    #barraSeleccion li a:hover {
+        background-color: #9eb952;
+    }
+    
+    
+    
+    .caja-texto{
+    border:2px solid #dbdbdb;
+    background-color: #ffffff;
+    padding: 30px;
+    margin: 30px;
+    width: 300px;
+    border-radius: 2%;
+    box-sizing: content-box;
+
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+  
+</style>
+
+
+
+
+
+
+<body> 
+    <div class="caja-texto">
+        <form class ="row needs-validation" novalidate id="register" method="post" action="registro.php">
+            
             <div>
-                <!-- name -->
-                <Label for = "nombre"> </Label>
-                <input type ="text" id= "nombres" name ="nombres" required pattern="[A-Za-z]+"
-                placeholder = "Nombres"/>
-                <div class="valid-feedback">¡Todo Correcto!</div>
-                <div class="invalid-feedback">Ingrese solo Letras</div>
+                <div>
+                    <!-- name -->
+                    <Label for = "nombre"> </Label>
+                    <input class="form-control rounded" type ="text" id= "nombres" name ="nombres" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+"
+                    placeholder = "Nombres"/>
+                    <div class="valid-feedback">¡Todo Correcto!</div>
+                    <div class="invalid-feedback">Ingrese solo Letras</div>
+                </div>
+                   
+                <div>
+                    <!-- surname -->
+                    <Label for = "apellido"> </Label>
+                    <input class="form-control rounded" type ="text" id= "apellidos" name ="apellidos" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+"
+                    placeholder = "Apellidos"/>
+                    <div class="valid-feedback">¡Todo Correcto!</div>
+                    <div class="invalid-feedback">Ingrese solo Letras</div>
+                </div>
             </div>
+
             <br>
+
+            
+            <!-- cedula -->
             <div>
-                <!-- surname -->
-                <Label for = "apellido"> </Label>
-                <input type ="text" id= "apellidos" name ="apellidos" required pattern="[A-Za-z]+"
-                placeholder = "Apellidos"/>
-                <div class="valid-feedback">¡Todo Correcto!</div>
-                <div class="invalid-feedback">Ingrese solo Letras</div>
+                <div>
+                    <label  for="tipo_ced"></label>
+                    <select class="form-control rounded" name="tipoced" id="languages"required>
+                    <option value="">Tipo Cedula...</option>
+                    <option value="V">V</option>
+                    <option value="E">E</option>
+                    <option value="J">J</option>
+                    </select>
+                    <div class="valid-feedback">¡Todo Correcto!</div>
+                    <div class="invalid-feedback">Seleccione una Opcion</div>
+                </div>
+
+                <div>
+                    <Label  for = "cedula"></Label>
+                    <input class="form-control rounded" type ="text" id= "cedula" name ="cedula" required pattern = "[0-9]{8}"
+                    placeholder = "Cedula"/>
+                    <div class="valid-feedback">¡Todo Correcto!</div>
+                    <div class="invalid-feedback">La cédula debe tener 8 dígitos numéricos</div>
+                <div>
             </div>
-        </div>
+            
+            <br>
 
-        <br>
-
-        
-        <!-- cedula -->
-        <div>
+            <!-- Tlf -->
             <div>
-                <label for="tipo_ced"></label>
-                <select name="tipo_ced" id="languages" required>
-                <option value="">Seleccione...</option>
-                <option value="V">V</option>
-                <option value="E">E</option>
-                <option value="J">J</option>
+                <Label for = "Telefono"></Label>
+                <input class="form-control rounded" type ="text" id= "tlf" name ="tlf" required pattern = "^(04|02)[0-9]{9}$"
+                placeholder = "Telefono" />
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">El teléfono debe tener el formato 04XXXXXXXXX o 02XXXXXXXXX</div>
+            </div>
+            
+            <p>
+            <br>
+            <br>    
+            Direccion
+            </p>
+            <div>
+                <label for="estado">Estados: </label>
+                <select class="form-control rounded" id="estado" name="estado" id="languages" required onchange="showMunicipios()">
+                <option value="">Seleccionar Estado</option>
+                <?php echo loadEstadosOptions($con); ?>
+                </select>
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">Seleccione una opcion</div>
+            </div>
+
+            <br>
+
+            <div>
+                <label for="municipio">Municipios: </label>
+                <select class="form-control rounded" id="municipio" name="municipio" id="languages" required disabled>
+                <option>Seleccione un estado primero</option>
                 </select>
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Seleccione una Opcion</div>
             </div>
+
+            <br>
+
             <div>
-                <Label for = "cedula"></Label>
-                <input type ="text" id= "cedula" name ="cedula" required pattern = "[0-9]{8}"
-                placeholder = "Cedula"/>
+                <label> Fecha de Nacimiento: </label> 
+                <Label for=""></label>
+                <input class="form-control rounded" type="date" name="fechanac" required max="<?php echo date('Y-m-d',strtotime('-1 day')); ?>"/> 
                 <div class="valid-feedback">¡Todo Correcto!</div>
-                <div class="invalid-feedback">La cédula debe tener 8 dígitos numéricos</div>
+                <div class="invalid-feedback">Seleccione una Fecha Valida</div>
             </div>
-        </div>
-        
-        <br>
 
-        <!-- Tlf -->
-        <div>
-            <Label for = "Telefono"></Label>
-            <input type ="text" id= "tlf" name ="tlf" required pattern = "^04[12]{2}-\d{4}-\d{6}$"
-            placeholder = "Telefono" />
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">El teléfono debe tener el formato 04XX-XXXXXXX</div>
-        </div>
-        
-        <p>
-            Direccion
-        </p>
-        <div>
-            <label for="estado">Estados: </label>
-            <select id="estado" name="estado" id="languages" required onchange="showMunicipios()">
-            <option value="">Seleccionar Estado</option>
-            <?php echo $estado_selec; ?>
-            </select>
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">Seleccione una opcion</div>
-        </div>
+            <br>
 
-        <br>
-        
-        <div>
-            <label for="municipio">Municipios: </label>
-            <select id="municipio" name="municipio" id="languages" require disabled>
-            <option value="">Seleccionar Municipio</option>
-            <?php echo loadMunicipiosOptions($con) ?>
-            </select>
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">Seleccione una opcion</div>
-        </div>
+            <!-- E.mail -->
+            <div>
+                <Label for = "Correo"></Label>
+                <input class="form-control rounded" type ="text" id= "correo" name ="correo" required pattern = "^.+@(?:gmail|hotmail)\.(com)$"
+                placeholder = "Correo" />
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">El correo debe tener el formato usuario@gmail.com o usuario@hotmail.com</div>
+            </div>
+            
 
-        <br>
-        <div class="form-floating mb-3">
-            <label> Fecha de Nacimiento: </label> 
-            <Label for=""></label>
-            <input type="date" name="fechanac" required max="<?php echo date('Y-m-d',strtotime('-1 day')); ?>"/> 
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">Seleccione una Fecha Valida</div>
-        </div>
-        <br>
+            <!-- password -->
+            <div>
+            <div>
+                <label for = "contraseña"></label>
+                <input class="form-control rounded" id = "contraseña" name = "contraseña" type = "password" required pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$"
+                placeholder="Contraseña"/>
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres, incluir una letra minúscula, una mayúscula y un número</div>
+            </div>
 
-        <!-- E.mail -->
-        <div>
-            <Label for = "Correo"></Label>
-            <input type ="text" id= "correo" name ="correo" required pattern = "^.+@(?:gmail|hotmail)\.(com)$"
-            placeholder = "Correo" />
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">El correo debe tener el formato usuario@gmail.com o usuario@hotmail.com</div>
-        </div>
-
-        <br>
-
-        <!-- password -->
-        <div>
-            <label for = "contraseña"></label>
-            <input id = "contraseña" name = "contraseña" type = "password" requiered pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\W]).{8,}$"
-            placeholder="Contraseña"/>
-            <div class="valid-feedback">¡Todo Correcto!</div>
-            <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres, incluir al menos una letra minúscula, una mayúscula, un número y un símbolo especial</div>
-        </div>
-        
-        <br>
-        <!-- password verification-->
-        <div>
-            <label for = "verifica contraseña"> </label>
-            <input id = "verificacont" name = "verificacont" type = "password" required 
+            <!-- password verification-->
+            <div>
+                <label for = "verifica contraseña"> </label>
+                <input class="form-control rounded" id = "verificacont" name = "verificacont" type = "password" required 
             placeholder ="Verifica contraseña"/>
-        </div>
+            </div>
+            
+            <br>
 
-        <br>
-
-        <div class="enviar">
-            <input type ="submit" value = "Registrarse" />
-        </div>
-    
-    </form>
+            <div class="enviar">
+              <div>  
+                <input class="form-control rounded" type ="submit" value = " Registrarse " />
+              </div>
+            </div>
+        
+        </form>
+    <div>
 
 </body>
-<footer>
-    
-    <p>¿Ya estas resgistrado? <a href="login.html" >Inicia sesion</a></p>
-    <p>Volver al <a href="index.html" >inicio</a></p>
-    <p>Copyrigt 2024</p>
-</footer>
+
+<div class="text-center">
+    <p class="text-center">¿Ya estas resgistrado? <a href="login.php" >Inicia sesion</a></p>
+    <p class="text-center">Volver al <a href="index.php" >inicio</a></p>
+    <p class="text-center">Copyrigt 2024</p>
+</div>
 
 
 
 </html>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+crossorigin="anonymous"></script>
 
 <script>
     (function () {
@@ -247,9 +331,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_estado'])) {
       }, false)
     })
 })()    
+
 </script>
 
-<script>
+<script>/*
     const form = document.getElementById('register'); 
 
     form.addEventListener('submit', function(event) {
@@ -261,9 +346,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_estado'])) {
     if (password !== confirmPassword) {
         alert("Las contraseñas no coinciden. Por favor, vuelve a ingresarlas.");
         return;
+    }else{
+        form.submit();
     }
 })
 </script>
+
 
 <script>
    function showMunicipios() {

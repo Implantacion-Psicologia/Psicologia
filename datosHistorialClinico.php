@@ -86,7 +86,7 @@
         <div>
     </header>
     <body>
-    <form class="needs-validation" novalidate id= "HistorialClinico" method="POST" action="guardarHistClin.php">
+    <form class="row g-2 needs-validation" novalidate id= "HistorialClinico" method="POST" action="guardarHistClin.php">
 
         <div>
             <h3>I. DATOS DE IDENTIFICACIÓN</h3>
@@ -94,7 +94,7 @@
                 <?php //buscar como hacer que agarre espacios incluidos ?>
                 <label>Nombre: </label>
                 <Label for = ""> </Label>
-                <input type ="text" name ="nombre" required pattern="[A-Za-z]+"/>
+                <input type ="text" name ="nombre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -120,7 +120,7 @@
             <div>
                 <label> Direccion:</label> 
                 <Label for=""></label>
-                <input type="text" name="direccion" required/>
+                <input type="text" name="direccion" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+"/>
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese algun Dato</div>
             </div>
@@ -146,7 +146,7 @@
             <div>
                 <label> Escuela: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="escuela" required>
+                <input type="text" name="escuela" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese algun Dato</div>
             </div>
@@ -165,7 +165,7 @@
             <div>
                 <label> Lugar que ocupa en la familia: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="lugarfamilia" required pattern = "[A-Za-z]+">
+                <input type="text" name="lugarfamilia" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -180,7 +180,7 @@
             <div>
                 <label> Motivo de Consulta: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="motivocon" required pattern="[A-Za-z]+">
+                <input type="text" name="motivocon" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -188,7 +188,7 @@
             <div>
                 <label> Referido por :</label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="referido" required pattern="[A-Za-z]+">
+                <input type="text" name="referido" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -196,7 +196,7 @@
             <div>
                 <label> Diagnostico Organico:</label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="diagorganico" required pattern="[A-Za-z]+">
+                <input type="text" name="diagorganico" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -213,7 +213,7 @@
             <div>
                 <label> Actitud de los padres ante el problema :</label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="actitudpadres" required pattern="[A-Za-z]+">
+                <input type="text" name="actitudpadres" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -221,7 +221,7 @@
             <div>
                 <label> Estado emocional actual del Niño(a): </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="estadoemocionalniño" required pattern="[A-Za-z]+">
+                <input type="text" name="estadoemocionalniño" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -234,7 +234,7 @@
             <div>
                 <label> Desarrollo Natal y Prenatal: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="desarrolloprental" required pattern="[A-Za-z]+">
+                <input type="text" name="desarrolloprental" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -243,7 +243,7 @@
             <div>
                 <label> Desarrollo de la Primera Infancia:</label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="desarolloinfancia" required pattern="[A-Za-z]+">
+                <input type="text" name="desarolloinfancia" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             <div>
@@ -259,42 +259,42 @@
             <div>
                 <label> Nombre: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="nombrepadre" required pattern="[A-Za-z]+">
+                <input type="text" name="nombrepadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Salud Fisica: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="saludpadre" required pattern="[A-Za-z]+">
+                <input type="text" name="saludpadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Nivel Educatico: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="educativopadre" required pattern="[A-Za-z]+">
+                <input type="text" name="educativopadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Trabajo Actual: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="trabajopadre" required pattern="[A-Za-z]+">
+                <input type="text" name="trabajopadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Horario de Trabajo: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="horariopadre" required pattern="[A-Za-z]+">
+                <input type="text" name="horariopadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Habitos: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="habitospadre" required pattern="[A-Za-z]+">
+                <input type="text" name="habitospadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -303,42 +303,42 @@
                 <p>De la Madre</p>
                 <label> Nombre: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="nombrem" required pattern="[A-Za-z]+">
+                <input type="text" name="nombrem" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>    
                 <label> Salud Fisica: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="saludmadre" required pattern="[A-Za-z]+">
+                <input type="text" name="saludmadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Nivel Educatico: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="educativomadre" required pattern="[A-Za-z]+">
+                <input type="text" name="educativomadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Trabajo Actual: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="trabajomadre" required pattern="[A-Za-z]+">
+                <input type="text" name="trabajomadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Horario de Trabajo: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="horariomadre" required pattern="[A-Za-z]+">
+                <input type="text" name="horariomadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Habitos: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="habitosmadre" required pattern="[A-Za-z]+">
+                <input type="text" name="habitosmadre" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -358,14 +358,14 @@
             <div>
                 <label> Quien era: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="perdidaquien" required pattern="[A-Za-z]+">
+                <input type="text" name="perdidaquien" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Como fue: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="comofue" required pattern="[A-Za-z]+">
+                <input type="text" name="comofue" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -388,14 +388,14 @@
             <div>
                 <label> Reacción del niño ante esto: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="reaccionsuceso" required pattern="[A-Za-z]+">
+                <input type="text" name="reaccionsuceso" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> El Niño ha Sufrido Accidentes: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="accidenteniño" required pattern="[A-Za-z]+">
+                <input type="text" name="accidenteniño" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -410,7 +410,7 @@
             <div>
                 <label> De parte de quien: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="castigoquien" required pattern="[A-Za-z]+">
+                <input type="text" name="castigoquien" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -427,14 +427,14 @@
                 <label> Los problemas del niño son causados por (personas,
                     situaciones, experiencias, etc): </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="problemasniño" required pattern="[A-Za-z]+">
+                <input type="text" name="problemasniño" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Problemas Físicos :</label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="problemafisico" required pattern="[A-Za-z]+">
+                <input type="text" name="problemafisico" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -450,42 +450,42 @@
             <div>
                 <label> En la Comida: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="comida" required pattern="[A-Za-z]+">
+                <input type="text" name="comida" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div> 
                 <label> En el Sueño: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="sueño" required pattern="[A-Za-z]+">
+                <input type="text" name="sueño" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> En las Eliminaciones: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="eliminarcion" required pattern="[A-Za-z]+">
+                <input type="text" name="eliminarcion" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> En las Manias y Tics: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="maniastics" required pattern="[A-Za-z]+">
+                <input type="text" name="maniastics" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> En su Historia Sexual: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="sexual" required pattern="[A-Za-z]+">
+                <input type="text" name="sexual" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> En los Rasgos Peculiares: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="peculiares" required pattern="[A-Za-z]+">
+                <input type="text" name="peculiares" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -546,77 +546,77 @@
             <div>
                 <label> Incidencia de Anomalias en Familiares Consanguineos (Familiares, Fecha,Detalles,etc): </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="incidencia" required pattern="[A-Za-z]+">
+                <input type="text" name="incidencia" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Tratamiento Medico por Nerviosismo: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="tratamientonervios" required pattern="[A-Za-z]+">
+                <input type="text" name="tratamientonervios" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Alcolismo (Grado), Manifestaciones, etc: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="alcohol" required pattern="[A-Za-z]+">
+                <input type="text" name="alcohol" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Abuso de drogas, Calmantes, etc: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="drogas" required pattern="[A-Za-z]+">
+                <input type="text" name="drogas" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Debilidad Mental: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="debilmental" required pattern="[A-Za-z]+">
+                <input type="text" name="debilmental" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Convulsiones, Desmayos, Templores, etc: </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="convulsion" required pattern="[A-Za-z]+">
+                <input type="text" name="convulsion" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> ETS - Enfermedades Sexuales (Forma, Motivos): </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="enfermedadsexo" required pattern="[A-Za-z]+">
+                <input type="text" name="enfermedadsexo" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Suicidio (Formas, Motivos): </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="suicidio" required pattern="[A-Za-z]+">
+                <input type="text" name="suicidio" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Anormalidades (ProntitucionN, Criminalidad, Delitos, Reclusion, etc): </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="anormalidad" required pattern="[A-Za-z]+">
+                <input type="text" name="anormalidad" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Transtornos del Habla (Tartamudez, Sodera, Mudez, etc): </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="transtorno" required pattern="[A-Za-z]+">
+                <input type="text" name="transtorno" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
             <div>
                 <label> Trasornos de la Vista (Ceguera, Miopia, etc): </label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="trasorno" required pattern="[A-Za-z]+">
+                <input type="text" name="trasorno" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -632,7 +632,7 @@
                     patología: </label> 
                     <br><br>
                 <Label for="tipoced"></label>
-                <input type="text" name="impresion" required pattern="[A-Za-z]+">
+                <input type="text" name="impresion" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -644,7 +644,7 @@
             <div>
                 <label></label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="recomendacion" required pattern="[A-Za-z]+">
+                <input type="text" name="recomendacion" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>
@@ -656,7 +656,7 @@
             <div>
                 <label></label> 
                 <Label for="tipoced"></label>
-                <input type="text" name="plan" required pattern="[A-Za-z]+">
+                <input type="text" name="plan" required pattern = "[A-Za-zÀÁÉÍÓÚñü\s-]+">
                 <div class="valid-feedback">¡Todo Correcto!</div>
                 <div class="invalid-feedback">Ingrese solo Letras</div>
             </div>

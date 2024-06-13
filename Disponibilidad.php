@@ -104,40 +104,63 @@ if(mysqli_num_rows($ejecute) > 0){
               color: #333;
               border: 1px solid #dddddd;
               text-align: left;
-              padding: 8px;
-          }
+              padding: 8px;}
+
+          .caja{
+              border:2px solid #dbdbdb;
+              background-color: #ffffff;
+              padding: 50px;
+              margin: 50px;
+              width: 400px;
+              border-radius: 2%;
+              box-sizing: content-box;
+
+
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+
+        
+        }
+          
           </style>
           <link rel="stylesheet" href="Style.css"/>
           <meta charset="utf-8">
-      </head>
-        <br>
-        <br>
-        <div class="listaConsulta">
-            <br><br>
-            <h1>Mi Disponibilidad</h1>
-            <br>
-        <div>
-    </header>
-    <body>
-        <form class="needs-validation" novalidate method="POST" action="psiDisponible.php">
-            <p><?php echo $disponiblecon; ?></p>
-            <br>
-            <h3>¿Desea Modificar su Disponibilidad?</h3>
-            <div>
-              <label for="tipo_ced"></label>
-              <select name="disponible" id="disponible" required>
-              <option value="">Seleccione...</option>
-              <option value="1">Activa</option>
-              <option value="0">Inactiva</option>
-              <div class="valid-feedback">¡Todo Correcto!</div>
-              <div class="invalid-feedback">Seleccione una opcion</div>
-            </div>
-            <br>
+  <div class="caja">
+        </head>
+          <br>
+          <br>
+          <div class="listaConsulta">
+              <br><br>
+              <h1>Mi Disponibilidad</h1>
+              
+          <div>
+      </header>
+      <body>
+          <form class="row g-1 needs-validation" novalidate method="POST" action="psiDisponible.php">
+              <p><?php echo $disponiblecon; ?></p>
+              <br>
+              <h3>¿Desea Modificar su Disponibilidad?</h3>
+              <div class="col-md-6">
+                <label for="tipo_ced"></label>
+                <select class="form-control rounded" name="disponible" id="disponible" required>
+                <option value="">Seleccione...</option>
+                <option value="1">Activa</option>
+                <option value="0">Inactiva</option>
+                <div class="valid-feedback">¡Todo Correcto!</div>
+                <div class="invalid-feedback">Seleccione una opcion</div>
+              </div>
+              <br><br>
+              
+              <br><br>
             <div class="enviar">
-                <input type ="submit" value = "Cambiar" />
+              <div>  
+                <input class="form-control rounded" type ="submit" value = "Cambiar" />
+              </div>
             </div>
-        </form>
-    </body>
+          </form>
+      </body>
+  <div>
 
 </html>
 
