@@ -33,8 +33,8 @@ $codigo = $_POST['codigo'];
         echo '
         <script>
             alert("El codigo ingresado no coincide con el de la Base de Datos");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 

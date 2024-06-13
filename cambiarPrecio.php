@@ -25,8 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }else{
         echo '<script>
                 alert("Fallo al cambiar el precio de la Consulta");
-                return;
-            <script>';
+                window.history.back();
+            </script>
+            ';
     }
 
     mysqli_close($con);

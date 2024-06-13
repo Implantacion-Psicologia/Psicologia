@@ -28,14 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }else{
             echo '<script>
                     alert("Fallo al cambiar el estado de la Consulta");
-                    return;
-                <script>';
+                    window.history.back();
+                </script>
+                ';
         }
     }else{
         echo '<script>
                 alert("Error, el Identificador de la consulta no existe");
-                return;
-            <script>';
+                window.history.back();
+            </script>
+            ';
     }
     
     mysqli_close($con);

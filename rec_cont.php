@@ -29,7 +29,7 @@ function genera_token(){
             mail($correo, $asunto, $mensaje);
             echo '
                 <script>
-                    alert("Se ha enviado un correo electrónico con instrucciones para recuperar tu contraseña"); 
+                    alert("Se ha enviado un correo electrnico con instrucciones para recuperar tu contraseña"); 
                 </script>
             ';
             header("location: IngCodRec.html");
@@ -37,20 +37,18 @@ function genera_token(){
             echo '
                 <script>
                     alert("Error en el envio del token");
-                    return;
-        </script> 
-        ';
+                    window.history.back();
+                </script>
+                ';
         }
     }else{
         echo '
         <script>
             alert("El correo proporcionado no esta registrado");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
-
-mysql_close($con);
 
 }
 
