@@ -33,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo'
         <script>
             alert("Error en la cedula... No coincide con ningun paciente");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -46,8 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo'
         <script>
             alert("Error en el ingreso de los Datos: Parte I");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -66,8 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo'
         <script>
             alert("Error en el ingreso de los Datos: Parte II");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -83,8 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo'
         <script>
             alert("Error en el ingreso de los Datos: Parte III");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -123,8 +123,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo'
         <script>
             alert("Error en el ingreso de los Datos: Parte IV");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -181,8 +181,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo'
         <script>
             alert("Error en el ingreso de los Datos: Parte V");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -207,8 +207,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo'
         <script>
             alert("Error en el ingreso de los Datos: Parte VI");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -223,8 +223,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo'
         <script>
             alert("Error en el ingreso de los Datos: Parte VII");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -239,8 +239,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo'
         <script>
             alert("Error en el ingreso de los Datos: Parte VIII");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -255,8 +255,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo'
         <script>
             alert("Error en el ingreso de los Datos: Parte IX");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -271,16 +271,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '
             <script>
                 alert("Historial Medico Creado y Guardado");
-                return;
-            </script> ';
-            header("location: datosHistorialClinico.html");
+                window.history.back();
+        </script>
+        ';
+            header("location: datosHistorialClinico2.php");
         }
     }else{
         echo'
         <script>
             alert("Error Fatal... En el Historial Clinico");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 

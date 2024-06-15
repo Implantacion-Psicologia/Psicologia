@@ -146,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $buscar = mysqli_query($con, $consulta);
     if (mysqli_num_rows($buscar) > 0) {
         while ($fila = mysqli_fetch_assoc($buscar)) {
-            echo "<h2>Datos de Identificacion:</h2>";
+            echo "<br><h2>Datos de Identificacion:</h2>";
             echo "Nombre: " . $fila['D1_d1'] . "<br>";
             echo "Cedula: " . $fila['D1_d2'] . "<br>";
             echo "Fecha de Nacimiento: " . $fila['D1_d3'] . "<br>";
@@ -155,20 +155,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "Escolaridad: " . $fila['D1_d6'] . "<br>";
             echo "Lugar que ocupa en la familia: " . $fila['D1_d7'] . "<br>";
             echo "Promedio: " . $fila['D1_d8'] . "<br>";
-            echo "Escuela: " . $fila['D1_d9'] . "<br>";
+            echo "Escuela: " . $fila['D1_d9'] . "<br><br>";
 
             echo "<h2>Factores que Motivan a la Consulta:</h2>";
             echo "Factores Que Motivan: " . $fila['D2_d1'] . "<br>";
             echo "Referido por: " . $fila['D2_d2'] . "<br>";
             echo "Diagnostico Orgánico: " . $fila['D2_d3'] . "<br>";
             echo "Actitud De Los Padres: " . $fila['D2_d4'] . "<br>";
-            echo "Estado Emocional Niño: " . $fila['D2_d5'] . "<br>";
+            echo "Estado Emocional Niño: " . $fila['D2_d5'] . "<br><br>";
 
             echo "<h2>Factores Físicos:</h2>";
             echo "Desarrollo Prenatal y Natal: " . $fila['D3_d1'] . "<br>";
-            echo "Desarrollo de la Primera Infancia: " . $fila['D3_d2'] . "<br>";
+            echo "Desarrollo de la Primera Infancia: " . $fila['D3_d2'] . "<br><br>";
 
-            echo "<h2>Factores Familiares:</h2>";
+            echo "<h2>Factores Familiares:</h2><br>";
             echo "<h3>Datos Familiares:</h3>";
             echo "<h4>Datos del Padre:</h4>";
             echo "Nombre: " . $fila['D4_d1'] . "<br>";
@@ -176,14 +176,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "Nivel educativo: " . $fila['D4_d5'] . "<br>";
             echo "Trabajo actual: " . $fila['D4_d7'] . "<br>";
             echo "Horario de trabajo: " . $fila['D4_d9'] . "<br>";
-            echo "Hábitos: " . $fila['D4_d11'] . "<br>";
+            echo "Hábitos: " . $fila['D4_d11'] . "<br><br>";
             echo "<h4>Datos de la Madre:</h4>";
             echo "Nombre: " . $fila['D4_d2'] . "<br>";
             echo "Salud física: " . $fila['D4_d4'] . "<br>";
             echo "Nivel educativo: " . $fila['D4_d6'] . "<br>";
             echo "Trabajo actual: " . $fila['D4_d8'] . "<br>";
             echo "Horario de trabajo: " . $fila['D4_d10'] . "<br>";
-            echo "Hábitos: " . $fila['D4_d12'] . "<br>";
+            echo "Hábitos: " . $fila['D4_d12'] . "<br><br>";
 
             echo "<h3>Experiencias Traumáticas del Niño:</h3>";
             echo "Pérdida de algún familiar o ser querido: " . $fila['D4_d13'] . "<br>";
@@ -197,7 +197,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "De parte de quién: " . $fila['D4_d21'] . "<br>";
             echo "Edad del niño: " . $fila['D4_d22'] . "<br>";
             echo "Los problemas del niño son causados por: " . $fila['D4_d23'] . "<br>";
-            echo "Problemas físicos: " . $fila['D4_d24'] . "<br>";
+            echo "Problemas físicos: " . $fila['D4_d24'] . "<br><br>";
 
             echo "<h2>Factores de la Personalidad y Conducta:</h2>";
             echo "<h3>Hábitos e Intereses:</h3>";
@@ -206,7 +206,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "c) ELIMINACIONES: enuresis nocturnas, diurnas, se ensucia de día o de noche, diarreas frecuentes, estreñimiento habitual, etc: " . $fila['D5_d3'] . "<br>";
             echo "d) MANÍAS Y TICS: Se come las uñas,se jala el pelo, dedos en la nariz, muecas faciales, etc: " . $fila['D5_d4'] . "<br>";
             echo "e) HISTORIA SEXUAL: masturbación, seducción, juegos sexuales, etc: " . $fila['D5_d5'] . "<br>";
-            echo "f) RASGOS PECULIARES: Tendencias Destructivas: " . $fila['D5_d6'] . "<br>";
+            echo "f) RASGOS PECULIARES: Tendencias Destructivas: " . $fila['D5_d6'] . "<br><br>";
 
             $rasgos_caracter = [
                 'D5_d7', 'D5_d8', 'D5_d9', 'D5_d10', 'D5_d11', 'D5_d12',
@@ -221,10 +221,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             foreach ($rasgos_caracter as $rasgo) {
                 if ($fila[$rasgo] == 1) {
                     echo str_replace("_", " ", ucfirst($rasgo)) . ": Sí<br>";
+                }else{
+                    echo str_replace("_", " ", ucfirst($rasgo)) . ": No<br>";
                 }
             }
 
-            echo "<h2>Factores Hereditarios:</h2>";
+            echo "<br><h2>Factores Hereditarios:</h2>";
             echo "Incidencia de anomalías en familiares consanguíneos: " . $fila['D6_d1'] . "<br>";
             echo "Tratamiento médico por nerviosismo: " . $fila['D6_d2'] . "<br>";
             echo "Alcoholismo (grado), manifestaciones, etc: " . $fila['D6_d3'] . "<br>";
@@ -237,13 +239,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "Trastornos del habla (tartamudez, sordera mudez, etc): " . $fila['D6_d10'] . "<br>";
             echo "Trastornos de la vista (ceguera, miopía, etc): " . $fila['D6_d11'] . "<br>";
 
-            echo "<h2>Impresión Psicológica:</h2>";
+            echo "<br><h2>Impresión Psicológica:</h2>";
             echo "Signos y síntomas, personalidad, adaptación psicológica a la enfermedad, al tratamiento, cirugía, e internamientos, relación médico-paciente-enfermera, expectativas ante la patología: " . $fila['D7_d1'] . "<br>";
 
-            echo "<h2>Recomendaciones:</h2>";
+            echo "<br><h2>Recomendaciones:</h2>";
             echo $fila['D8_d1'] . "<br>";
 
-            echo "<h2>Plan Psicoterapéutico:</h2>";
+            echo "<br><h2>Plan Psicoterapéutico:</h2>";
             echo $fila['D9_d1'] . "<br>";
         }
     }else{

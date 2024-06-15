@@ -51,7 +51,7 @@ if (mysqli_num_rows($ejecute) > 0) {
                 $fila2 = mysqli_fetch_assoc($ejecute);
                 $id_psi = $fila2['id_psi'];
                 $query_con = "INSERT INTO consulta (id_pact, id_pactinf, id_pactpar, id_psi, id_tipocon, fecha, hora, duracion, estado_con) 
-                    VALUES ('$id_pact', NULL, '$id_pareja','$id_psi','$id_tipocon','$fecha_con','$hora_con','$duracion','Espera')";
+                    VALUES ('$id_pact', NULL, '$id_pareja','$id_psi','$id_tipocon','$fecha_con','$hora_con','$duracion','Agendada')";
                 if(mysqli_query($con,$query_con) == TRUE){
                     $id_con = $con->insert_id;
                     $total = $monto + $iva;
@@ -62,53 +62,53 @@ if (mysqli_num_rows($ejecute) > 0) {
                             alert("Consulta Pareja Agendada")
                         </script> 
                         ';
-                        header("location: datosPaciente.php");
+                        header("location: datosPareja.php");
                     }else{
                     echo'
                     <script>
                         alert("Error en la asignacion del precio");
-                        return; 
-                    </script> 
+                        window.history.back();
+                    </script>
                     ';
                     }
                 }else{
                     echo'
                     <script>
                         alert("Error al agendar la consulta de pareja");
-                        return;
-                    </script> 
+                        window.history.back();
+                    </script>
                     ';
                 }
             }else{
                 echo'
                 <script>
                     alert("Error al asignar la Psicologa");
-                    return;
-                </script> 
+                    window.history.back();
+                </script>
                 ';
             }
         }else{
             echo'
             <script>
                 alert("Error al registrar los datos de la pareja");
-                return;
-            </script> 
+                window.history.back();
+            </script>
             ';
         }
     }else{
         echo'
         <script>
             alert("Error al ingresar la direccion");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 }else{
     echo'
     <script>
         alert("Error, no existe paciente con dicha cedula ni dicho correo");
-        return;
-    </script> 
+        window.history.back();
+    </script>
     ';
 }
 

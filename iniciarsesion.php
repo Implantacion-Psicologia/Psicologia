@@ -36,11 +36,9 @@ if(mysqli_num_rows($ejecute) > 0){
     echo '
         <script>
             alert("Correo o contraseña incorrectos, favor verificar sus datos");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
-
-mysqli_close();
 
 ?>

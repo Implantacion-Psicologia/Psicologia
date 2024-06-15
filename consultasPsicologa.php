@@ -30,7 +30,7 @@ if (mysqli_num_rows($ejecute) > 0) {
     }
   }else {
     $listaConsultas = '<tr>
-                        No se encuentran Consultas
+                        <td> No se encuentran Consultas </td>
                       </tr>';
 }
 
@@ -112,33 +112,37 @@ if (mysqli_num_rows($ejecute) > 0) {
     <link rel="stylesheet" href="Style.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <meta charset="utf-8">
-</head>
-
+  </head>
 <body>
   <header>
     <br><br>
     <h1>Lista de las Consultas</h1>
   </header>
 
-  <form class="row g-2 needs-validation" novalidate id="listaConsulta" method="POST" action="cambiarEstadoCon.php">
+  <form class="row g-1 needs-validation" novalidate id="listaConsulta" method="POST" action="cambiarEstadoCon.php">
 
     <h3>Cambiar Estado de Consulta</h3>
     <div class="col-md-6">
       <!-- Identificador de Consulta -->
-      <label for="">Estatus de la Consulta: </label>
-      <select name="estadocon" id="estadocon">
-      <option value="Agendada">Agendada</option>
-      <option value="Suspendida">Suspendida</option>
-      <option value="Realizada">Realizada</option>
-      </select>
-      <div class="valid-feedback">Verificado!</div>
-      <div class="invalid-feedback">Ingrese una Opcion</div>
-      
-      <Label for = "cedula"></Label>
-      <input type ="text" id= "idcon" name ="idcon" requiered pattern = "[0-9]"
-      placeholder = "Numero de Consulta"/>
-      <div class="valid-feedback">Verificado!</div>
-      <div class="invalid-feedback">Ingrese solo numeros</div>
+      <div>
+        <label for="">Estatus de la Consulta: </label>
+        <select class="form-control rounded" name="estadocon" id="estadocon" required>
+        <option value="">Seleccione...</option>
+        <option value="Agendada">Agendada</option>
+        <option value="Suspendida">Suspendida</option>
+        <option value="Realizada">Realizada</option>
+        </select>
+        <div class="valid-feedback">¡Todo Correcto!</div>
+        <div class="invalid-feedback">Ingrese una Opcion</div>
+      </div>
+
+      <div>
+        <Label for = "cedula"></Label>
+        <input class="form-control rounded" type ="text" id= "idcon" name ="idcon" required pattern = "[0-9]+"
+        placeholder = "Numero de Consulta"/>
+        <div class="valid-feedback">¡Todo Correcto!</div>
+        <div class="invalid-feedback">Ingrese solo numeros positivos</div>
+      </div>
 
     </div>
 

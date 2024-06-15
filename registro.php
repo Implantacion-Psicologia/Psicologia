@@ -23,47 +23,14 @@ $password_repetir = $_POST['verificacont'];
 $municipio = $_POST['municipio'];
 $estado = $_POST['estado'];
 
-/*
-   switch($tipo_cedula){
-    case "V":
-        if($cedula < 1 || $cedula > 99999999 || !preg_match('/[0-9]{9}$/', $cedula)){
-            echo'
-            <script>
-                alert("Error en la estructura de la cedula tipo V");
-            </script> 
-            ';
-            return;
-        }
-    break;
-    case "E":
-        if($cedula < 1 || $cedula > 999999999 || !preg_match('/[0-9]{10}$/', $cedula)){
-            echo'
-            <script>
-                alert("Error en la estructura de la cedula tipo E");
-            </script> 
-            ';
-            return;
-        }
-    break;
-    case "J":
-        if($cedula < 1 || $cedula > 9999999 || !preg_match('/[0-9]{7}$/', $cedula)){
-            echo'
-            <script>
-                alert("Error en la estructura de la cedula tipo J"); 
-                return;
-            </script> 
-            ';
-        }
-    break;
-    }*/
     $verif_cedula = "SELECT * FROM paciente WHERE cedula_pact LIKE '$cedula'";
     $ejecute = mysqli_query($con, $verif_cedula);
     if (mysqli_num_rows($ejecute) > 0){
         echo'
             <script>
                 alert("El correo proporcionado ya esta registrado");
-                return;
-            </script> 
+                window.history.back();
+            </script>
             ';
     }
     $verif_correo = "SELECT * FROM paciente WHERE correo_pact LIKE '$correo'";
@@ -72,8 +39,8 @@ $estado = $_POST['estado'];
         echo'
             <script>
                 alert("El correo proporcionado ya esta registrado");
-                return; 
-            </script> 
+                window.history.back();
+            </script>
             ';
     }
     $verif_tlf = "SELECT * FROM paciente WHERE tlf_pact LIKE '$telefono'";
@@ -82,8 +49,8 @@ $estado = $_POST['estado'];
         echo'
         <script>
             alert("El telefono proporcionado ya esta registrado");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
@@ -103,33 +70,34 @@ $query1 = "INSERT INTO direccion (id_estado, id_municipio) VALUES ('$estado','$m
                     alert("Usuario Registrado con Exito")
                 </script> 
                 ';
-                header("location: index.html");
+                header("location: index.php");
             }else{
                 echo'
                 <script>
                     alert("Error en el registro del paciente");
-                    return;
-                </script> 
+                    window.history.back();
+                </script>
                 ';
             }
         }else{
             echo'
             <script>
                 alert("Error en el registro del usuario");
-                return;
-            </script> 
+                window.history.back();
+            </script>
             ';
         }
     }else{
         echo'
         <script>
             alert("Error en el registro de la direccion");
-            return;
-        </script> 
+            window.history.back();
+        </script>
         ';
     }
 
 mysql_close($con);
+
 }
 
 ?>

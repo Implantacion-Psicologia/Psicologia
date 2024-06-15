@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
+<title> Buscar Historial </title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <title>Buscar Historial Clinico</title>
+<link rel="stylesheet" href="Style.css"/>
+<meta charset="utf-8">
+
+
+<title>Buscar Historial Clinico</title>
   <style>
     /* Estilos para la barra de selección */
     #barraSeleccion {
@@ -79,17 +85,20 @@
   </header>
   
   <form class="row g-1 needs-validation" action="buscarHistorialCli.php" novalidate id="busqueda" method="GET">
-    <div class="col-md-6">
+    <div class="form-control rounded col-md-6">
       <label for="buscarcedula"></label>
-      <input type="text" id="buscarcedula" name="cedula" required pattern="[0-9]+"
-             placeholder="Cédula"/>
-      <div class="valid-feedback">Verificado!</div>
+      <input type="text" id="buscarcedula" name="cedula" required pattern="[0-9]+" placeholder="Cédula"/>
+      <div class="valid-feedback">¡Todo Correcto!</div>
       <div class="invalid-feedback">Ingrese solo números</div>
     </div>
-    <button type="button" onclick="buscarHistorial()">Buscar</button>
-    <br><br>
-    <button type="button" onclick="limpiar()">Limpiar Datos</button>
-  </form>
+
+    <div class="form-control rounded col-md-4">
+      <button type="button" onclick="buscarHistorial()">Buscar</button>
+      <br><br>
+      <button type="button" onclick="limpiar()">Limpiar Datos</button>
+    </fiv>
+
+   </form>
 
   <!-- Resultado de la Busqueda -->
   <div id="mostrar"></div>

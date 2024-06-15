@@ -37,7 +37,7 @@ $consultasCanceladas = "";
 $consultasRealizadas = "";
 
 while ($lista = mysqli_fetch_array($ejecute)) {
-    if ($lista['estado_con'] === 'Agendada') {
+    if ($lista['estado_con'] == 'Agendada') {
         $consultasAgendadas .= '<tr>
                                   <td>' . $ContAgendadas++ . '</td>
                                   <td>' . $lista['tipo_consulta'] . '</td>
@@ -46,7 +46,7 @@ while ($lista = mysqli_fetch_array($ejecute)) {
                                   <td>' . $lista['estado_con'] . '</td>
                                 </tr>';
     }
-    if ($lista['estado_con'] === 'Suspendida') {
+    if ($lista['estado_con'] == 'Suspendida') {
         $consultasCanceladas .= '<tr>
                                   <td>' . $ContCanceladas++ . '</td>
                                   <td>' . $lista['tipo_consulta'] . '</td>
@@ -55,7 +55,7 @@ while ($lista = mysqli_fetch_array($ejecute)) {
                                   <td>' . $lista['estado_con'] . '</td>
                                 </tr>';
     }
-    if ($lista['estado_con'] === 'Realizada') {
+    if ($lista['estado_con'] == 'Realizada') {
         $consultasRealizadas .= '<tr>
                                   <td>' . $ContRealizadas++ . '</td>
                                   <td>' . $lista['tipo_consulta'] . '</td>
@@ -68,17 +68,17 @@ while ($lista = mysqli_fetch_array($ejecute)) {
 
 if (empty($consultasAgendadas)) {
     $consultasAgendadas = '<tr>
-                            No posee Consultas en Espera
+                            <td> No posee Consultas en Espera </td>
                           <tr>';
 }
 if (empty($consultasCanceladas)) {
     $consultasCanceladas =  '<tr>
-                              No posee Consultas Canceladas
+                              <td> No posee Consultas Canceladas </td>
                             <tr>';
 }
 if (empty($consultasRealizadas)) {
     $consultasRealizadas =  '<tr>
-                              No posee Consultas Realizadas
+                              <td> No posee Consultas Realizadas </td>
                             <tr>';
 }
 
